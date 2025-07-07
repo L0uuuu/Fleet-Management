@@ -1,0 +1,28 @@
+<div class="login-container">
+  
+    <img src="assets/fleet-icon.png" alt="Fleet Icon" class="icon" />
+    <p class="title"><span class="Blue-Letter">F</span>leet <span class="Blue-Letter">M</span>anagement</p>
+
+    <div class="login-card">
+        <h2>Log in</h2>
+        <form (ngSubmit)="onLogin()" #loginForm="ngForm">
+            <label for="email">Email address</label>
+            <input aria-selected="" id="email"  type="email" placeholder="Email address" name="email" [(ngModel)]="email" required />
+
+            <div class="spacing">
+                <label for="password">Password</label>
+                <button type="button" (click)="toggleShowPassword()" class="blue-buttons">Show password</button>
+            </div>
+            <input [type]="showPassword ? 'text' : 'password'" placeholder="Password" id="password" name="password" [(ngModel)]="password" required  />
+            <div class="spacing" [ngStyle]="{ 'margin-top': '4px' }">
+                <div>
+                    <input type="checkbox" [(ngModel)]="keepLoggedIn" name="keepLoggedIn" id="keepLoggedIn"/>
+                    <label>Keep me logged in</label>
+                </div>
+                <a href="#">Forget password?</a>
+            </div>
+
+            <button type="submit">Log in</button>
+        </form>
+    </div>
+</div>
