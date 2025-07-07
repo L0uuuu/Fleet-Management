@@ -1,0 +1,42 @@
+*{
+    font-family: sans-serif;
+}
+.slide-container {
+  display: flex;
+  justify-content: center;
+  align-items: top;
+  height: 100vh;
+  width: 17rem;
+  background: linear-gradient(to bottom, #00aaff, #0088cc);
+  margin: 0;
+  padding: 0;
+}
+.username {
+  padding: 10px;
+  width:100vw;
+}
+h3{
+    color: rgba(255, 255, 255,0.8);
+    font-size: 1.2rem;
+    margin: 0;
+    padding: 0;
+    font-weight: 200;
+}
+h2{
+    color: white;
+    font-size: 1.7rem;
+    margin: 0;
+    padding: 0;
+    font-weight: 600;
+}
+button {
+  background: none;
+  border: none;
+  color: white;
+  background-color: rgba(8,53,82,0.1);
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  border-radius: 20px;
+  
+}

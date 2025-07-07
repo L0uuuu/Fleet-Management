@@ -6,19 +6,21 @@ import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 import { Login } from './login/login';
 import { Dashboard } from './pages/dashboard/dashboard';
-import { Inforamtions } from './pages/inforamtions/inforamtions';
+import {Slide} from './pages/slide/slide';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
     App,
     Login,
     Dashboard,
-    Inforamtions
+    Slide
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    FontAwesomeModule
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
