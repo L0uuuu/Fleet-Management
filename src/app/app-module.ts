@@ -6,12 +6,14 @@ import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 import { Login } from './login/login';
 import { Dashboard } from './pages/dashboard/dashboard';
+import { Inforamtions } from './pages/inforamtions/inforamtions';
 
 @NgModule({
   declarations: [
     App,
     Login,
-    Dashboard
+    Dashboard,
+    Inforamtions
   ],
   imports: [
     BrowserModule,
