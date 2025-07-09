@@ -1,10 +1,92 @@
 <div class="slide-container">
-  <div class="username">
-    <button>
-        <fa-icon [icon]="faUserCircle"></fa-icon>
-        <h3>{{ getFirstName }}</h3>
-        <h2>{{ getLastName }}</h2>
-    </button>
+  <div class="top">
+    <div class="fields">
+      <div class="field">
+
+        <div class="side" [class.highlight]="isHovered1 || isButtonActive('btn1')" >  </div>
+
+        <button class="account-settings" (mouseenter)="isHovered1 = true" (mouseleave)="isHovered1 = false" (click)="toggleButtonState('btn1')" [ngStyle]="{'background-color': isButtonActive('btn1') ? hoverColor : settingsColor }"  >
+          <div class="content" >
+            <fa-icon [icon]="faUserCircle" id="userIcon" ></fa-icon>
+            <div>
+              <h3>{{ getFirstName }}</h3>
+              <h2>{{ getLastName }}</h2>
+            </div>
+          </div>
+        </button>
+      </div>
+    </div>
+    <div class="fields">
+      <div class="field">
+
+        <div class="side2" [class.highlight]="isHovered2" >  </div>
+
+        <button class="dashbord" (mouseenter)="isHovered2 = true" (mouseleave)="isHovered2 = false" [ngStyle]="{'border-radius': BorderStyle,'background-color': isHovered2 ? hoverColor : defaultColor}"  >
+          <div class="content" >
+            <fa-icon [icon]="faDashboard" class="icon"></fa-icon>
+            <div>
+              <h2>Dashbord</h2>
+            </div>
+          </div>
+        </button>
+      </div>
+      <div class="field">
+
+        <div class="side2" [class.highlight]="isHovered3" >  </div>
+
+        <button class="dashbord" (mouseenter)="isHovered3 = true" (mouseleave)="isHovered3 = false" [ngStyle]="{'border-radius': BorderStyle,'background-color': isHovered3 ? hoverColor : defaultColor}"  >
+          <div class="content" >
+            <fa-icon [icon]="faVehicle" class="icon"></fa-icon>
+            <div>
+              <h2>Vehicles</h2>
+            </div>
+          </div>
+        </button>
+      </div>
+      <div class="field">
+
+        <div class="side2" [class.highlight]="isHovered4" >  </div>
+
+        <button class="dashbord" (mouseenter)="isHovered4 = true" (mouseleave)="isHovered4 = false" [ngStyle]="{'border-radius': BorderStyle,'background-color': isHovered4 ? hoverColor : defaultColor}"  >
+          <div class="content" >
+            <fa-icon [icon]="faAppointments" class="icon"></fa-icon>
+            <div>
+              <h2>Appointments</h2>
+            </div>
+          </div>
+        </button>
+      </div>
+    </div>
   </div>
 
+  <div class="bottom">
+    <hr>
+    <div class="fields">
+      <div class="field">
+
+        <div class="side2" [class.highlight]="isHovered5" >  </div>
+
+        <button class="dashbord" (mouseenter)="isHovered5 = true" (mouseleave)="isHovered5 = false" [ngStyle]="{'border-radius': BorderStyle,'background-color': isHovered5 ? hoverColor : defaultColor}"  >
+          <div class="content" >
+            <fa-icon [icon]="faSettings" class="icon"></fa-icon>
+            <div>
+              <h2>Settings</h2>
+            </div>
+          </div>
+        </button>
+      </div>
+
+      <div class="field">
+
+        <div class="side2" [class.highlight]="isHovered6" >  </div>
+
+        <button class="dashbord" (mouseenter)="isHovered6 = true" (mouseleave)="isHovered6 = false" [ngStyle]="{'border-radius': BorderStyle,'background-color': isHovered6 ? hoverColor : defaultColor}"  >
+          <div class="content" >
+            <fa-icon [icon]="faSignOut" class="icon"></fa-icon>
+            <div>
+              <h2>Sign out</h2>
+            </div>
+          </div>
+        </button>
+    </div>
 </div>

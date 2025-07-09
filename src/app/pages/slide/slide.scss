@@ -3,17 +3,22 @@
 }
 .slide-container {
   display: flex;
-  justify-content: center;
-  align-items: top;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   height: 100vh;
-  width: 17rem;
-  background: linear-gradient(to bottom, #00aaff, #0088cc);
+  width: 20rem;
+  background: linear-gradient(to bottom, #46B1F4, #29678E);
   margin: 0;
   padding: 0;
 }
-.username {
-  padding: 10px;
-  width:100vw;
+.content {
+  
+  margin: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+
 }
 h3{
     color: rgba(255, 255, 255,0.8);
@@ -21,15 +26,19 @@ h3{
     margin: 0;
     padding: 0;
     font-weight: 200;
+    line-height: 0.9;
 }
 h2{
     color: white;
     font-size: 1.7rem;
     margin: 0;
     padding: 0;
-    font-weight: 600;
+    font-weight: 400;
+    line-height: 0.9;
+    
 }
 button {
+  margin: 10px;
   background: none;
   border: none;
   color: white;
@@ -38,5 +47,71 @@ button {
   width: 100%;
   text-align: left;
   border-radius: 20px;
+  transition: background-color 0.5s ;
   
+}
+button:hover {
+  background-color: rgba(8,53,82,0.2);
+}
+
+.field{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  
+  width: 100%;
+}
+.side{
+  border-radius: 0 20px 20px 0;
+  width:  15px;
+  height: 6vh;
+  margin: auto 0;
+  background-color: rgba(8,53,82,0);
+  transition: background-color 0.5s ;
+}
+.side2{
+  border-radius: 0 10px 10px 0;
+  width:  15px;
+  height: 3.5vh;
+  margin: auto 0 ;
+  background-color: rgba(8,53,82,0);
+  transition: background-color 0.5s ;
+}
+.highlight {
+  background-color: rgba(8,53,82,0.2);
+}
+#userIcon{
+  font-size: 3rem;
+  margin-right:10px ;
+  margin-left:10px ;
+}
+.icon{
+  font-size: 1.5rem;
+  margin-right:10px ;
+  margin-left:10px ;
+}
+.content div {
+  margin: auto 0.5rem;
+  
+}
+.dashbord{
+  margin: 7px 10px;
+}
+.fields {
+  width: 100%;
+  
+}
+.top,.bottom {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+hr {
+  width: 100%;
+  border: none;
+  height: 1px;
+  background-color: rgba(255, 255, 255,0.2);
+  margin: 10px 0;
 }
