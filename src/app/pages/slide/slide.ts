@@ -1,5 +1,5 @@
 import { Component ,ViewChild,ElementRef,AfterViewInit,Renderer2 } from '@angular/core';
-
+import { Router } from '@angular/router';
 //icon importation
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { faTachometerAlt } from '@fortawesome/free-solid-svg-icons';
@@ -30,6 +30,11 @@ export class Slide {
   private firstName: string = 'Louai';
   private lastName: string = 'Boubaker';
 
+  // constructor
+  // the router will be used to navigate to the different pages
+  constructor(private router: Router) {}
+
+
   // styles for the non acount settings button
   BorderStyle: string = '12px';
   hoverColor: string = 'rgba(8,53,82,0.2)';
@@ -59,6 +64,10 @@ export class Slide {
       this.buttonStates[key] = false;
     }
     this.buttonStates[buttonKey] = !this.buttonStates[buttonKey];
+    switch (buttonKey) {
+      case 'btn1': this.router.navigate(['/account-setting']); break;
+      case 'btn2': this.router.navigate(['/dashboard']); break;
+    }
   }
   isButtonActive(buttonKey: string): boolean {
     return this.buttonStates[buttonKey] === true;
