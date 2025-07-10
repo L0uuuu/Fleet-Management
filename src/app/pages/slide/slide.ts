@@ -52,7 +52,12 @@ export class Slide {
     btn5: false, // Settings
     btn6: false  // Sign Out
   };
+  
   toggleButtonState(buttonKey: string): void {
+    // Reset all buttons to false
+    for (let key in this.buttonStates) {
+      this.buttonStates[key] = false;
+    }
     this.buttonStates[buttonKey] = !this.buttonStates[buttonKey];
   }
   isButtonActive(buttonKey: string): boolean {

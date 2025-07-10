@@ -47,11 +47,11 @@ button {
   width: 100%;
   text-align: left;
   border-radius: 20px;
-  transition: background-color 0.5s ;
+  transition: background-color 0.3s ;
   
 }
-button:hover {
-  background-color: rgba(8,53,82,0.2);
+.ma{
+  margin-top: 20px;
 }
 
 .field{
@@ -68,7 +68,7 @@ button:hover {
   height: 6vh;
   margin: auto 0;
   background-color: rgba(8,53,82,0);
-  transition: background-color 0.5s ;
+  transition: background-color 0.4s ;
 }
 .side2{
   border-radius: 0 10px 10px 0;
@@ -114,4 +114,43 @@ hr {
   height: 1px;
   background-color: rgba(255, 255, 255,0.2);
   margin: 10px 0;
+}
+.line1{
+  right: 0;
+  top: 80px;
+  position: absolute;
+  width: 100%;
+  border: none;
+  height: 2px;
+  background-color: rgba(0, 0, 0,0.1);
+  margin: 10px 0;
+}
+
+.main {
+  display: flex;
+
+}
+.logo-container {
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  
+}
+.logo {
+  width: 80px;
+  height: 80px;
+  margin: 0 20px;
+}
+.title{
+    
+    color: #222323;
+    letter-spacing: 5px;
+    font-size: 2em;
+    margin: 0px;   
+    
+}
+.Blue-Letter{
+    color: #46B1F4;
 }
