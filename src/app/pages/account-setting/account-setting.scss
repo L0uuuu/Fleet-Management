@@ -1,3 +1,5 @@
+
+
 *{
     font-family: sans-serif;
 }
@@ -49,7 +51,7 @@ h3 {
 }
 .informations{
     display: grid;
-    grid-template-columns: auto auto 20px auto;
+    grid-template-columns: auto auto auto auto;
     justify-content: center;
     align-items: center;
     gap: 2vw;
@@ -73,9 +75,35 @@ h3 {
 .line3{
     margin: auto;
     width: 3px;
-    height: 11em;
+    height: 88%;
     border: none;
     border-radius: 20px;
     background-color: rgba(0, 0, 0,0.1);
+    
+}
+.champs .inputs{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+label {
+    font-size: 15px;
+    color: #615C5C;
+    margin-left: 8px;
+}
+input {
+    width: 20em;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-size: 20px;
+}
+input:focus {
+  border: 1px solid #46B1F4;
+  outline: none;
+}
+input[type="email"] {
+    width: 25em;
     
 }
