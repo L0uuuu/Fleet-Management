@@ -1,5 +1,5 @@
 <div class="account-setting">
-    
+
     <h2> Account Setting </h2>
     <hr class="line2">
     <div class="bottom">
@@ -69,24 +69,27 @@
                 </div>
                 <hr class="line3">
                 <div class="champs">
-                    <div>
-                        <span class="label">Business name:</span> <span class="info">{{getBusinessName}}</span>
+                    <div class="inputs">
+                        <label for="firstName">Business name</label>
+                        <input type="text" id="firstName" [(ngModel)]="getBusinessName">
                     </div>
-
-                    <div>
-                        <span class="label">Location:</span> <span class="info">{{getLocation}}</span>
+                    <div class="inputs">
+                        <label for="lastName">Location</label>
+                        <input type="text" id="lastName" [(ngModel)]="getLocation">
                     </div>
-
-                    <div>
-                        <span class="label">Country:</span> <span class="info">{{getCountry}}</span>
+                    <div class="inputs">
+                        <label for="email">Country</label>
+                        <input type="email" id="email" [(ngModel)]="getCountry">
                     </div>
-
-                    <div>
-                        <span class="label">City:</span> <span class="info">{{getCity}}</span>
+                    <div class="inputs">
+                        <label for="Phone">City</label>
+                        <input type="text" id="phone" [(ngModel)]="getCity" >
                     </div>
                 </div>
             </div>
-            
+            <div class="button-container">
+                <button>Save</button>
+            </div>
         </div>
 
     </div>
