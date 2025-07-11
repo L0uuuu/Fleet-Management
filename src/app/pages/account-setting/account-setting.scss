@@ -2,8 +2,18 @@
     font-family: sans-serif;
 }
 .account-setting {
+    display: flex;
+    flex-direction: column;
     height: 100%;
     width: 100%;
+    
+}
+.bottom {
+    width: 100%; 
+    flex-grow: 1;          /* or any fixed height (e.g., 600px) */
+    overflow-y: auto;        /* enable vertical scroll only */
+    box-sizing: border-box;  /* make sure padding doesn't increase height */
+
 }
 h2{
     color: #222323;
@@ -15,6 +25,57 @@ h2{
     width: 100%;
     height: 3px;
     border: none;
+    background-color: rgba(0, 0, 0,0.1);
+    margin-bottom: 0;
+}
+.container {
+    border-radius: 8px;
+    margin: 20px 30px;
+    padding: 15px;
+    box-shadow: 2px 2px 15px rgba(0, 0,0 ,0.15);
+    text-align: left;
+    border: 1px solid ;
+    border-color:  rgba(166, 166, 166, 0.8);
+}
+h3 {
+    color: #222323;
+    font-size: 28px;
+    margin: 0;
+}
+#userIcon{
+    color: #222323;
+    font-size: 10rem;
+    margin: auto ;
+}
+.informations{
+    display: grid;
+    grid-template-columns: auto auto 20px auto;
+    justify-content: center;
+    align-items: center;
+    gap: 2vw;
+    margin: 2em;
+
+}
+.champs{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: auto 20px;
+}
+.info{
+    font-size: 20px;
+}
+.label{
+    color: #615C5C;
+    font-size: 25px;
+    margin-right: 10px;
+}
+.line3{
+    margin: auto;
+    width: 3px;
+    height: 11em;
+    border: none;
+    border-radius: 20px;
     background-color: rgba(0, 0, 0,0.1);
     
 }

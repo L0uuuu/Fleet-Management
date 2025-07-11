@@ -11,6 +11,7 @@
   background: linear-gradient(to bottom, #46B1F4, #29678E);
   margin: 0;
   padding: 0;
+  
 }
 .content {
   
@@ -158,5 +159,9 @@ hr {
 }
 .content-container{
     width: 100%;
-    height: 100%;
+    height: 90vh;
+}
+router-outlet{
+  width: 100%;
+  height: 100%;
 }
