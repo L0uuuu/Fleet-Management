@@ -9,6 +9,7 @@ import { Dashboard } from './pages/dashboard/dashboard';
 import {Slide} from './pages/slide/slide';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AccountSetting } from './pages/account-setting/account-setting';
+import { Appointments } from './pages/appointments/appointments';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { AccountSetting } from './pages/account-setting/account-setting';
     Login,
     Dashboard,
     Slide,
-    AccountSetting
+    AccountSetting,
+    Appointments
   ],
   imports: [
     BrowserModule,

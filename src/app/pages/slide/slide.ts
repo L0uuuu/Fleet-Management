@@ -48,7 +48,8 @@ export class Slide {
   get getLastName() {
     return this.lastName;  
   }
-  
+
+
   buttonStates: { [key: string]: boolean } = {
     btn1: false, // Account Settings
     btn2: false, // Dashboard
@@ -57,7 +58,17 @@ export class Slide {
     btn5: false, // Settings
     btn6: false  // Sign Out
   };
-  
+
+  ngOnInit(): void {
+    // Navigate to account settings when component initializes
+    this.router.navigate(['/account-setting']);
+    
+    // Reset all buttons and activate Account Settings button
+    for (let key in this.buttonStates) {
+      this.buttonStates[key] = false;
+    }
+    this.buttonStates['btn1'] = true;
+  }
   toggleButtonState(buttonKey: string): void {
     // Reset all buttons to false
     for (let key in this.buttonStates) {
@@ -67,6 +78,8 @@ export class Slide {
     switch (buttonKey) {
       case 'btn1': this.router.navigate(['/account-setting']); break;
       case 'btn2': this.router.navigate(['/dashboard']); break;
+      case 'btn4': this.router.navigate(['/appointments']); break;
+      default: this.router.navigate(['/account-setting']); break;
     }
   }
   isButtonActive(buttonKey: string): boolean {

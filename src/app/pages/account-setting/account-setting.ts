@@ -1,4 +1,4 @@
-import { Component,AfterViewInit } from '@angular/core';
+import { Component,AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import intlTelInput from 'intl-tel-input';
 
 //icon importation
@@ -19,6 +19,19 @@ export class AccountSetting {
   private country: string = 'Tunisia';
   private city: string = 'XXXXX';
 
+  // password
+  currentPassword: string = '';
+  newPassword: string = ''; 
+  confirmPassword: string = '';
+
+  changePassword(): void {
+    if (this.newPassword !== this.confirmPassword) {
+      alert('New password and confirm password do not match.');
+      return;
+    }
+    // Logic to change the password goes here
+    console.log('Password changed successfully');
+  }
 
   //getters
   get getFirstName(): string {
@@ -59,4 +72,48 @@ export class AccountSetting {
   //icons
   faUserCircle = faUserCircle;
 
+
+ @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
+  isDragOver = false;
+  fileName: string = 'or drop file here';
+
+  onDragOver(event: DragEvent) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.isDragOver = true;
+  }
+
+  onDragLeave(event: DragEvent) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.isDragOver = false;
+  }
+
+  onDrop(event: DragEvent) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.isDragOver = false;
+    
+    if (event.dataTransfer?.files && event.dataTransfer.files.length > 0) {
+      const dataTransfer = new DataTransfer();
+      dataTransfer.items.add(event.dataTransfer.files[0]);
+      this.fileInput.nativeElement.files = dataTransfer.files;
+      
+      const file = event.dataTransfer.files[0];
+      this.fileName = file.name;
+      
+      const changeEvent = new Event('change');
+      this.fileInput.nativeElement.dispatchEvent(changeEvent);
+    }
+  }
+
+  onFileSelected(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      const file = input.files[0];
+      this.fileName = file.name;
+      console.log('Selected file:', file.name);
+      // Handle file upload here
+    }
+  }
 }
