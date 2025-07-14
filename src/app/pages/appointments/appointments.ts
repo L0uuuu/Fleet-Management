@@ -7,10 +7,27 @@ import { Router } from '@angular/router';
   styleUrl: './appointments.scss'
 })
 export class Appointments {
-  constructor(private router: Router) {}
+  currentStep = 1;
 
-  next() {
-    this.router.navigate(['appointments/agency']);
+  constructor(private router: Router) {
+    router.events.subscribe(() => {
+      this.setCurrentStep(router.url);
+    });
+  }
+   
+  
+  setCurrentStep(url: string) {
+    if (url.includes('service')) this.currentStep = 1;
+    else if (url.includes('agency')) this.currentStep = 2;
+    else if (url.includes('date')) this.currentStep = 3;
+    else if (url.includes('summary')) this.currentStep = 4;
   }
 
+  isCompleted(step: number): boolean {
+    return this.currentStep > step;
+  }
+
+  isActive(step: number): boolean {
+    return this.currentStep == step;
+  }
 }

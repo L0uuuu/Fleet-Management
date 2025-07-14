@@ -43,6 +43,17 @@ h2{
     color: white;
     background-color: rgba(119,115,115,0.2);
     border-radius: 50%;
+
+    &.completed {
+        background-color: #76D4A2;
+        color: white;
+
+    }
+    &.active {
+        background-color: white;
+        border: solid 1px #399DDB;
+        color: #399DDB;
+    }
 }
 
 
@@ -52,24 +63,27 @@ h2{
     font-size: 20px;
     margin: auto;
     color: rgba(119,115,115,0.4);
+    &.completed {
+      color: #76D4A2;
+    }
+    &.active {
+        color: #399DDB;
+        font-weight: bolder;
+        font-size: 20px;
+        margin: auto;
+    }
 }
 hr{
     width: 4em;
-
     border: dashed 0.7px rgba(119,115,115,0.4);
     border-radius: 2px;
     
+    &.completed {
+      border: solid 0.7px #76D4A2;
 
-}
-.active-number {
-    background-color: white;
-    border: solid 1px #399DDB;
-    color: #399DDB;
-    
-}
-.under-active-number {
-    color: #399DDB;
-    font-weight: bolder;
-    font-size: 20px;
-    margin: auto;
+    }
+    &.active {
+        border: solid 0.7px #399DDB;
+    }
+
 }

@@ -5,30 +5,34 @@
 
     <div class="counter">
         <div class="number-container">
-            <div class="default-number" [routerLink]="['/appointments/service']" routerLinkActive="active-number">1</div>
-            <div class="under-default-number" [routerLink]="['/appointments/service']" routerLinkActive="under-active-number">Service</div>
+            <div class="default-number" [ngClass]="{ 'completed': isCompleted(1), 'active': isActive(1) }">1</div>
+            <div class="under-default-number"  [ngClass]="{ 'completed': isCompleted(1), 'active': isActive(1) }">Service</div>
+        </div>
+        <div class="number-container" >
+            <hr [ngClass]="{ 'completed': isCompleted(1), 'active': isActive(1) }">
         </div>
         <div class="number-container">
-            <hr>
+            <div class="default-number" [ngClass]="{ 'completed': isCompleted(2), 'active': isActive(2) }" routerLinkActive="active-number">2</div>
+            <div class="under-default-number" [ngClass]="{ 'completed': isCompleted(2), 'active': isActive(2) }">Agency</div>
         </div>
         <div class="number-container">
-            <div class="default-number">2</div>
-            <div class="under-default-number">Agency</div>
-        </div>
-        <div class="number-container">
-            <hr>
+            <hr [ngClass]="{ 'completed': isCompleted(2), 'active': isActive(2) }">
         </div>  
         <div class="number-container">
-            <div class="default-number">3</div>
-            <div class="under-default-number">Date</div>
+            <div class="default-number" [ngClass]="{ 'completed': isCompleted(3), 'active': isActive(3) }" >3</div>
+            <div class="under-default-number" [ngClass]="{ 'completed': isCompleted(3), 'active': isActive(3) }">Date</div>
         </div>
         <div class="number-container">
-            <hr>
+            <hr [ngClass]="{ 'completed': isCompleted(3), 'active': isActive(3) }">
         </div>
         <div class="number-container">
-            <div class="default-number">4</div>
-            <div class="under-default-number">Summary</div>
+            <div class="default-number" [ngClass]="{ 'completed': isCompleted(4), 'active': isActive(4) }" >4</div>
+            <div class="under-default-number" [ngClass]="{ 'completed': isCompleted(4), 'active': isActive(4) }">Summary</div>
         </div>
     </div>
+
+
     <router-outlet></router-outlet>
+
+
 </div>
