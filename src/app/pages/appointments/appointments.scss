@@ -33,19 +33,20 @@ h2{
     margin: 10px;
 
 }
-.number {
+.default-number {
     width: 100px;
     height: 100px;
     text-align: center;
     line-height: 100px;
     font-size: 45px;
-    font-weight: bold;
+    font-weight: bolder;
     color: white;
     background-color: rgba(119,115,115,0.2);
     border-radius: 50%;
 }
 
-.under-number {
+
+.under-default-number {
    
     padding-top: 10px ;
     font-size: 20px;
@@ -59,4 +60,16 @@ hr{
     border-radius: 2px;
     
 
+}
+.active-number {
+    background-color: white;
+    border: solid 1px #399DDB;
+    color: #399DDB;
+    
+}
+.under-active-number {
+    color: #399DDB;
+    font-weight: bolder;
+    font-size: 20px;
+    margin: auto;
 }

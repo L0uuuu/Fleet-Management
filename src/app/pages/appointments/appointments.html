@@ -5,31 +5,30 @@
 
     <div class="counter">
         <div class="number-container">
-            <div class="number">1</div>
-            <div class="under-number">Service</div>
+            <div class="default-number" [routerLink]="['/appointments/service']" routerLinkActive="active-number">1</div>
+            <div class="under-default-number" [routerLink]="['/appointments/service']" routerLinkActive="under-active-number">Service</div>
         </div>
         <div class="number-container">
             <hr>
         </div>
         <div class="number-container">
-            <div class="number">2</div>
-            <div class="under-number">Agency</div>
+            <div class="default-number">2</div>
+            <div class="under-default-number">Agency</div>
         </div>
         <div class="number-container">
             <hr>
         </div>  
         <div class="number-container">
-            <div class="number">3</div>
-            <div class="under-number">Date</div>
+            <div class="default-number">3</div>
+            <div class="under-default-number">Date</div>
         </div>
         <div class="number-container">
             <hr>
         </div>
         <div class="number-container">
-            <div class="number">4</div>
-            <div class="under-number">Summary</div>
+            <div class="default-number">4</div>
+            <div class="under-default-number">Summary</div>
         </div>
-
     </div>
-
+    <router-outlet></router-outlet>
 </div>

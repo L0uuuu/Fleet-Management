@@ -10,6 +10,10 @@ import {Slide} from './pages/slide/slide';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AccountSetting } from './pages/account-setting/account-setting';
 import { Appointments } from './pages/appointments/appointments';
+import { Service } from './pages/appoint/service/service';
+import { Agency } from './pages/appoint/agency/agency';
+import { Summary } from './pages/appoint/summary/summary';
+import { AppointmentDate } from './pages/appoint/appointment-date/appointment-date';
 
 @NgModule({
   declarations: [
@@ -18,7 +22,13 @@ import { Appointments } from './pages/appointments/appointments';
     Dashboard,
     Slide,
     AccountSetting,
-    Appointments
+    Appointments,
+    Summary,
+    Service,
+    Agency,
+    AppointmentDate,
+  
+  
   ],
   imports: [
     BrowserModule,
