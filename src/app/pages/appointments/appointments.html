@@ -1,6 +1,7 @@
 <div class="appointments">
 
     <h2> Appointments </h2>
+
     <hr class="line2">
 
     <div class="counter">
@@ -30,9 +31,8 @@
             <div class="under-default-number" [ngClass]="{ 'completed': isCompleted(4), 'active': isActive(4) }">Summary</div>
         </div>
     </div>
-
-
-    <router-outlet></router-outlet>
-
+    <div class="bottom">
+        <router-outlet></router-outlet>
+    </div>
 
 </div>

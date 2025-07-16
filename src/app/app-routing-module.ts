@@ -22,7 +22,7 @@ const routes: Routes = [
       { path: 'agency', component:  Agency },
       { path: 'date', component:  AppointmentDate },
       { path: 'summary', component: Summary },
-      { path: '', redirectTo: 'agency', pathMatch: 'full' }
+      { path: '', redirectTo: 'service', pathMatch: 'full' }
     ]
   }
 ];

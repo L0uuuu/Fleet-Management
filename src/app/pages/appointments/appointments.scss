@@ -1,9 +1,18 @@
 .appointments {
     display: flex;
     flex-direction: column;
+    height: 100%;
+    width: 100%;
     
 }
-
+.bottom {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;          /* or any fixed height (e.g., 600px) */
+    overflow-y: auto;        /* enable vertical scroll only */
+    box-sizing: border-box;  /* make sure padding doesn't increase height */
+    padding-bottom:10px ;
+}
 h2{
     color: #222323;
     font-size: 35px;
@@ -21,8 +30,8 @@ h2{
     grid-template-columns: repeat(7,auto);
     align-items: center;
     justify-content: center;
-
     border-bottom:solid 1px rgba(119,115,115,0.3);
+
 }
 
 .number-container {
@@ -87,3 +96,4 @@ hr{
     }
 
 }
+
