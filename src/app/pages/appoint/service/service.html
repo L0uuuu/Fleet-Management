@@ -9,38 +9,38 @@
         <h3>Please select a service from the list below</h3>
         <hr>
         <div class="services">
-            <button class="service" (click)="toggleService('ser1')">
-                <img src="assets/service-icons/blue/DIAGNOSIS-service.png" alt="DIAGNOSIS">
-                <span>Diagnostic service</span>
+            <button class="service" (click)="toggleService('ser1')" [class.highlight]="isButtonActive('ser1')" >
+                <img src={{diagnosticService}} alt="DIAGNOSIS">
+                <span [class.spanHighlight]="isButtonActive('ser1')">Diagnostic service</span>
             </button>
 
-            <button class="service">
-                <img src="assets/service-icons/blue/REPAIR_ELECTRIC-service.png" alt="REPAIR_ELECTRIC">
-                <span>Electrical Repair Service</span>
+            <button class="service" (click)="toggleService('ser2')" [class.highlight]="isButtonActive('ser2')">
+                <img src={{electricalRepairService}} alt="REPAIR_ELECTRIC">
+                <span [class.spanHighlight]="isButtonActive('ser2')">Electrical Repair Service</span>
             </button>
 
-            <button class="service">
-                <img src="assets/service-icons/blue/REPAIR_MECHANIC-service.png" alt="REPAIR_MECHANIC">
-                <span>Mechanical Repair Service</span>
+            <button class="service" (click)="toggleService('ser3')" [class.highlight]="isButtonActive('ser3')">
+                <img src={{mechanicalRepairService}} alt="REPAIR_MECHANIC">
+                <span [class.spanHighlight]="isButtonActive('ser3')">Mechanical Repair Service</span>
             </button>
 
-            <button class="service">
-                <img src="assets/service-icons/blue/FAST-service.png" alt="FAST">
-                <span>Fast Service</span>
+            <button class="service" (click)="toggleService('ser4')" [class.highlight]="isButtonActive('ser4')">
+                <img src={{fastService}} alt="FAST">
+                <span [class.spanHighlight]="isButtonActive('ser4')">Fast Service</span>
             </button>
 
-            <button class="service">
-                <img src="assets/service-icons/blue/MULTIPLE_SERVICES-service.png" alt="MULTIPLE_SERVICES">
-                <span>Multiple services</span>
+            <button class="service" (click)="toggleService('ser5')" [class.highlight]="isButtonActive('ser5')">
+                <img src={{multipleServices}} alt="MULTIPLE_SERVICES">
+                <span [class.spanHighlight]="isButtonActive('ser5')">Multiple services</span>
             </button>
-            <button class="service">
-                <img src="assets/service-icons/blue/REPAIR_SHEET_METAL-service.png" alt="REPAIR_SHEET_METAL">
-                <span>Bodywork</span>
+            <button class="service" (click)="toggleService('ser6')" [class.highlight]="isButtonActive('ser6')">
+                <img src={{bodywork}} alt="REPAIR_SHEET_METAL">
+                <span [class.spanHighlight]="isButtonActive('ser6')">Bodywork</span>
             </button>
         </div>
         
     </div>
-    <router-outlet></router-outlet>
+    
   </div>
 
 </div>

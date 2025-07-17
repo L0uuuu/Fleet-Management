@@ -74,6 +74,7 @@ export class Slide {
     for (let key in this.buttonStates) {
       this.buttonStates[key] = false;
     }
+    
     this.buttonStates[buttonKey] = !this.buttonStates[buttonKey];
     switch (buttonKey) {
       case 'btn1': this.router.navigate(['/account-setting']); break;
