@@ -9,7 +9,7 @@
         <h3>Please select a service from the list below</h3>
         <hr>
         <div class="services">
-            <button class="service">
+            <button class="service" (click)="toggleService('ser1')">
                 <img src="assets/service-icons/blue/DIAGNOSIS-service.png" alt="DIAGNOSIS">
                 <span>Diagnostic service</span>
             </button>
@@ -38,7 +38,9 @@
                 <span>Bodywork</span>
             </button>
         </div>
+        
     </div>
+    <router-outlet></router-outlet>
   </div>
 
 </div>

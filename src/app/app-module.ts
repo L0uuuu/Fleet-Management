@@ -14,6 +14,7 @@ import { Service } from './pages/appoint/service/service';
 import { Agency } from './pages/appoint/agency/agency';
 import { Summary } from './pages/appoint/summary/summary';
 import { AppointmentDate } from './pages/appoint/appointment-date/appointment-date';
+import { DiagnosticService } from './pages/appoint/ser/diagnostic-service/diagnostic-service';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { AppointmentDate } from './pages/appoint/appointment-date/appointment-da
     Service,
     Agency,
     AppointmentDate,
+    DiagnosticService,
   
   
   ],

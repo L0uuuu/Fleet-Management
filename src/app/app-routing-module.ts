@@ -11,6 +11,7 @@ import { Agency } from './pages/appoint/agency/agency';
 import { AppointmentDate } from './pages/appoint/appointment-date/appointment-date';
 import { Summary } from './pages/appoint/summary/summary';
 
+import { DiagnosticService } from './pages/appoint/ser/diagnostic-service/diagnostic-service';
 const routes: Routes = [     
     
   { path: 'dashboard', component: Dashboard },
@@ -18,7 +19,11 @@ const routes: Routes = [
   { path: 'account-setting', component: AccountSetting },
   { path: 'appointments', component: Appointments,
     children: [
-      { path: 'service', component: Service },
+      { path: 'service', component: Service,
+        children:[
+          {path: 'DiagnosticService', component: DiagnosticService}
+        ]
+      },
       { path: 'agency', component:  Agency },
       { path: 'date', component:  AppointmentDate },
       { path: 'summary', component: Summary },
