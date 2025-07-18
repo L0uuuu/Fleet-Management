@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { faImage } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-service',
   standalone: false,
@@ -21,7 +21,9 @@ export class Service {
   };
 
   serviceName: string = 'Default';
+  isHidden: boolean = false;
 
+  
   //link to icon
   diagnosticService: string = 'assets/service-icons/blue/DIAGNOSIS-service.png' ;
   electricalRepairService: string = 'assets/service-icons/blue/REPAIR_ELECTRIC-service.png' ;
@@ -39,7 +41,7 @@ export class Service {
   }
 
   toggleService(buttonKey: string): void {
-
+    this.isHidden = true;
     // Reset all buttons to false
     for (let key in this.serviceStates) {
       this.serviceStates[key] = false;
@@ -55,15 +57,37 @@ export class Service {
 
     this.serviceStates[buttonKey] = !this.serviceStates[buttonKey];
     switch(buttonKey){
-      case 'ser1':  this.diagnosticService= 'assets/service-icons/white/DIAGNOSIS-service-white.png';break;
-      case 'ser2':  this.electricalRepairService= 'assets/service-icons/white/REPAIR_ELECTRIC-service-white.png';break;
-      case 'ser3':  this.mechanicalRepairService= 'assets/service-icons/white/REPAIR_MECHANIC-service-white.png';break;
-      case 'ser4':  this.fastService= 'assets/service-icons/white/FAST-service-white.png';break;
-      case 'ser5':  this.multipleServices= 'assets/service-icons/white/MULTIPLE_SERVICES-service-white.png';break;
-      case 'ser6':  this.bodywork= 'assets/service-icons/white/REPAIR_SHEET_METAL-service-white.png';break;
+      case 'ser1':  
+        this.diagnosticService= 'assets/service-icons/white/DIAGNOSIS-service-white.png';
+        this.serviceName='Diagnostic service';
+        break;
+      case 'ser2':  
+        this.electricalRepairService= 'assets/service-icons/white/REPAIR_ELECTRIC-service-white.png';
+        this.serviceName='Electrical Repair Service';
+        break;
+      case 'ser3':  
+        this.mechanicalRepairService= 'assets/service-icons/white/REPAIR_MECHANIC-service-white.png';
+        this.serviceName='Mechanical Repair Service';
+        break;
+      case 'ser4':  
+        this.fastService= 'assets/service-icons/white/FAST-service-white.png';
+        this.serviceName='Fast Service';
+        break;
+      case 'ser5':  
+        this.multipleServices= 'assets/service-icons/white/MULTIPLE_SERVICES-service-white.png';
+        this.serviceName='Multiple services';
+        break;
+      case 'ser6':  
+        this.bodywork= 'assets/service-icons/white/REPAIR_SHEET_METAL-service-white.png';
+        this.serviceName='Bodywork';
+        break;
     }
   }
   isButtonActive(buttonKey: string): boolean {
     return this.serviceStates[buttonKey] === true;
   }
+
+
+  //icon
+  faImage = faImage;
 }

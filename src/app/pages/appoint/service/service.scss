@@ -83,7 +83,7 @@ span{
     width: 8em;
     color: #48B2FF;
     font-size: 1.7em;
-    text-align: bottom;
+    text-align: center;
 }
 img{
     margin-bottom:1em;
@@ -202,7 +202,7 @@ transform: translateX(calc(100% - 3px));
     display: flex;
     flex-direction: column;
 }
-#interview-selector{
+.zone3{
     width: 50em;
     margin: 0.5em 0;
     padding: 10px;
@@ -212,6 +212,21 @@ transform: translateX(calc(100% - 3px));
     font-size: 20px;
     outline: none;
 }
-#interview-selector:focus{
+.zone3:focus{
     border:2px solid #399DDB  ;
+}
+fa-icon{
+    color:#399DDB ;
+    font-size: 4em;
+}
+.dropzone-attachment{
+    margin: 0.5em 0;
+    padding: 50px;
+    border: dashed 2px #399DDB ;
+    background-color: rgba(57, 157, 219,0.2);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
