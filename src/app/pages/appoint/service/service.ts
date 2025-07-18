@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
+
+//icon
 import { faImage } from '@fortawesome/free-solid-svg-icons';
+import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-service',
   standalone: false,
@@ -32,7 +35,12 @@ export class Service {
   multipleServices: string = 'assets/service-icons/blue/MULTIPLE_SERVICES-service.png' ;
   bodywork: string = 'assets/service-icons/blue/REPAIR_SHEET_METAL-service.png' ;
 
+   //scroll to the servicer form
+  @ViewChild('formService') formService!: ElementRef;
 
+  scrollToSection() {
+    this.formService.nativeElement.scrollIntoView({ behavior: 'smooth' });
+  }
   ngOnInit(): void {
     // Reset all buttons and activate Account Settings button
     for (let key in this.serviceStates) {
@@ -82,12 +90,18 @@ export class Service {
         this.serviceName='Bodywork';
         break;
     }
+    setTimeout(() => {
+    this.scrollToSection();
+    }, 0);
   }
   isButtonActive(buttonKey: string): boolean {
     return this.serviceStates[buttonKey] === true;
   }
 
 
+ 
+
   //icon
   faImage = faImage;
+  faCircleCheck = faCircleCheck;
 }

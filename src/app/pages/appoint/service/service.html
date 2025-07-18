@@ -9,37 +9,55 @@
         <h3>Please select a service from the list below</h3>
         <hr>
         <div class="services">
-            <button class="service" (click)="toggleService('ser1')" [class.highlight]="isButtonActive('ser1')" >
+            <button class="service" (click)=" toggleService('ser1') ; " [class.highlight]="isButtonActive('ser1')" >
+                <div class="div-check" *ngIf="isButtonActive('ser1')">
+                    <fa-icon [icon]="faCircleCheck"  class="check"></fa-icon>
+                </div>
                 <img src={{diagnosticService}} alt="DIAGNOSIS">
                 <span [class.spanHighlight]="isButtonActive('ser1')">Diagnostic service</span>
             </button>
 
-            <button class="service" (click)="toggleService('ser2')" [class.highlight]="isButtonActive('ser2')">
+            <button class="service" (click)="toggleService('ser2')  " [class.highlight]="isButtonActive('ser2')">
+                <div class="div-check" *ngIf="isButtonActive('ser2')">
+                    <fa-icon [icon]="faCircleCheck"  class="check"></fa-icon>
+                </div>
                 <img src={{electricalRepairService}} alt="REPAIR_ELECTRIC">
                 <span [class.spanHighlight]="isButtonActive('ser2')">Electrical Repair Service</span>
             </button>
 
             <button class="service" (click)="toggleService('ser3')" [class.highlight]="isButtonActive('ser3')">
+                <div class="div-check" *ngIf="isButtonActive('ser3')">
+                    <fa-icon [icon]="faCircleCheck"  class="check"></fa-icon>
+                </div>
                 <img src={{mechanicalRepairService}} alt="REPAIR_MECHANIC">
                 <span [class.spanHighlight]="isButtonActive('ser3')">Mechanical Repair Service</span>
             </button>
 
             <button class="service" (click)="toggleService('ser4')" [class.highlight]="isButtonActive('ser4')">
+                <div class="div-check" *ngIf="isButtonActive('ser4')">
+                    <fa-icon [icon]="faCircleCheck"  class="check"></fa-icon>
+                </div>
                 <img src={{fastService}} alt="FAST">
                 <span [class.spanHighlight]="isButtonActive('ser4')">Fast Service</span>
             </button>
 
             <button class="service" (click)="toggleService('ser5')" [class.highlight]="isButtonActive('ser5')">
+                <div class="div-check" *ngIf="isButtonActive('ser5')">
+                    <fa-icon [icon]="faCircleCheck"  class="check"></fa-icon>
+                </div>
                 <img src={{multipleServices}} alt="MULTIPLE_SERVICES">
                 <span [class.spanHighlight]="isButtonActive('ser5')">Multiple services</span>
             </button>
-            <button class="service" (click)="toggleService('ser6')" [class.highlight]="isButtonActive('ser6')">
+            <button class="service" (click)="toggleService('ser6')" [class.highlight]="isButtonActive('ser6')" >
+                <div class="div-check" *ngIf="isButtonActive('ser6')">
+                    <fa-icon [icon]="faCircleCheck"  class="check"></fa-icon>
+                </div>
                 <img src={{bodywork}} alt="REPAIR_SHEET_METAL">
                 <span [class.spanHighlight]="isButtonActive('ser6')">Bodywork</span>
             </button>
         </div>
     </div>
-    <div *ngIf="isHidden">
+    <div *ngIf="isHidden" #formService>
         <h3>{{serviceName}}</h3>
         <p>Please fill in the information below</p>
         <hr>

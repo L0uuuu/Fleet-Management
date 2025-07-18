@@ -78,6 +78,7 @@ hr{
     align-items: center;
 
 }
+
 span{
     letter-spacing: 1px;
     width: 8em;
@@ -93,6 +94,26 @@ img{
 }
 .highlight{
     background-color:#399DDB ;
+    position: relative;
+}
+.div-check{
+    position: absolute;
+    top: -0.2em;
+    right: -0.2em;
+    width: 1.8em;
+    height: 1.8em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 100%;
+    padding: 0;
+    margin: 0;
+}
+.check{
+    font-size: 1.5em;
+    margin: 0;
+    padding: 0;
 }
 .spanHighlight{
     color: white;
