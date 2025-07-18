@@ -38,9 +38,45 @@
                 <span [class.spanHighlight]="isButtonActive('ser6')">Bodywork</span>
             </button>
         </div>
-        
     </div>
     
+    <h3>{{serviceName}}</h3>
+    <p>Please fill in the information below</p>
+    <hr>
+    <div class="fill-info">
+        <div class="vehicle-broken-down">
+            <img src="assets/service-icons/breakdown-icon.png" alt="vehicle broken down" class="vbd-icon">
+            <label>Vehicle broken down</label>
+
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <div class="align" id="current-mileage">
+            <label for="current-mileage">Current mileage*</label>
+            <input type="text" class="zone1" id="current-mileage"  placeholder="5000                   km">
+        </div>
+
+        <div class="align" id="select-type-interview">
+            <label for="interview-selector">Select the type of interview*</label>
+            <select name="selector" id="interview-selector" >
+                <option value="" selected hidden>Select the type of interview*</option>
+            </select>
+        </div>
+
+        <div class="align" id="select-type-interview">
+            <label for="">Description*</label>
+            <textarea name="Description" id="Description" placeholder="Description" class="zone2" cols="30" rows="10"></textarea>
+        </div>
+
+        <div class="align" id="quotation-number">
+            <label for="current-mileage">Quotation number</label>
+            <input type="text" class="zone1" id="current-mileage" placeholder="D12345">
+        </div>
+
+    </div>
   </div>
 
 </div>

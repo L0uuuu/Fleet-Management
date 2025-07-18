@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrl: './service.scss'
 })
 export class Service {
-
+  
   constructor(private router: Router) {}
 
   serviceStates: { [key: string]: boolean } = {
@@ -19,6 +19,8 @@ export class Service {
     ser5: false, // Multiple services
     ser6: false  // Bodywork
   };
+
+  serviceName: string = 'Default';
 
   //link to icon
   diagnosticService: string = 'assets/service-icons/blue/DIAGNOSIS-service.png' ;
