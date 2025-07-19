@@ -116,4 +116,15 @@ export class AccountSetting {
       // Handle file upload here
     }
   }
+
+
+  showPopup = false;
+
+  openPopup() {
+    this.showPopup = true;
+  }
+
+  closePopup() {
+    this.showPopup = false;
+  }
 }

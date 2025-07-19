@@ -44,8 +44,62 @@
                     </div>
                 </div>
             </div>
+            <button (click)="openPopup()">Open Popup</button>
             
         </div>
+        
+        <!-- Popup -->
+        <div class="popup" *ngIf="showPopup">
+            <div class="popup-content">
+                <span class="close" (click)="closePopup()">&times;</span>
+                <div class="container">
+                    <h3>Modify Informations</h3>
+                    <div class="informations">
+                        <div class="champs">
+                            <div class="inputs">
+                                <label for="firstName">First name</label>
+                                <input type="text" id="firstName" [(ngModel)]="getFirstName">
+                            </div>
+                            <div class="inputs">
+                                <label for="lastName">Last name</label>
+                                <input type="text" id="lastName" [(ngModel)]="getLastName">
+                            </div>
+                            <div class="inputs">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" [(ngModel)]="getEmail">
+                            </div>
+                            <div class="inputs">
+                                <label for="Phone">Phone</label>
+                                <input type="tel" id="phone" >
+                            </div>
+                        </div>
+                        <hr class="line3">
+                        <div class="champs">
+                            <div class="inputs">
+                                <label for="Business">Business name</label>
+                                <input type="text" id="Business" [(ngModel)]="getBusinessName">
+                            </div>
+                            <div class="inputs">
+                                <label for="Location">Location</label>
+                                <input type="text" id="Location" [(ngModel)]="getLocation">
+                            </div>
+                            <div class="inputs">
+                                <label for="Country">Country</label>
+                                <input type="text" id="Country" [(ngModel)]="getCountry">
+                            </div>
+                            <div class="inputs">
+                                <label for="City">City</label>
+                                <input type="text" id="City" [(ngModel)]="getCity" >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="button-container">
+                        <button>Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
         <div class="container">
             <h3>Modify Informations</h3>
