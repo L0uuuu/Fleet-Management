@@ -59,14 +59,7 @@ export class AccountSetting {
     return this.city;
   }
 
-  ngAfterViewInit(): void {
-    const input = document.querySelector('#phone') as HTMLInputElement;
 
-    intlTelInput(input, {
-      initialCountry: 'tn', // Tunisia
-      separateDialCode: true,
-    });
-  }
 
 
   //icons
@@ -118,13 +111,35 @@ export class AccountSetting {
   }
 
 
-  showPopup = false;
+  showPopup_info: boolean = false;
+  showPopup_psw: boolean = false;
+  showPopup_logo: boolean = false;
 
-  openPopup() {
-    this.showPopup = true;
+  openPopup(pop: string) {
+    switch(pop){
+      case('pop1'): this.showPopup_info = true;break;
+      case('pop2'): this.showPopup_psw = true;break;
+      case('pop3'): this.showPopup_logo = true;break;
+    }
+
+
+
+    setTimeout(() => {
+      const input = document.querySelector('#phone') as HTMLInputElement;
+
+        intlTelInput(input, {
+          initialCountry: 'tn', // Tunisia
+          separateDialCode: true,
+        });
+      
+    },0);
   }
 
   closePopup() {
-    this.showPopup = false;
+    this.showPopup_info = false;
+    this.showPopup_psw = false;
+    this.showPopup_logo = false;
   }
+
+
 }
