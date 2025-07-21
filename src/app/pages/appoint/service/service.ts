@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 //icon
 import { faImage } from '@fortawesome/free-solid-svg-icons';
 import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
+
 @Component({
   selector: 'app-service',
   standalone: false,
@@ -98,10 +100,13 @@ export class Service {
     return this.serviceStates[buttonKey] === true;
   }
 
-
+  navigateToAgency(): void{
+    this.router.navigate(['/appointments/agency']);
+  }
  
 
   //icon
   faImage = faImage;
   faCircleCheck = faCircleCheck;
+  faChevronRight = faChevronRight;
 }

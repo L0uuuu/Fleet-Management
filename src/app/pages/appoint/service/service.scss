@@ -251,3 +251,26 @@ fa-icon{
     align-items: center;
     justify-content: center;
 }
+
+.next{
+    display: inline-flex;
+    cursor: pointer;
+    background-color: #419ED9;
+    border: none;
+    color: white;
+    font-size: larger;
+    padding: 10px 20px;
+    border-radius: 5px;
+   
+}
+.next:hover{
+    background-color: rgba($color: #419ED9, $alpha: 0.91);
+}
+.next-previous{
+    display: flex;
+    justify-content: end;
+}
+.flech{
+    font-size: 20px;
+    color: white;
+}
