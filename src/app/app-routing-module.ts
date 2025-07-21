@@ -5,6 +5,7 @@ import { Dashboard } from './pages/dashboard/dashboard';
 import {Slide} from './pages/slide/slide';
 import { AccountSetting } from './pages/account-setting/account-setting';
 import { Appointments } from './pages/appointments/appointments';
+import { Vehicles } from './pages/vehicles/vehicles';
 
 import { Service } from './pages/appoint/service/service';
 import { Agency } from './pages/appoint/agency/agency';
@@ -12,10 +13,10 @@ import { AppointmentDate } from './pages/appoint/appointment-date/appointment-da
 import { Summary } from './pages/appoint/summary/summary';
 
 const routes: Routes = [     
-    
-  { path: 'dashboard', component: Dashboard },
   { path: 'slide', component: Slide },
   { path: 'account-setting', component: AccountSetting },
+  { path: 'dashboard', component: Dashboard },
+  { path: 'vehicles', component: Vehicles },
   { path: 'appointments', component: Appointments,
     children: [
       { path: 'service', component: Service},

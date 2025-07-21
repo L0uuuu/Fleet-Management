@@ -79,6 +79,7 @@ export class Slide {
     switch (buttonKey) {
       case 'btn1': this.router.navigate(['/account-setting']); break;
       case 'btn2': this.router.navigate(['/dashboard']); break;
+      case 'btn3': this.router.navigate(['/vehicles']); break;
       case 'btn4': this.router.navigate(['/appointments']); break;
       default: this.router.navigate(['/account-setting']); break;
     }
