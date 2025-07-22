@@ -101,7 +101,7 @@ export class Service {
   }
 
   navigateToAgency(): void{
-    this.router.navigate(['/appointments/agency']);
+    this.router.navigate(['/slide/appointments/agency']);
   }
  
 

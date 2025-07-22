@@ -61,7 +61,7 @@ export class Slide {
 
   ngOnInit(): void {
     // Navigate to account settings when component initializes
-    this.router.navigate(['/account-setting']);
+    this.router.navigate(['/slide/account-setting']);
     
     // Reset all buttons and activate Account Settings button
     for (let key in this.buttonStates) {
@@ -77,11 +77,11 @@ export class Slide {
     
     this.buttonStates[buttonKey] = !this.buttonStates[buttonKey];
     switch (buttonKey) {
-      case 'btn1': this.router.navigate(['/account-setting']); break;
-      case 'btn2': this.router.navigate(['/dashboard']); break;
-      case 'btn3': this.router.navigate(['/vehicles']); break;
-      case 'btn4': this.router.navigate(['/appointments']); break;
-      default: this.router.navigate(['/account-setting']); break;
+      case 'btn1': this.router.navigate(['/slide/account-setting']); break;
+      case 'btn2': this.router.navigate(['/slide/dashboard']); break;
+      case 'btn3': this.router.navigate(['/slide/vehicles']); break;
+      case 'btn4': this.router.navigate(['/slide/appointments']); break;
+      default: this.router.navigate(['/slide/account-setting']); break;
     }
   }
   isButtonActive(buttonKey: string): boolean {

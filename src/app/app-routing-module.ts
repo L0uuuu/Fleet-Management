@@ -13,19 +13,23 @@ import { AppointmentDate } from './pages/appoint/appointment-date/appointment-da
 import { Summary } from './pages/appoint/summary/summary';
 
 const routes: Routes = [     
-  { path: 'slide', component: Slide },
-  { path: 'account-setting', component: AccountSetting },
-  { path: 'dashboard', component: Dashboard },
-  { path: 'vehicles', component: Vehicles },
-  { path: 'appointments', component: Appointments,
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'login', component: Login },
+  { path: 'slide', component: Slide , 
     children: [
-      { path: 'service', component: Service},
-      { path: 'agency', component:  Agency },
-      { path: 'date', component:  AppointmentDate },
-      { path: 'summary', component: Summary },
-      { path: '', redirectTo: 'service', pathMatch: 'full' }
+      { path: 'account-setting', component: AccountSetting },
+      { path: 'dashboard', component: Dashboard },
+      { path: 'vehicles', component: Vehicles },
+      { path: 'appointments', component: Appointments,
+        children: [
+          { path: 'service', component: Service},
+          { path: 'agency', component:  Agency },
+          { path: 'date', component:  AppointmentDate },
+          { path: 'summary', component: Summary },
+          { path: '', redirectTo: 'service', pathMatch: 'full' }
     ]
   }
+    ]}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
