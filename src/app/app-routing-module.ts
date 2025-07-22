@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './services/auth-guard';
+
 import { Login } from './login/login';
 import { Dashboard } from './pages/dashboard/dashboard';
 import {Slide} from './pages/slide/slide';
@@ -15,7 +17,7 @@ import { Summary } from './pages/appoint/summary/summary';
 const routes: Routes = [     
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: Login },
-  { path: 'slide', component: Slide , 
+  { path: 'slide', component: Slide , canActivate: [AuthGuard] ,
     children: [
       { path: 'account-setting', component: AccountSetting },
       { path: 'dashboard', component: Dashboard },

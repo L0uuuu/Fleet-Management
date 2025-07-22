@@ -5,6 +5,8 @@ import { provideHttpClient } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing-module';
 
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './services/token-interceptor';
 
 import { App } from './app';
 import { Login } from './login/login';
@@ -44,7 +46,8 @@ import { Vehicles } from './pages/vehicles/vehicles';
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
-    provideHttpClient()
+    provideHttpClient(),
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
   ],
   bootstrap: [App]
 })
