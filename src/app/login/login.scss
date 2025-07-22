@@ -67,6 +67,9 @@ input {
   border-radius: 4px;
   font-size: 1rem;
 }
+input::placeholder{
+  color:rgba(166, 166, 166, 0.7);
+}
 
 
 .blue-buttons {

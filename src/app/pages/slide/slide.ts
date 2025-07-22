@@ -1,5 +1,8 @@
 import { Component ,ViewChild,ElementRef,AfterViewInit,Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
+
+import { AuthService } from '../../services/auth-service';
+
 //icon importation
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { faTachometerAlt } from '@fortawesome/free-solid-svg-icons';
@@ -32,7 +35,7 @@ export class Slide {
 
   // constructor
   // the router will be used to navigate to the different pages
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService : AuthService ) {}
 
 
   // styles for the non acount settings button
@@ -81,6 +84,10 @@ export class Slide {
       case 'btn2': this.router.navigate(['/slide/dashboard']); break;
       case 'btn3': this.router.navigate(['/slide/vehicles']); break;
       case 'btn4': this.router.navigate(['/slide/appointments']); break;
+      case 'btn6': 
+        this.router.navigate(['/login']); 
+        this.authService.logout();
+        break;
       default: this.router.navigate(['/slide/account-setting']); break;
     }
   }
