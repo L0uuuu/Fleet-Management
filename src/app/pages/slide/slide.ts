@@ -20,6 +20,9 @@ import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 })
 
 export class Slide {
+  // constructor
+  // the router will be used to navigate to the different pages
+  constructor(private router: Router, private authService : AuthService ) {}
   // Variables
   //hover state for the side element
   isHovered1: boolean = false;
@@ -33,9 +36,9 @@ export class Slide {
   private firstName: string = 'Louai';
   private lastName: string = 'Boubaker';
 
-  // constructor
-  // the router will be used to navigate to the different pages
-  constructor(private router: Router, private authService : AuthService ) {}
+
+ 
+  
 
 
   // styles for the non acount settings button
@@ -71,6 +74,12 @@ export class Slide {
       this.buttonStates[key] = false;
     }
     this.buttonStates['btn1'] = true;
+
+    const user = this.authService.getUser();
+    if (user) {
+      this.firstName = user.firstName || '';
+      this.lastName = user.lastName || '';
+    }
   }
   toggleButtonState(buttonKey: string): void {
     // Reset all buttons to false
