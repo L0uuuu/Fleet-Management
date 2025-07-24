@@ -34,6 +34,8 @@ export class Login {
         // Optionally save user info
         localStorage.setItem('user', JSON.stringify(response.clientAccount));
         
+        
+        
       },
       error: (erreur) => {
         console.error('Login failed:', erreur);

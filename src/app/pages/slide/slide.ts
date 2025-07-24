@@ -1,4 +1,4 @@
-import { Component ,ViewChild,ElementRef,AfterViewInit,Renderer2 } from '@angular/core';
+import { Component ,OnInit ,ViewChild,ElementRef,AfterViewInit,Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthService } from '../../services/auth-service';
@@ -19,7 +19,7 @@ import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
   styleUrl: './slide.scss'
 })
 
-export class Slide {
+export class Slide implements OnInit  {
   // constructor
   // the router will be used to navigate to the different pages
   constructor(private router: Router, private authService : AuthService ) {}

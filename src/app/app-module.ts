@@ -1,7 +1,7 @@
 import { NgModule, provideBrowserGlobalErrorListeners, provideZonelessChangeDetection } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { provideHttpClient } from '@angular/common/http';
+import { HttpClientModule  } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing-module';
 
@@ -41,13 +41,17 @@ import { Vehicles } from './pages/vehicles/vehicles';
     AppRoutingModule,
     FormsModule,
     FontAwesomeModule,
+    HttpClientModule
     
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
-    provideHttpClient(),
-    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [App]
 })
