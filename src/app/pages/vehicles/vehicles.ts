@@ -13,17 +13,20 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
   styleUrl: './vehicles.scss'
 })
 export class Vehicles  {
-
+  vehicl: any[] = [];
   constructor(private http: HttpClient,private authService: AuthService,private vehiclesAPI: VehiclesAPI,) {}
 
   ngOnInit() {
-
-    this.vehiclesAPI.getVehiclesOfClient('522d8ad4-59c5-4508-a261-106d46937667', {
+    let user = this.authService.getUser();
+    let id = user.client.id;
+    
+    this.vehiclesAPI.getVehiclesOfClient(id, {
       page: 1,
       pageSize: 10,
       order: 'DESC'
     }).subscribe(response => {
       console.log('Vehicles:', response);
+      this.vehicl = response.result;
     });
   }
   //icon

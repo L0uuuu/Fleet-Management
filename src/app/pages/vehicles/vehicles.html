@@ -10,6 +10,26 @@
             <input type="text" placeholder="Search" class="search-input" />
         </div>
     </div>
+    <table>
+        <thead>
+            <tr>
+            <th>Registration Number</th>
+            <th>Chassis Number</th>
+            <th>Model</th>
+            <th>Version</th>
+            <th>Price</th>
+            </tr>
+        </thead>
 
+        <tbody>
+            <tr *ngFor="let v of vehicl">
+            <td>{{ v.registrationNumber }}</td>
+            <td>{{ v.chassisNumber }}</td>
+            <td>{{ v.version?.model?.title }}</td>
+            <td>{{ v.version?.version }}</td>
+            <td>{{ v.version?.price }} {{ v.version?.unit }}</td>
+            </tr>
+        </tbody>
+    </table>
     
 </div>
