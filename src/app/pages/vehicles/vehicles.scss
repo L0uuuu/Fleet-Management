@@ -55,9 +55,9 @@ th{
 }
 table{
     border-collapse: collapse;
+    color: #22232A;
 }
 .th-checkbox{
-    padding: 0;
     width: 20px;
 }
 input[type="checkbox"]{
@@ -71,3 +71,7 @@ thead th{
     border-top:solid 0.7px rgba($color: #000000, $alpha: 0.2);
     border-bottom:solid 0.7px rgba($color: #000000, $alpha: 0.1);
 }
+tbody td{
+    padding: 10px 0 0 0 ;
+}
+
