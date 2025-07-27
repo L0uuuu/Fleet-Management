@@ -12,7 +12,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
   templateUrl: './vehicles.html',
   styleUrl: './vehicles.scss'
 })
-export class Vehicles  {
+export class Vehicles implements OnInit  {
   vehicl: any[] = [];
   constructor(private http: HttpClient,private authService: AuthService,private vehiclesAPI: VehiclesAPI,) {}
 

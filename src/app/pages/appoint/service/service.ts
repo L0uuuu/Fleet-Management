@@ -1,6 +1,7 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { ServiceAPI } from '../../../services/appoint/service-api';
 //icon
 import { faImage } from '@fortawesome/free-solid-svg-icons';
 import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
@@ -12,10 +13,10 @@ import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
   templateUrl: './service.html',
   styleUrl: './service.scss'
 })
-export class Service {
+export class Service implements OnInit {
   
-  constructor(private router: Router) {}
-
+  constructor(private router: Router,private serviceAPI:ServiceAPI ) {}
+  
   serviceStates: { [key: string]: boolean } = {
     ser1: false, // Diagnostic service
     ser2: false, // Electrical Repair Service
@@ -25,8 +26,7 @@ export class Service {
     ser6: false  // Bodywork
   };
 
-  serviceName: string = 'Default';
-  isHidden: boolean = false;
+
 
   
   //link to icon
@@ -43,13 +43,23 @@ export class Service {
   scrollToSection() {
     this.formService.nativeElement.scrollIntoView({ behavior: 'smooth' });
   }
+
+
   ngOnInit(): void {
     // Reset all buttons and activate Account Settings button
     for (let key in this.serviceStates) {
       this.serviceStates[key] = false;
+      
     }
+    
+
+    
   }
 
+
+  serviceName: string = 'Default';
+  serviceNameInApiRespense: string = '';
+  isHidden: boolean = false;
   toggleService(buttonKey: string): void {
     this.isHidden = true;
     // Reset all buttons to false
@@ -70,38 +80,61 @@ export class Service {
       case 'ser1':  
         this.diagnosticService= 'assets/service-icons/white/DIAGNOSIS-service-white.png';
         this.serviceName='Diagnostic service';
+        this.serviceNameInApiRespense='Service Diagnostique';
         break;
       case 'ser2':  
         this.electricalRepairService= 'assets/service-icons/white/REPAIR_ELECTRIC-service-white.png';
         this.serviceName='Electrical Repair Service';
+        this.serviceNameInApiRespense='Service Rép.Electrique';
         break;
       case 'ser3':  
         this.mechanicalRepairService= 'assets/service-icons/white/REPAIR_MECHANIC-service-white.png';
         this.serviceName='Mechanical Repair Service';
+        this.serviceNameInApiRespense='Service Rép.Mecanique';
         break;
       case 'ser4':  
         this.fastService= 'assets/service-icons/white/FAST-service-white.png';
         this.serviceName='Fast Service';
+        this.serviceNameInApiRespense='Service Rapide';
         break;
       case 'ser5':  
         this.multipleServices= 'assets/service-icons/white/MULTIPLE_SERVICES-service-white.png';
         this.serviceName='Multiple services';
+        this.serviceNameInApiRespense='Services Multiples';
         break;
       case 'ser6':  
         this.bodywork= 'assets/service-icons/white/REPAIR_SHEET_METAL-service-white.png';
         this.serviceName='Bodywork';
+        this.serviceNameInApiRespense='Service Réparation Carrosserie';
         break;
     }
+    
     setTimeout(() => {
     this.scrollToSection();
     }, 0);
   }
+
   isButtonActive(buttonKey: string): boolean {
     return this.serviceStates[buttonKey] === true;
   }
 
+
+  
+  services: any[] = [];
   navigateToAgency(): void{
-    this.router.navigate(['/slide/appointments/agency']);
+    //calling the api
+    this.serviceAPI.getServices().subscribe(response => {
+      
+
+      this.services = response;
+      console.log('services:', this.services);
+      const selectedService = this.services.find(
+      (service) => service.name === this.serviceNameInApiRespense
+      );
+      sessionStorage.setItem('selectedServiceId', selectedService.id);
+      this.router.navigate(['/slide/appointments/agency']);
+    });
+
   }
  
 

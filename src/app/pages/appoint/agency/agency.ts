@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './agency.scss'
 })
 export class Agency {
-
+  
 }
