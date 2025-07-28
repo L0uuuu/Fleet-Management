@@ -11,7 +11,7 @@ export class AgencyAPI {
   private baseUrl = 'https://autoteam-bo.teamdev.tn/api/1.0.0';
   constructor(private http: HttpClient) { }
 
-   getAgencyt(
+  getAgency(
     params: {
       delegation?: number;
       brand?: number;

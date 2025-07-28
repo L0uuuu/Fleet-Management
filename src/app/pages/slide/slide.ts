@@ -2,7 +2,7 @@ import { Component ,OnInit ,ViewChild,ElementRef,AfterViewInit,Renderer2 } from 
 import { Router } from '@angular/router';
 
 import { AuthService } from '../../services/auth-service';
-
+import { AuthGuard } from '../../services/auth-guard';
 //icon importation
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { faTachometerAlt } from '@fortawesome/free-solid-svg-icons';
@@ -22,7 +22,7 @@ import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 export class Slide implements OnInit  {
   // constructor
   // the router will be used to navigate to the different pages
-  constructor(private router: Router, private authService : AuthService ) {}
+  constructor(private router: Router, private authService : AuthService,private authGuard : AuthGuard ) {}
   // Variables
   //hover state for the side element
   isHovered1: boolean = false;
@@ -66,21 +66,28 @@ export class Slide implements OnInit  {
   };
 
   ngOnInit(): void {
-    // Navigate to account settings when component initializes
-    this.router.navigate(['/slide/account-setting']);
-    
-    // Reset all buttons and activate Account Settings button
-    for (let key in this.buttonStates) {
-      this.buttonStates[key] = false;
+    if(!this.authGuard.canActivate()){
+      this.router.navigate(['/login']);
     }
-    this.buttonStates['btn1'] = true;
+    else{
+      // Navigate to account settings when component initializes
+      this.router.navigate(['/slide/account-setting']);
+      
+      // Reset all buttons and activate Account Settings button
+      for (let key in this.buttonStates) {
+        this.buttonStates[key] = false;
+      }
+      this.buttonStates['btn1'] = true;
 
-    const user = this.authService.getUser();
-    if (user) {
-      this.firstName = user.firstName || '';
-      this.lastName = user.lastName || '';
+      const user = this.authService.getUser();
+      if (user) {
+        this.firstName = user.firstName || '';
+        this.lastName = user.lastName || '';
+      }
     }
+
   }
+
   toggleButtonState(buttonKey: string): void {
     // Reset all buttons to false
     for (let key in this.buttonStates) {

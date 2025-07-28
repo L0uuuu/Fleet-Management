@@ -125,11 +125,11 @@ export class Service implements OnInit {
     //calling the api
     this.serviceAPI.getServices().subscribe(response => {
       
-
+      
       this.services = response;
       console.log('services:', this.services);
       const selectedService = this.services.find(
-      (service) => service.name === this.serviceNameInApiRespense
+        (service) => service.name === this.serviceNameInApiRespense
       );
       sessionStorage.setItem('selectedServiceId', selectedService.id);
       this.router.navigate(['/slide/appointments/agency']);

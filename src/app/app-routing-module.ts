@@ -15,7 +15,7 @@ import { AppointmentDate } from './pages/appoint/appointment-date/appointment-da
 import { Summary } from './pages/appoint/summary/summary';
 
 const routes: Routes = [     
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '', redirectTo: '/slide', pathMatch: 'full' },
   { path: 'login', component: Login },
   { path: 'slide', component: Slide , canActivate: [AuthGuard] ,
     children: [
