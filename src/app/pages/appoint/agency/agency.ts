@@ -36,7 +36,11 @@ export class Agency implements OnInit {
   navigateToService(): void{
     this.router.navigate(['/slide/appointments/service']);
   }
- 
+
+  selectedAgencyIndex: number | null = null;
+  selectAgency(index: number): void {
+    this.selectedAgencyIndex = index;
+  }
 
   //icon
   faChevronRight = faChevronRight;

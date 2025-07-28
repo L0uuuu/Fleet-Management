@@ -1,28 +1,29 @@
 <div class="agency">
     <div class="container">
-        <div class="blue-container">
-            <div *ngFor="let a of agencyList">
-                <h1>{{a.socialReason}}</h1>
-                <div class="phone-Number">
-                    <fa-icon [icon]="faPhone" class="phone-icon"></fa-icon>
-                    <span>{{a.phoneNumber}}</span>
-                </div>
-                <div class="location">
-                    <fa-icon [icon]="faLocation" class="location-icon"></fa-icon>
-                    <span>{{a.address}}</span>
-                </div>
-                <div class="button-area">
-                    <button class="select-agency">Select this agency</button>
+        <div class="tow-containers">
+            <div class="blue-container">
+                <div *ngFor="let a of agencyList; let i = index">
+                    <h1>{{a.socialReason}}</h1>
+                    <div class="phone-Number">
+                        <fa-icon [icon]="faPhone" class="phone-icon"></fa-icon>
+                        <span>{{a.phoneNumber}}</span>
+                    </div>
+                    <div class="location">
+                        <fa-icon [icon]="faLocation" class="location-icon"></fa-icon>
+                        <span>{{a.address}}</span>
+                    </div>
+                    <div class="button-area">
+                        <button class="select-agency" [class.selected]="selectedAgencyIndex === i" (click)="selectAgency(i)">{{ selectedAgencyIndex === i ? 'Selected agency' : 'Select this agency' }}</button>
 
-                    <button class="info"> <fa-icon [icon]="faPlus" class="plus-icon"></fa-icon>&nbsp;&nbsp;Info</button>
-                </div>
-                <hr>
+                        <button class="info"> <fa-icon [icon]="faPlus" class="plus-icon"></fa-icon>&nbsp;&nbsp;Info</button>
+                    </div>
+                    <hr>
                 
+                </div>
                 
             </div>
-            
+            <app-map></app-map>
         </div>
-
         <div class="next-previous">
             <button class="previous" (click)="navigateToService()"  > <fa-icon class="flech2" [icon]="faChevronRight"></fa-icon> &nbsp;&nbsp; Previous  </button>
             <button class="next"  >Next &nbsp;&nbsp; <fa-icon class="flech" [icon]="faChevronRight"></fa-icon></button>

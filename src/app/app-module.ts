@@ -20,6 +20,7 @@ import { Agency } from './pages/appoint/agency/agency';
 import { Summary } from './pages/appoint/summary/summary';
 import { AppointmentDate } from './pages/appoint/appointment-date/appointment-date';
 import { Vehicles } from './pages/vehicles/vehicles';
+import { Map } from './pages/extra/map/map';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { Vehicles } from './pages/vehicles/vehicles';
     Agency,
     AppointmentDate,
     Vehicles,
+    Map,
   ],
   imports: [
     BrowserModule,

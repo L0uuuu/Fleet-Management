@@ -106,7 +106,9 @@ hr{
     border-radius: 5px;
     margin: 0px 20px  0px  10px  ;
 }
-
+.select-agency:hover{
+    background-color: rgba($color: #419ED9, $alpha: 0.91);
+}
 .plus-icon{
     font-size: 1em;
     color: #A6A6A6;
@@ -118,7 +120,21 @@ hr{
     font-size: 15px;
     border-radius: 5px;
     padding: 10px;
+    cursor: pointer;
+}
+.info:hover{
+    background-color: rgba($color: #A6A6A6, $alpha: 0.2);
 }
 .button-area{
     margin: 10px 0;
+}
+.select-agency.selected {
+  background-color: #3bc47b;
+  color: white;
+  font-weight: bold;
+}
+.tow-containers{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
