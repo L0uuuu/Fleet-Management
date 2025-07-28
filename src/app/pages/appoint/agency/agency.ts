@@ -18,7 +18,11 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 export class Agency implements OnInit {
   constructor(private router: Router,private agencyAPI:AgencyAPI,private cdr: ChangeDetectorRef){}
   
+
   agencyList: any[] = [];
+  agencyPoints: { lat: number; lng: number; label: string }[] = [];
+
+
   ngOnInit(): void {
    const selectedServiceId = sessionStorage.getItem('selectedServiceId');
     if (selectedServiceId) {
@@ -26,6 +30,14 @@ export class Agency implements OnInit {
         .subscribe(response => {
           this.agencyList = response;
           console.log('agency:', this.agencyList);
+          
+          this.agencyPoints = this.agencyList
+          .filter(a => a.latitude && a.longitude)
+          .map(a => ({
+            lat: a.latitude,
+            lng: a.longitude,
+            label: `<b>${a.socialReason}</b><br>${a.address}`
+          }));
           this.cdr.detectChanges();
         });
     } else {

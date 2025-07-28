@@ -22,7 +22,7 @@
                 </div>
                 
             </div>
-            <app-map></app-map>
+            <app-map [points]="agencyPoints"></app-map>
         </div>
         <div class="next-previous">
             <button class="previous" (click)="navigateToService()"  > <fa-icon class="flech2" [icon]="faChevronRight"></fa-icon> &nbsp;&nbsp; Previous  </button>
