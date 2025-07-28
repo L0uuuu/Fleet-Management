@@ -1,9 +1,26 @@
 <div class="agency">
     <div class="container">
         <div class="blue-container">
-            <div *ngFor="let item of list">
+            <div *ngFor="let a of agencyList">
+                <h1>{{a.socialReason}}</h1>
+                <div class="phone-Number">
+                    <fa-icon [icon]="faPhone" class="phone-icon"></fa-icon>
+                    <span>{{a.phoneNumber}}</span>
+                </div>
+                <div class="location">
+                    <fa-icon [icon]="faLocation" class="location-icon"></fa-icon>
+                    <span>{{a.address}}</span>
+                </div>
+                <div class="button-area">
+                    <button class="select-agency">Select this agency</button>
 
+                    <button class="info"> <fa-icon [icon]="faPlus" class="plus-icon"></fa-icon>&nbsp;&nbsp;Info</button>
+                </div>
+                <hr>
+                
+                
             </div>
+            
         </div>
 
         <div class="next-previous">

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { VehiclesAPI } from '../../services/vehicles-api';
 import { AuthService } from '../../services/auth-service';
+
+import { ChangeDetectorRef } from '@angular/core';
 //icon importation
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
@@ -14,7 +16,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 })
 export class Vehicles implements OnInit  {
   vehicl: any[] = [];
-  constructor(private http: HttpClient,private authService: AuthService,private vehiclesAPI: VehiclesAPI,) {}
+  constructor(private http: HttpClient,private authService: AuthService,private vehiclesAPI: VehiclesAPI,private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
     let user = this.authService.getUser();
@@ -25,8 +27,9 @@ export class Vehicles implements OnInit  {
       pageSize: 10,
       order: 'DESC'
     }).subscribe(response => {
-      console.log('Vehicles:', response);
+      
       this.vehicl = response.result;
+      this.cdr.detectChanges();
     });
   }
   //icon
