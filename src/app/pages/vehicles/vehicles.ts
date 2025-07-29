@@ -32,6 +32,16 @@ export class Vehicles implements OnInit  {
       this.cdr.detectChanges();
     });
   }
+
+  selectAll: boolean = false;
+
+  toggleAll() {
+    this.vehicl.forEach(v => v.selected = this.selectAll);
+  }
+
+  checkIfAllSelected() {
+    this.selectAll = this.vehicl.every(v => v.selected);
+  }
   //icon
   faPlus = faPlus;
   faSearch = faSearch;

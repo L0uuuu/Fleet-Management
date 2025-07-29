@@ -1,6 +1,8 @@
 import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+
+
 import { BookingLogs } from '../../../services/appointmentsLogs/booking-logs';
 import { ServiceAPI } from '../../../services/appoint/service-api';
 //icon
@@ -57,9 +59,9 @@ export class Service implements OnInit {
       this.toggleService(this.bookingLogs.service_btn);
       
     }
-
-    
+ 
   }
+
 
 
   serviceName: string = 'Default';
