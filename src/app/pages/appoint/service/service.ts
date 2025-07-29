@@ -1,6 +1,7 @@
 import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { BookingLogs } from '../../../services/appointmentsLogs/booking-logs';
 import { ServiceAPI } from '../../../services/appoint/service-api';
 //icon
 import { faImage } from '@fortawesome/free-solid-svg-icons';
@@ -15,7 +16,7 @@ import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 })
 export class Service implements OnInit {
   
-  constructor(private router: Router,private serviceAPI:ServiceAPI ) {}
+  constructor(private router: Router,private serviceAPI:ServiceAPI,private bookingLogs:BookingLogs ) {}
   
   serviceStates: { [key: string]: boolean } = {
     ser1: false, // Diagnostic service
@@ -46,12 +47,16 @@ export class Service implements OnInit {
 
 
   ngOnInit(): void {
+
     // Reset all buttons and activate Account Settings button
     for (let key in this.serviceStates) {
       this.serviceStates[key] = false;
+    }
+    if(this.bookingLogs.service_btn){
+      
+      this.toggleService(this.bookingLogs.service_btn);
       
     }
-    
 
     
   }
@@ -108,7 +113,7 @@ export class Service implements OnInit {
         this.serviceNameInApiRespense='Service Réparation Carrosserie';
         break;
     }
-    
+    this.bookingLogs.service_btn = buttonKey;
     setTimeout(() => {
     this.scrollToSection();
     }, 0);
@@ -131,7 +136,7 @@ export class Service implements OnInit {
       const selectedService = this.services.find(
         (service) => service.name === this.serviceNameInApiRespense
       );
-      sessionStorage.setItem('selectedServiceId', selectedService.id);
+      this.bookingLogs.selectedServiceId = selectedService.id ;
       this.router.navigate(['/slide/appointments/agency']);
     });
 

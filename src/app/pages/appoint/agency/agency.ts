@@ -3,6 +3,7 @@ import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { AgencyAPI } from '../../../services/appoint/agency-api';
 import { Router } from '@angular/router';
 
+import { BookingLogs } from '../../../services/appointmentsLogs/booking-logs';
 import { ChangeDetectorRef } from '@angular/core';
 
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
@@ -16,7 +17,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
   styleUrl: './agency.scss'
 })
 export class Agency implements OnInit {
-  constructor(private router: Router,private agencyAPI:AgencyAPI,private cdr: ChangeDetectorRef){}
+  constructor(private router: Router,private agencyAPI:AgencyAPI,private cdr: ChangeDetectorRef,private bookingLogs: BookingLogs){}
   
 
   agencyList: any[] = [];
@@ -24,7 +25,7 @@ export class Agency implements OnInit {
 
 
   ngOnInit(): void {
-   const selectedServiceId = sessionStorage.getItem('selectedServiceId');
+    const selectedServiceId = this.bookingLogs.selectedServiceId;
     if (selectedServiceId) {
       this.agencyAPI.getAgency({ abstractServices: [selectedServiceId] })
         .subscribe(response => {
@@ -48,6 +49,10 @@ export class Agency implements OnInit {
   navigateToService(): void{
     this.router.navigate(['/slide/appointments/service']);
   }
+  navigateToDate(): void{
+    this.router.navigate(['/slide/appointments/date']);
+  }
+
 
   selectedAgencyIndex: number | null = null;
   selectAgency(index: number): void {
