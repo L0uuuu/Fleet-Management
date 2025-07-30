@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
+
 import { AgencyAPI } from '../../../services/appoint/agency-api';
 import { Router } from '@angular/router';
 
 import { BookingLogs } from '../../../services/appointmentsLogs/booking-logs';
 import { ChangeDetectorRef } from '@angular/core';
 
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';

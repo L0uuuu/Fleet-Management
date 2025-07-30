@@ -1,1 +1,18 @@
-<p>appointment-date works!</p>
+<div class="date">
+    <div class="container">
+        <div class="tow-containers">
+            <div class="blue-container">
+
+                <h2> <fa-icon [icon]="faCalendar" class="calendar"></fa-icon> &nbsp;Confirm your date</h2>
+                <app-calendar (daySelected)="onDateSelected($event)"></app-calendar>
+            </div>
+            <div class="blue-container">
+                <h2> <fa-icon [icon]="faClock" class="calendar"></fa-icon> &nbsp;Confirm your schedule</h2>
+            </div>
+        </div>
+        <div class="next-previous">
+            <button class="previous" (click)="navigateToAgency()"  > <fa-icon class="flech2" [icon]="faChevronRight"></fa-icon> &nbsp;&nbsp; Previous  </button>
+            <button class="next" (click)="navigateToSummary()" >Next &nbsp;&nbsp; <fa-icon class="flech" [icon]="faChevronRight"></fa-icon></button>
+        </div>
+    </div>
+</div>

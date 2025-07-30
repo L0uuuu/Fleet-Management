@@ -1,0 +1,66 @@
+.calendar {
+  width: 300px;
+  border: 1px solid #ccc;
+  font-family: Arial, sans-serif;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #f5f5f5;
+  font-weight: bold;
+}
+
+.header button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.week-days, .days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.week-days div, .days div {
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+}
+
+.week-days div {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+.days div {
+  min-height: 30px;
+  cursor: pointer;
+}
+
+.days div:hover {
+  background-color: #f0f0f0;
+}
+
+.current-day {
+  background-color: #007bff;
+  color: white;
+  border-radius: 50%;
+  font-weight: bold;
+}
+
+.empty {
+  visibility: hidden;
+}
+
+.selected-day {
+  background-color: #28a745;
+  color: white;
+  border-radius: 50%;
+  font-weight: bold;
+}

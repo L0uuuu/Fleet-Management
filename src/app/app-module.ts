@@ -7,6 +7,9 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 
+
+
+
 import { AppRoutingModule } from './app-routing-module';
 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -25,6 +28,7 @@ import { Summary } from './pages/appoint/summary/summary';
 import { AppointmentDate } from './pages/appoint/appointment-date/appointment-date';
 import { Vehicles } from './pages/vehicles/vehicles';
 import { Map } from './pages/extra/map/map';
+import { Calendar } from './pages/extra/calendar/calendar';
 
 
 @NgModule({
@@ -41,6 +45,7 @@ import { Map } from './pages/extra/map/map';
     AppointmentDate,
     Vehicles,
     Map,
+    Calendar,
   ],
   imports: [
     BrowserModule,
@@ -50,8 +55,8 @@ import { Map } from './pages/extra/map/map';
     HttpClientModule,
     MatAutocompleteModule,
     MatInputModule,
-    ReactiveFormsModule
-    
+    ReactiveFormsModule,
+ 
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
