@@ -130,7 +130,7 @@ export class Service implements OnInit {
   services: any[] = [];
   navigateToAgency(): void{
     //calling the api
-    this.serviceAPI.getServices().subscribe(response => {
+    this.serviceAPI.getAbstractServices().subscribe(response => {
       
       
       this.services = response;

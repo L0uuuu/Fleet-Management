@@ -13,8 +13,8 @@ export class AgencyAPI {
 
   getAgency(
     params: {
-      delegation?: number;
-      brand?: number;
+      delegation?: string;
+      brand?: string;
       abstractServices?: string[];
       active?: boolean;
       sav?: boolean;
@@ -31,8 +31,8 @@ export class AgencyAPI {
         httpParams = httpParams.append('abstractServices', id);
       });
     }
-    if (params.active) httpParams = httpParams.set('keyword', params.active);
-    if (params.sav) httpParams = httpParams.set('brand', params.sav);
+    if (params.active) httpParams = httpParams.set('active', params.active);
+    if (params.sav) httpParams = httpParams.set('sav', params.sav);
 
     
 
