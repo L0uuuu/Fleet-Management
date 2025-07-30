@@ -40,6 +40,10 @@ export class Agency implements OnInit {
             lng: a.longitude,
             label: `<b>${a.socialReason}</b><br>${a.address}`
           }));
+          if(this.bookingLogs.selectedAgencyIndex!==-1){
+            this.selectAgency(this.bookingLogs.selectedAgencyIndex);
+          }
+          
           this.cdr.detectChanges();
         });
     } else {
@@ -58,6 +62,8 @@ export class Agency implements OnInit {
   selectedAgencyIndex: number | null = null;
   selectAgency(index: number): void {
     this.selectedAgencyIndex = index;
+    this.bookingLogs.selectedAgencyIndex=this.selectedAgencyIndex;
+    this.bookingLogs.selectedAgencyId=this.agencyList[index].id;
   }
 
   //icon

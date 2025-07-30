@@ -6,6 +6,9 @@ import { Injectable } from '@angular/core';
 export class BookingLogs {
   
   selectedAgencyId: string | null = null;
+  selectedAgencyIndex: number = -1;
+
+
   appointmentDate: Date | null = null;
 
   additionalNotes: string = '';
