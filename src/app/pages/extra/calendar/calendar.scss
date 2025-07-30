@@ -1,5 +1,5 @@
 .calendar {
-  width: 300px;
+  width: 450px;
   border: 1px solid #ccc;
   font-family: Arial, sans-serif;
   border-radius: 5px;
@@ -20,8 +20,11 @@
   border: none;
   cursor: pointer;
   font-size: 16px;
-}
 
+}
+.week-days{
+  color: #777373;
+}
 .week-days, .days {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -43,15 +46,14 @@
   cursor: pointer;
 }
 
-.days div:hover {
+.days div:hover:not(.selected-day,.current-day,.disabled)   {
   background-color: #f0f0f0;
 }
 
 .current-day {
-  background-color: #007bff;
-  color: white;
-  border-radius: 50%;
-  font-weight: bold;
+  background-color: rgba($color: #62a4eb, $alpha: 1) ;
+  color: black;
+  border-radius: 5px;
 }
 
 .empty {
@@ -61,6 +63,11 @@
 .selected-day {
   background-color: #28a745;
   color: white;
-  border-radius: 50%;
+  border-radius: 5px;
   font-weight: bold;
+}
+.disabled {
+  color: #999;
+  text-decoration: line-through;
+  cursor: not-allowed;
 }

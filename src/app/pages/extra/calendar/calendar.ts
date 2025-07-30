@@ -8,7 +8,6 @@ import { CalendarService } from '../../../services/extra/calendar';
 })
 export class Calendar implements OnInit {
   month: string = '';
-  year: number = 2025;
   days: number[] = [];
   weeks: string[] = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'];
   currentMonth: number = new Date().getMonth(); // Current month (0-11)
@@ -25,7 +24,7 @@ export class Calendar implements OnInit {
 
   updateCalendar(month: number, year: number) {
     this.month = `${this.calendarService.getMonthName(month)} ${year}`;
-    this.year = year;
+  
     const daysInMonth = this.calendarService.getDaysInMonth(year, month);
     const firstDayIndex = this.calendarService.getFirstDayIndex(year, month);
 
@@ -66,10 +65,17 @@ export class Calendar implements OnInit {
     return day === today.getDate() && this.currentMonth === today.getMonth() && this.currentYear === today.getFullYear();
   }
 
+  isDayDisabled(day: number): boolean {
+    if (day === 0) return false; // Skip placeholder days
+    const today = new Date();
+    const checkDate = new Date(this.currentYear, this.currentMonth, day);
+    return checkDate < today && !this.isCurrentDay(day);
+  }
+
   onDayClick(day: number) {
-    if (day > 0) {
+    if (day > 0 && !this.isDayDisabled(day)) {
       this.selectedDay = day;
-      const isoDate = new Date(this.year, this.currentMonth, day).toISOString().split('T')[0];
+      const isoDate = new Date(this.currentYear, this.currentMonth, day).toISOString().split('T')[0];
       this.daySelected.emit(isoDate);
     }
   }
