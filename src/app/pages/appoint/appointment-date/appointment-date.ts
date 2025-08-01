@@ -48,11 +48,15 @@ export class AppointmentDate implements OnInit {
     }
   }
 
+
+  firstShiftSlotsList:any[]=[];
+  secondShiftSlotsList:any[]=[];
   problem:boolean = true;
   problemMessage: string='';
   datesList: any[] =[];
-  onDateSelected(date: string) {
 
+  onDateSelected(date: string) {
+    
     console.log('Selected date:', date);
     if(this.serviceId){
       this.calenderAPI.getCalenderDates(this.serviceId,{startDate:date,endDate:date})
@@ -86,12 +90,61 @@ export class AppointmentDate implements OnInit {
           else{
             this.problem=true;
             this.problemMessage='';
-            
+            const slots = this.datesList[0].workSchedule;
+
+            const formatToTime = (isoString: string): string => {
+              const date = new Date(isoString);
+              const hours = String(date.getHours()).padStart(2, '0');
+              const minutes = String(date.getMinutes()).padStart(2, '0');
+              return `${hours}:${minutes}`;
+            };
+
+            // Define the interface (optional but clean)
+            interface SlotInfo {
+              time: string;
+              hasPassed: boolean;
+              isAllowed: boolean;
+              isFull: boolean;
+            }
+
+            // Map full slot info
+            const firstShiftSlots: SlotInfo[] = slots.firstShiftSlots.map((slot: any) => ({
+              time: formatToTime(slot.slotStartDate),
+              hasPassed: slot.hasPassed,
+              isAllowed: slot.isAllowed,
+              isFull: slot.isFull
+            }));
+
+            const secondShiftSlots: SlotInfo[] = slots.secondShiftSlots.map((slot: any) => ({
+              time: formatToTime(slot.slotStartDate),
+              hasPassed: slot.hasPassed,
+              isAllowed: slot.isAllowed,
+              isFull: slot.isFull
+            }));
+
+            console.log(firstShiftSlots);
+            console.log(secondShiftSlots);
+
+            this.firstShiftSlotsList = firstShiftSlots;
+            this.secondShiftSlotsList = secondShiftSlots;
+            this.selectedIndexFirst = null;
+            this.selectedIndexSecond = null;
           }
           this.cdr.detectChanges();
         });
     }
     
+  }
+
+  selectedIndexFirst:number|null=null;
+  selectedIndexSecond:number|null=null;
+  toggelSelectionFirst(i:number|null,){
+    this.selectedIndexSecond = null;
+    this.selectedIndexFirst = i; 
+  }
+  toggelSelectionSecond(j:number|null,){
+    this.selectedIndexFirst = null;
+    this.selectedIndexSecond = j; 
   }
 
 

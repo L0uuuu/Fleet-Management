@@ -25,11 +25,38 @@
                 </div>
 
                 <div class="date-calendar">
-                    <div *ngIf="!problem">
+                    <div *ngIf="!problem" class="cal">
                         <fa-icon [icon]="faCalendarX" class="calendarX"> </fa-icon>
                         <h3>{{problemMessage}}</h3>
                     </div>
-                    
+                    <div *ngIf="problem" >
+                        <h3>first shift</h3>
+                        <hr>
+                        <div class="slots">
+                            <div *ngFor="let slot of firstShiftSlotsList;let i=index" >
+                                <div [ngClass]="{
+                                    'unavailable': slot.hasPassed || !slot.isAllowed || slot.isFull,
+                                    'selected':  i==selectedIndexFirst,
+                                    'available': !slot.hasPassed && slot.isAllowed && !slot.isFull
+                                    
+                                }" (click)="toggelSelectionFirst(i)">{{slot.time}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="problem" >
+                        <h3>second shift</h3>
+                        <hr>
+                        <div class="slots">
+                            <div *ngFor="let slot of secondShiftSlotsList;let j=index" >
+                                <div [ngClass]="{
+                                    'unavailable': slot.hasPassed || !slot.isAllowed || slot.isFull,
+                                    'selected':  j==selectedIndexSecond,
+                                    'available': !slot.hasPassed && slot.isAllowed && !slot.isFull
+                                    
+                                }" (click)="toggelSelectionSecond(j)">{{slot.time}}</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
 
