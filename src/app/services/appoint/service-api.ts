@@ -14,13 +14,13 @@ export class ServiceAPI {
     return this.http.get(`${this.baseUrl}/abstract-services`);
   }
 
-  getServices( params: {brand?: string;agency?: string;abstractServices?: string}): Observable<any> {
+  getServices( params: {brand?: string;agency?: string;abstractService?: string}): Observable<any> {
     const url = `${this.baseUrl}/services`;
     let httpParams = new HttpParams();
     
     if (params.brand) httpParams = httpParams.set('brand', params.brand);
     if (params.agency) httpParams = httpParams.set('agency', params.agency);
-    if (params.abstractServices) httpParams = httpParams.set('keyword', params.abstractServices);
+    if (params.abstractService) httpParams = httpParams.set('abstractService', params.abstractService);
 
     
 

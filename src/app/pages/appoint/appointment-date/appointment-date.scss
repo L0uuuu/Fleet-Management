@@ -115,3 +115,19 @@ h2{
     padding:8px 14px;
     border-radius: 5px;
 }
+.date-calendar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.date-calendar div{
+    display: flex;
+    flex-direction: column;
+    justify-content:center ;
+    align-items: center;
+}
+.calendarX{
+    font-size: 5em;
+    color: rgb(215, 5, 5);
+
+}

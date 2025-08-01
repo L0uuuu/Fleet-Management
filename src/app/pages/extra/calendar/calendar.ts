@@ -75,7 +75,8 @@ export class Calendar implements OnInit {
   onDayClick(day: number) {
     if (day > 0 && !this.isDayDisabled(day)) {
       this.selectedDay = day;
-      const isoDate = new Date(this.currentYear, this.currentMonth, day).toISOString().split('T')[0];
+      const selectedDate = new Date(this.currentYear, this.currentMonth, day);
+      const isoDate = `${selectedDate.getFullYear()}-${String(selectedDate.getMonth() + 1).padStart(2, '0')}-${String(selectedDate.getDate()).padStart(2, '0')}`;
       this.daySelected.emit(isoDate);
     }
   }

@@ -40,7 +40,7 @@ export class Agency implements OnInit {
             lng: a.longitude,
             label: `<b>${a.socialReason}</b><br>${a.address}`
           }));
-          if(this.bookingLogs.selectedAgencyIndex!==-1){
+          if(this.bookingLogs.selectedAgencyIndex!==-1 && this.bookingLogs.selectedAgencyIndex < this.agencyList.length){
             this.selectAgency(this.bookingLogs.selectedAgencyIndex);
           }
           
@@ -64,6 +64,7 @@ export class Agency implements OnInit {
     this.selectedAgencyIndex = index;
     this.bookingLogs.selectedAgencyIndex=this.selectedAgencyIndex;
     this.bookingLogs.selectedAgencyId=this.agencyList[index].id;
+    console.log(this.bookingLogs.selectedAgencyId);
   }
 
   //icon

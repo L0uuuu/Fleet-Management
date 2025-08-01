@@ -4,7 +4,7 @@
             <div class="blue-container">
 
                 <h2> <fa-icon [icon]="faCalendar" class="calendar"></fa-icon> &nbsp;Confirm your date</h2>
-                <app-calendar (daySelected)="onDateSelected($event)"></app-calendar>
+                <app-calendar [hidden]="serviceLoaded" (daySelected)="onDateSelected($event)"></app-calendar>
             </div>
             <div class="blue-container">
                 <h2> <fa-icon [icon]="faClock" class="calendar"></fa-icon> &nbsp;Confirm your schedule</h2>
@@ -22,6 +22,14 @@
                         <div class="selected"></div>
                         <span>Selected</span>
                     </div>
+                </div>
+
+                <div class="date-calendar">
+                    <div *ngIf="!problem">
+                        <fa-icon [icon]="faCalendarX" class="calendarX"> </fa-icon>
+                        <h3>{{problemMessage}}</h3>
+                    </div>
+                    
                 </div>
 
 

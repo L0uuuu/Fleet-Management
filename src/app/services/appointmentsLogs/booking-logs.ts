@@ -8,6 +8,7 @@ export class BookingLogs {
   selectedAgencyId: string | null = null;
   selectedAgencyIndex: number = -1;
 
+  brandId: string='7e76cbc5-649c-49bf-ba58-9b9ce82a0ab9';
 
   appointmentDate: Date | null = null;
 
