@@ -1,8 +1,19 @@
 <div class="service-container">
   <div class="container">
     <h3>Identification of your vehicle</h3>
-    <input list="registration"  name="vehicle-id" id="vehicle-id" class="vehicle-id">
-    
+    <div class="select-wrapper" [class.open]="isSelectOpen">
+        <select 
+                
+                (change)="isSelectOpen = false"
+                (blur)="isSelectOpen = false"
+                (mousedown)="isSelectOpen = !isSelectOpen"
+            
+        >
+            <option hidden selected >Select Vehicle</option>
+            <option  *ngFor="let car of vehiclesList">{{car.registrationNumber}}</option>
+        </select>
+        <fa-icon [icon]="faChevronRight" class="custom-arrow"></fa-icon>
+    </div>
 
   </div>
   

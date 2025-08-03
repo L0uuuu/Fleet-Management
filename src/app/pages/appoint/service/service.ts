@@ -5,6 +5,10 @@ import { Router } from '@angular/router';
 
 import { BookingLogs } from '../../../services/appointmentsLogs/booking-logs';
 import { ServiceAPI } from '../../../services/appoint/service-api';
+import { VehiclesAPI } from '../../../services/vehicles-api';
+import { AuthService } from '../../../services/auth-service';
+
+import { ChangeDetectorRef } from '@angular/core';
 //icon
 import { faImage } from '@fortawesome/free-solid-svg-icons';
 import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
@@ -18,7 +22,9 @@ import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 })
 export class Service implements OnInit {
   
-  constructor(private router: Router,private serviceAPI:ServiceAPI,private bookingLogs:BookingLogs ) {}
+  isSelectOpen = false;
+
+  constructor(private router: Router,private cdr:ChangeDetectorRef,private authService:AuthService,private serviceAPI:ServiceAPI,private bookingLogs:BookingLogs ,private vehiclesAPI: VehiclesAPI ) {}
   
   serviceStates: { [key: string]: boolean } = {
     ser1: false, // Diagnostic service
@@ -47,7 +53,7 @@ export class Service implements OnInit {
     this.formService.nativeElement.scrollIntoView({ behavior: 'smooth' });
   }
 
-
+  vehiclesList:any[]=[]
   ngOnInit(): void {
 
     // Reset all buttons and activate Account Settings button
@@ -59,6 +65,23 @@ export class Service implements OnInit {
       this.toggleService(this.bookingLogs.service_btn);
       
     }
+    let user = this.authService.getUser();
+    let id = user.client.id;
+    
+    this.vehiclesAPI.getVehiclesOfClient(id, {
+      page: 1,
+      pageSize: 10,
+      order: 'DESC'
+    }).subscribe(response => {
+      
+      this.vehiclesList = response.result.map((car: any)=> ({
+        id: car.id,
+        registrationNumber: car.registrationNumber
+      }));
+
+      this.cdr.detectChanges();
+    });
+
  
   }
 
@@ -125,6 +148,7 @@ export class Service implements OnInit {
     return this.serviceStates[buttonKey] === true;
   }
 
+  
 
   
   services: any[] = [];

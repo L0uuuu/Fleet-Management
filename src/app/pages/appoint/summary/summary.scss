@@ -1,0 +1,86 @@
+.container{
+    flex-grow: 1;
+    border-radius: 8px;
+    margin: 20px 30px 0;
+    padding: 15px;
+    box-shadow: 2px 2px 15px rgba(0, 0,0 ,0.15);
+    text-align: left;
+    border: 1px solid ;
+    border-color:  rgba(166, 166, 166, 0.8);
+    display: flex;
+    flex-direction: column;
+
+}
+.next{
+    display: inline-flex;
+    cursor: pointer;
+    background-color: #419ED9;
+    border: none;
+    color: white;
+    font-size: larger;
+    padding: 10px 20px;
+    border-radius: 5px;
+   
+}
+.next:hover{
+    background-color: rgba($color: #419ED9, $alpha: 0.91);
+}
+.previous{
+    display: inline-flex;
+    cursor: pointer;
+    background-color:white ;
+    border: 1px solid rgba($color: #000000, $alpha: 0.3);;
+    color: rgba($color: #000000, $alpha: 0.3);;
+    font-size: larger;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+.previous:hover{
+    background-color: rgba($color: #000000, $alpha: 0.1);
+}
+.next-previous{
+    display: flex;
+    justify-content: space-between;
+}
+
+fa-icon{
+    color:#399DDB ;
+    font-size: 4em;
+}
+.flech{
+    font-size: 20px;
+    color: white;
+}
+.flech2{
+    font-size: 20px;
+    color: rgba($color: #000000, $alpha: 0.3);
+    rotate:180deg;
+}
+.blue-container{
+    position: relative;
+    border: 2px solid #399DDB;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    width: 450px;
+    min-height: 150px;
+    max-height: 450px;
+    color:#1D1D1D;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.container-column{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.edit-icon{
+    color: #1D1D1D;
+    font-size: 1.3em;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+
+}
