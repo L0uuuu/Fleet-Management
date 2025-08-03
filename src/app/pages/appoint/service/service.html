@@ -3,14 +3,14 @@
     <h3>Identification of your vehicle</h3>
     <div class="select-wrapper" [class.open]="isSelectOpen">
         <select 
-                
+                [(ngModel)]="selectedVehicleId"
                 (change)="isSelectOpen = false"
                 (blur)="isSelectOpen = false"
                 (mousedown)="isSelectOpen = !isSelectOpen"
             
         >
             <option hidden selected >Select Vehicle</option>
-            <option  *ngFor="let car of vehiclesList">{{car.registrationNumber}}</option>
+            <option  *ngFor="let car of vehiclesList"  [value]="car.id">{{car.registrationNumber}}</option>
         </select>
         <fa-icon [icon]="faChevronRight" class="custom-arrow"></fa-icon>
     </div>
@@ -87,24 +87,31 @@
 
             <div class="align" id="select-m-service" *ngIf="isButtonActive('ser5')">
                 <label for="select-m-service">Select service (At least 2 services)*</label>
-                <select name="selector" class="zone3" id="select-m-service" >
+                <select name="selector" class="zone3"  id="select-m-service" >
                     <option value="" selected hidden>Select service (At least 2 services)</option>
                 </select>
             </div>
 
             <div class="align" id="current-mileage" *ngIf="!isButtonActive('ser4')">
                 <label for="current-mileage">Current mileage*</label>
-                <input type="text" class="zone1" id="current-mileage"  placeholder="5000                   km">
+                <div class="input-wrapper ">
+                    <input type="text" class="special-input" id="current-mileage" placeholder="5000" (input)="formatMileage($event)" 
+                    (keypress)="restrictToNumbers($event)"
+                    [(ngModel)]="mileage"
+                    pattern="[0-9,]*">
+                    <span class="unit">km</span>
+                </div>
             </div>
 
             <div class="align" id="select-type-interview" *ngIf="isButtonActive('ser4')">
                 <label for="interview-selector">Select the type of interview*</label>
-                <select name="selector" class="zone3" id="interview-selector" >
+                <select name="selector" class="zone3" style="width: 20em;" id="interview-selector" >
                     <option value="" selected hidden>Select the type of interview*</option>
+                    <option *ngFor="let value of listInterviews" [value]="value">{{ value }}</option>
+                    <option value="" >Autre</option>
                 </select>
             </div>
-
-            
+                        
 
             <div class="align" id="Description" *ngIf="!isButtonActive('ser4')">
                 <label for="">Description*</label>

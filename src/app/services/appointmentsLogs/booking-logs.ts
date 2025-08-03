@@ -15,9 +15,11 @@ export class BookingLogs {
   additionalNotes: string = '';
 
   selectedServiceId: string | null = null;
+  selectedVehicleId: string | null = null;
   service_btn: string | null = null;
+  serviceName: string | null = null;
   isBrokenDown: boolean = false;
-  mileage: number | null = null;
+  mileage: string | null = null;
   description: string | null = null;
   attatchment: string | null = null;
   quotation_number:string | null = null;

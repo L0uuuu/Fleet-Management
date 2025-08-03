@@ -8,6 +8,8 @@ import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 
 
+import { NgSelectModule } from '@ng-select/ng-select';
+
 
 
 import { AppRoutingModule } from './app-routing-module';
@@ -56,6 +58,7 @@ import { Calendar } from './pages/extra/calendar/calendar';
     MatAutocompleteModule,
     MatInputModule,
     ReactiveFormsModule,
+    NgSelectModule
  
   ],
   providers: [

@@ -23,6 +23,10 @@ import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 export class Service implements OnInit {
   
   isSelectOpen = false;
+  
+  selectedVehicleId: string = '';
+  selectedInterviewType:string ='';
+  mileage: string = '';
 
   constructor(private router: Router,private cdr:ChangeDetectorRef,private authService:AuthService,private serviceAPI:ServiceAPI,private bookingLogs:BookingLogs ,private vehiclesAPI: VehiclesAPI ) {}
   
@@ -36,7 +40,7 @@ export class Service implements OnInit {
   };
 
 
-
+  
   
   //link to icon
   diagnosticService: string = 'assets/service-icons/blue/DIAGNOSIS-service.png' ;
@@ -52,18 +56,31 @@ export class Service implements OnInit {
   scrollToSection() {
     this.formService.nativeElement.scrollIntoView({ behavior: 'smooth' });
   }
+  
 
+  listInterviews: number[] = [];
   vehiclesList:any[]=[]
   ngOnInit(): void {
-
+    for (let i = 10000; i <= 200000; i += 10000) {
+      this.listInterviews.push(i);
+    }
     // Reset all buttons and activate Account Settings button
     for (let key in this.serviceStates) {
       this.serviceStates[key] = false;
+    }
+    
+    if(this.bookingLogs.selectedVehicleId){
+      this.selectedVehicleId = this.bookingLogs.selectedVehicleId;
+      this.cdr.detectChanges();
     }
     if(this.bookingLogs.service_btn){
       
       this.toggleService(this.bookingLogs.service_btn);
       
+      
+    }
+    if(this.bookingLogs.mileage){
+      this.mileage = this.bookingLogs.mileage;
     }
     let user = this.authService.getUser();
     let id = user.client.id;
@@ -148,7 +165,24 @@ export class Service implements OnInit {
     return this.serviceStates[buttonKey] === true;
   }
 
-  
+
+
+  //mileage methodes
+  restrictToNumbers(event: KeyboardEvent) {
+    const charCode = event.charCode || event.keyCode;
+    if (charCode < 48 || charCode > 57) {
+      event.preventDefault();
+    }
+  }
+
+  formatMileage(event: Event) {
+    let value = (event.target as HTMLInputElement).value.replace(/[^0-9]/g, '');
+    if (value) {
+      value = parseInt(value).toLocaleString('en-US');
+      (event.target as HTMLInputElement).value = value;
+      this.mileage = value;
+    }
+  }
 
   
   services: any[] = [];
@@ -163,6 +197,10 @@ export class Service implements OnInit {
         (service) => service.name === this.serviceNameInApiRespense
       );
       this.bookingLogs.selectedServiceId = selectedService.id ;
+      this.bookingLogs.serviceName = this.serviceName;
+      this.bookingLogs.mileage = this.mileage;
+      this.bookingLogs.selectedVehicleId=this.selectedVehicleId;
+
       this.router.navigate(['/slide/appointments/agency']);
     });
 
