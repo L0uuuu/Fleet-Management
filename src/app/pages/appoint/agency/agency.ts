@@ -51,6 +51,7 @@ export class Agency implements OnInit {
     }
   }
   
+
   navigateToService(): void{
     this.router.navigate(['/slide/appointments/service']);
   }
@@ -58,12 +59,19 @@ export class Agency implements OnInit {
     this.router.navigate(['/slide/appointments/date']);
   }
 
+  isDisabled:boolean=true;
+  OnSelectAgency(){
+    if(this.bookingLogs.selectedAgencyIndex!==-1 && this.bookingLogs.selectedAgencyIndex < this.agencyList.length){
+      this.isDisabled=false;
+    }
+  }
 
   selectedAgencyIndex: number | null = null;
   selectAgency(index: number): void {
     this.selectedAgencyIndex = index;
     this.bookingLogs.selectedAgencyIndex=this.selectedAgencyIndex;
     this.bookingLogs.selectedAgencyId=this.agencyList[index].id;
+    this.OnSelectAgency();
     console.log(this.bookingLogs.selectedAgencyId);
   }
 

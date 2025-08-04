@@ -26,7 +26,7 @@
         </div>
         <div class="next-previous">
             <button class="previous" (click)="navigateToService()"  > <fa-icon class="flech2" [icon]="faChevronRight"></fa-icon> &nbsp;&nbsp; Previous  </button>
-            <button class="next" (click)="navigateToDate()" >Next &nbsp;&nbsp; <fa-icon class="flech" [icon]="faChevronRight"></fa-icon></button>
+            <button class="next" [disabled]="isDisabled" (click)="navigateToDate()" >Next &nbsp;&nbsp; <fa-icon class="flech" [icon]="faChevronRight"></fa-icon></button>
         </div>
     </div>
 </div>
