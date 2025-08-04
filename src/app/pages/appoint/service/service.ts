@@ -13,6 +13,7 @@ import { ChangeDetectorRef } from '@angular/core';
 import { faImage } from '@fortawesome/free-solid-svg-icons';
 import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { tr } from 'intl-tel-input/i18n';
 
 @Component({
   selector: 'app-service',
@@ -27,7 +28,8 @@ export class Service implements OnInit {
   selectedVehicleId: string = '';
   selectedInterviewType:string ='';
   mileage: string = '';
-
+  description: string = '';
+  interviewType: string = '';
   constructor(private router: Router,private cdr:ChangeDetectorRef,private authService:AuthService,private serviceAPI:ServiceAPI,private bookingLogs:BookingLogs ,private vehiclesAPI: VehiclesAPI ) {}
   
   serviceStates: { [key: string]: boolean } = {
@@ -82,6 +84,12 @@ export class Service implements OnInit {
     if(this.bookingLogs.mileage){
       this.mileage = this.bookingLogs.mileage;
     }
+    if(this.bookingLogs.description){
+      this.description = this.bookingLogs.description;
+    }
+    if(this.bookingLogs.Select_type_interview){
+      this.interviewType=this.bookingLogs.Select_type_interview;
+    }
     let user = this.authService.getUser();
     let id = user.client.id;
     
@@ -98,7 +106,7 @@ export class Service implements OnInit {
 
       this.cdr.detectChanges();
     });
-
+    this.onInputChange();
  
   }
 
@@ -128,31 +136,37 @@ export class Service implements OnInit {
         this.diagnosticService= 'assets/service-icons/white/DIAGNOSIS-service-white.png';
         this.serviceName='Diagnostic service';
         this.serviceNameInApiRespense='Service Diagnostique';
+        this.onInputChange();
         break;
       case 'ser2':  
         this.electricalRepairService= 'assets/service-icons/white/REPAIR_ELECTRIC-service-white.png';
         this.serviceName='Electrical Repair Service';
         this.serviceNameInApiRespense='Service Rép.Electrique';
+        this.onInputChange();
         break;
       case 'ser3':  
         this.mechanicalRepairService= 'assets/service-icons/white/REPAIR_MECHANIC-service-white.png';
         this.serviceName='Mechanical Repair Service';
         this.serviceNameInApiRespense='Service Rép.Mecanique';
+        this.onInputChange();
         break;
       case 'ser4':  
         this.fastService= 'assets/service-icons/white/FAST-service-white.png';
         this.serviceName='Fast Service';
         this.serviceNameInApiRespense='Service Rapide';
+        this.onInputChange();
         break;
       case 'ser5':  
         this.multipleServices= 'assets/service-icons/white/MULTIPLE_SERVICES-service-white.png';
         this.serviceName='Multiple services';
         this.serviceNameInApiRespense='Services Multiples';
+        this.onInputChange();
         break;
       case 'ser6':  
         this.bodywork= 'assets/service-icons/white/REPAIR_SHEET_METAL-service-white.png';
         this.serviceName='Bodywork';
         this.serviceNameInApiRespense='Service Réparation Carrosserie';
+        this.onInputChange();
         break;
     }
     this.bookingLogs.service_btn = buttonKey;
@@ -200,12 +214,57 @@ export class Service implements OnInit {
       this.bookingLogs.serviceName = this.serviceName;
       this.bookingLogs.mileage = this.mileage;
       this.bookingLogs.selectedVehicleId=this.selectedVehicleId;
-
+      this.bookingLogs.description = this.description;
+      this.bookingLogs.Select_type_interview = this.interviewType;
       this.router.navigate(['/slide/appointments/agency']);
     });
 
   }
  
+  isDisabled = true;
+  onInputChange() {
+    if(this.selectedVehicleId){
+      this.isDisabled = this.checkIfDisabled();
+    }
+  }
+
+  checkIfDisabled():boolean{
+    switch(this.serviceName){
+      case 'Diagnostic service':
+        if(this.mileage && this.description){
+          return false
+        }
+        break;
+      case 'Electrical Repair Service':
+        if(this.mileage ){
+          return false
+        }
+        break;
+      case 'Mechanical Repair Service':
+        if(this.mileage ){
+          return false
+        }
+        break;
+      case 'Fast Service':
+        if(this.interviewType ){
+          return false
+        }
+        break;
+      case 'Multiple services':
+        if(this.mileage ){
+          return false
+        }
+        break;
+      case 'Bodywork':
+        if(this.mileage && this.description){
+          return false
+        }
+        break;
+    }
+
+
+    return true;
+  }
 
   //icon
   faImage = faImage;
