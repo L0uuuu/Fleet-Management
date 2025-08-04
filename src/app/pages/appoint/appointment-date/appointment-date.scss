@@ -22,8 +22,12 @@
     border-radius: 5px;
    
 }
-.next:hover{
+.next:hover:not(.next:disabled){
     background-color: rgba($color: #419ED9, $alpha: 0.91);
+}
+.next:disabled{
+    opacity: 0.5;
+    cursor: default;
 }
 .previous{
     display: inline-flex;

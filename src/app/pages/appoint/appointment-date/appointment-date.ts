@@ -24,6 +24,10 @@ export class AppointmentDate implements OnInit {
     private calenderAPI: CalenderAPI
   ){}
 
+  selectedDate:string = '';
+  selectedTime:string = '';
+
+
   navigateToAgency(): void{
     this.router.navigate(['/slide/appointments/agency']);
   }
@@ -56,8 +60,8 @@ export class AppointmentDate implements OnInit {
   datesList: any[] =[];
 
   onDateSelected(date: string) {
-    
-    console.log('Selected date:', date);
+    this.selectedDate=date;
+    console.log('Selected date:', this.selectedDate);
     if(this.serviceId){
       this.calenderAPI.getCalenderDates(this.serviceId,{startDate:date,endDate:date})
         .subscribe(response =>{
@@ -141,10 +145,26 @@ export class AppointmentDate implements OnInit {
   toggelSelectionFirst(i:number|null,){
     this.selectedIndexSecond = null;
     this.selectedIndexFirst = i; 
+    this.OnSelectDate();
   }
   toggelSelectionSecond(j:number|null,){
     this.selectedIndexFirst = null;
     this.selectedIndexSecond = j; 
+    this.OnSelectDate();
+  }
+
+
+  isDisabled:boolean=true;
+  OnSelectDate(){
+    if(this.selectedIndexFirst){
+      this.selectedTime = this.firstShiftSlotsList[this.selectedIndexFirst];
+    }
+    else if(this.selectedIndexSecond){
+      this.selectedTime = this.secondShiftSlotsList[this.selectedIndexSecond];
+    }
+    if(this.selectedDate && this.selectedTime){
+      this.isDisabled=false
+    }
   }
 
 

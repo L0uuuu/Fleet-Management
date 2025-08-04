@@ -64,7 +64,7 @@
         </div>
         <div class="next-previous">
             <button class="previous" (click)="navigateToAgency()"  > <fa-icon class="flech2" [icon]="faChevronRight"></fa-icon> &nbsp;&nbsp; Previous  </button>
-            <button class="next" (click)="navigateToSummary()" >Next &nbsp;&nbsp; <fa-icon class="flech" [icon]="faChevronRight"></fa-icon></button>
+            <button class="next" [disabled]="isDisabled" (click)="navigateToSummary()" >Next &nbsp;&nbsp; <fa-icon class="flech" [icon]="faChevronRight"></fa-icon></button>
         </div>
     </div>
 </div>
