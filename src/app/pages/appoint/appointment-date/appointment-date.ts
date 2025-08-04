@@ -156,10 +156,10 @@ export class AppointmentDate implements OnInit {
 
   isDisabled:boolean=true;
   OnSelectDate(){
-    if(this.selectedIndexFirst){
+    if(this.selectedIndexFirst!=null){
       this.selectedTime = this.firstShiftSlotsList[this.selectedIndexFirst];
     }
-    else if(this.selectedIndexSecond){
+    else if(this.selectedIndexSecond!=null){
       this.selectedTime = this.secondShiftSlotsList[this.selectedIndexSecond];
     }
     if(this.selectedDate && this.selectedTime){

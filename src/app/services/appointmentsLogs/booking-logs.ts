@@ -14,7 +14,9 @@ export class BookingLogs {
 
   additionalNotes: string = '';
 
+
   selectedServiceId: string | null = null;
+  selectedVehiclesRegistration: string | null = null;
   selectedVehicleId: string | null = null;
   service_btn: string | null = null;
   serviceName: string | null = null;
@@ -25,7 +27,7 @@ export class BookingLogs {
   quotation_number:string | null = null;
   Select_type_interview:string | null = null;
   Select_services: string | null = null;
-
+  serviceIcon:string | null = null;
 
 
 

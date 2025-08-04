@@ -25,11 +25,13 @@ export class Service implements OnInit {
   
   isSelectOpen = false;
   
+
   selectedVehicleId: string = '';
   selectedInterviewType:string ='';
   mileage: string = '';
   description: string = '';
   interviewType: string = '';
+
   constructor(private router: Router,private cdr:ChangeDetectorRef,private authService:AuthService,private serviceAPI:ServiceAPI,private bookingLogs:BookingLogs ,private vehiclesAPI: VehiclesAPI ) {}
   
   serviceStates: { [key: string]: boolean } = {
@@ -111,7 +113,7 @@ export class Service implements OnInit {
   }
 
 
-
+  serviceIcon:string =''
   serviceName: string = 'Default';
   serviceNameInApiRespense: string = '';
   isHidden: boolean = false;
@@ -136,36 +138,42 @@ export class Service implements OnInit {
         this.diagnosticService= 'assets/service-icons/white/DIAGNOSIS-service-white.png';
         this.serviceName='Diagnostic service';
         this.serviceNameInApiRespense='Service Diagnostique';
+        this.serviceIcon = 'assets/service-icons/blue/DIAGNOSIS-service.png';
         this.onInputChange();
         break;
       case 'ser2':  
         this.electricalRepairService= 'assets/service-icons/white/REPAIR_ELECTRIC-service-white.png';
         this.serviceName='Electrical Repair Service';
         this.serviceNameInApiRespense='Service Rép.Electrique';
+        this.serviceIcon = 'assets/service-icons/blue/REPAIR_ELECTRIC-service.png';
         this.onInputChange();
         break;
       case 'ser3':  
         this.mechanicalRepairService= 'assets/service-icons/white/REPAIR_MECHANIC-service-white.png';
         this.serviceName='Mechanical Repair Service';
         this.serviceNameInApiRespense='Service Rép.Mecanique';
+        this.serviceIcon = 'assets/service-icons/blue/REPAIR_MECHANIC-service.png';
         this.onInputChange();
         break;
       case 'ser4':  
         this.fastService= 'assets/service-icons/white/FAST-service-white.png';
         this.serviceName='Fast Service';
         this.serviceNameInApiRespense='Service Rapide';
+        this.serviceIcon = 'assets/service-icons/blue/FAST-service.png';
         this.onInputChange();
         break;
       case 'ser5':  
         this.multipleServices= 'assets/service-icons/white/MULTIPLE_SERVICES-service-white.png';
         this.serviceName='Multiple services';
         this.serviceNameInApiRespense='Services Multiples';
+        this.serviceIcon = 'assets/service-icons/blue/MULTIPLE_SERVICES-service.png';
         this.onInputChange();
         break;
       case 'ser6':  
         this.bodywork= 'assets/service-icons/white/REPAIR_SHEET_METAL-service-white.png';
         this.serviceName='Bodywork';
         this.serviceNameInApiRespense='Service Réparation Carrosserie';
+        this.serviceIcon = 'assets/service-icons/blue/REPAIR_SHEET_METAL-service.png';
         this.onInputChange();
         break;
     }
@@ -211,11 +219,18 @@ export class Service implements OnInit {
         (service) => service.name === this.serviceNameInApiRespense
       );
       this.bookingLogs.selectedServiceId = selectedService.id ;
+
+      
+
       this.bookingLogs.serviceName = this.serviceName;
       this.bookingLogs.mileage = this.mileage;
       this.bookingLogs.selectedVehicleId=this.selectedVehicleId;
+      this.bookingLogs.selectedVehiclesRegistration = this.vehiclesList.find(
+        (car) => car.id === this.selectedVehicleId
+      ).registrationNumber;
       this.bookingLogs.description = this.description;
       this.bookingLogs.Select_type_interview = this.interviewType;
+      this.bookingLogs.serviceIcon = this.serviceIcon;
       this.router.navigate(['/slide/appointments/agency']);
     });
 

@@ -3,6 +3,19 @@
         <div class="container-column">
             <div class="blue-container">
                 <fa-icon [icon]="faPenToSquare" class="edit-icon"></fa-icon>
+                
+                <h3>Identification of your vehicle</h3>
+                <div>
+                    <fa-icon class="check" [icon]="faCheckCircle"></fa-icon>&nbsp;&nbsp; <span>{{selectedVehicleRegistration}}</span>
+                </div>
+
+                <h3>Service</h3>
+                <div>
+                    <img [src]="this.serviceIcon" alt="">&nbsp;&nbsp; <span style="color: #399DDB;">{{serviceName}}</span>
+                </div>
+                <div>
+                    <fa-icon class="check" [icon]="faCheckCircle"></fa-icon>&nbsp;&nbsp; <span style="color: #399DDB;">{{serviceName}}</span>
+                </div>
             </div>
             <div>
                 <div class="blue-container">

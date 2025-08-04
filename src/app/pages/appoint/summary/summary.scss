@@ -66,9 +66,18 @@ fa-icon{
     min-height: 150px;
     max-height: 450px;
     color:#1D1D1D;
+    
+}
+.blue-container div{
+    margin: 10px 30px;
+    padding: 0;
+    font-size: 20px;
     display: flex;
+    justify-content: start;
     align-items: center;
-    flex-direction: column;
+}
+span{
+    color: #1D1D1D;
 }
 .container-column{
     display: flex;
@@ -83,4 +92,14 @@ fa-icon{
     right: 10px;
     cursor: pointer;
 
+}
+.check{
+    color: #1d1d1d;
+    font-size: 1em;
+}
+h3{
+    margin: 0;
+    color: #1D1D1D;
+    font-size: 20px;
+    font-weight: bold;
 }
