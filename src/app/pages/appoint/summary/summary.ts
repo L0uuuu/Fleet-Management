@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 
 import { BookingLogs } from '../../../services/appointmentsLogs/booking-logs';
 
+import { faClockRotateLeft } from '@fortawesome/free-solid-svg-icons';
+import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
@@ -27,6 +29,9 @@ export class Summary implements OnInit {
   agencyAddress: string | null = null;
 
 
+  selectedDate:string| null = null;
+  selectedTime:string | null = null;
+  
   selectedServiceId: string | null = null;
   selectedVehicleId: string | null = null;
   selectedVehicleRegistration: string | null = null;
@@ -64,6 +69,9 @@ export class Summary implements OnInit {
     this.agencyName = this.bookingLogs.agencyName;
     this.agencyAddress = this.bookingLogs.agencyAddress;
 
+    //date inti
+    this.selectedDate = this.bookingLogs.selectedDate;
+    this.selectedTime = this.bookingLogs.selectedTime;
 
   }
   onEditClick(choix: string): void {
@@ -74,11 +82,16 @@ export class Summary implements OnInit {
       case 'agency':
         this.router.navigate(['/slide/appointments/agency']);
         break;
+      case 'date':
+        this.router.navigate(['/slide/appointments/date']);
+        break;
     }
   }
   //icons
   faChevronRight = faChevronRight;
   faPenToSquare = faPenToSquare;
   faCheckCircle = faCheckCircle;
-  faMapMarkerAlt = faMapMarkerAlt
+  faMapMarkerAlt = faMapMarkerAlt;
+  faClock = faClockRotateLeft;
+  faCalendar = faCalendarAlt;
 }

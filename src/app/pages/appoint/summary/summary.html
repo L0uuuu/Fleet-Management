@@ -22,6 +22,9 @@
                 <div *ngIf="attatchment">
                     <fa-icon class="check" [icon]="faCheckCircle"></fa-icon> <span > Attatchment: <b>{{attatchment.name}} </b></span>
                 </div>
+                <div *ngIf="quotation_number">
+                    <fa-icon class="check" [icon]="faCheckCircle"></fa-icon> <span > Quotation number: <b>{{quotation_number}} </b></span>
+                </div>
                 <div *ngIf="Select_type_interview">
                     <fa-icon class="check" [icon]="faCheckCircle"></fa-icon><span > Selected interview type: <b>{{Select_type_interview }} km</b></span>
                 </div>
@@ -44,7 +47,14 @@
                     </div>
                 </div>
                 <div class="blue-container">
-                    <fa-icon [icon]="faPenToSquare" class="edit-icon"></fa-icon>
+                    <fa-icon [icon]="faPenToSquare" class="edit-icon" (click)="onEditClick('date')"></fa-icon>
+                    <h3>Date & time</h3>
+                    <div *ngIf="selectedDate" style="margin: 20px 30px;">
+                        <fa-icon class="check" [icon]="faCalendar"></fa-icon> <span style="letter-spacing: 1px;" > <b>{{selectedDate}} </b></span>
+                    </div>
+                    <div *ngIf="selectedTime"  style="margin: 20px 30px;">
+                        <fa-icon class="check" [icon]="faClock" ></fa-icon> <span style="letter-spacing: 1px;"> {{selectedTime}} </span>
+                    </div>
                 </div>
             </div>
         </div>

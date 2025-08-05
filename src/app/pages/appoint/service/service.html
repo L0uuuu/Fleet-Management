@@ -120,7 +120,7 @@
 
             <div class="align" id="quotation-number" *ngIf="isButtonActive('ser2') || isButtonActive('ser3')">
                 <label for="quotation-number">Quotation number</label>
-                <input type="text" class="zone1" (ngModelChange)="onInputChange()" id="quotation-number" placeholder="D12345">
+                <input type="text" class="zone1" [(ngModel)]="quotation_number" (ngModelChange)="onInputChange()" id="quotation-number" placeholder="D12345">
             </div>
 
             <div class="align" id="attatchment" *ngIf="!isButtonActive('ser4')">

@@ -32,7 +32,10 @@ export class AppointmentDate implements OnInit {
     this.router.navigate(['/slide/appointments/agency']);
   }
   navigateToSummary(): void{
+    this.bookingLogs.selectedDate = this.selectedDate;
+    this.bookingLogs.selectedTime = this.selectedTime;
     this.router.navigate(['/slide/appointments/summary']);
+    
   }
   
   serviceLoaded: boolean=true;
@@ -157,10 +160,11 @@ export class AppointmentDate implements OnInit {
   isDisabled:boolean=true;
   OnSelectDate(){
     if(this.selectedIndexFirst!=null){
-      this.selectedTime = this.firstShiftSlotsList[this.selectedIndexFirst];
+      this.selectedTime = this.firstShiftSlotsList[this.selectedIndexFirst].time;
+  
     }
     else if(this.selectedIndexSecond!=null){
-      this.selectedTime = this.secondShiftSlotsList[this.selectedIndexSecond];
+      this.selectedTime = this.secondShiftSlotsList[this.selectedIndexSecond].time;
     }
     if(this.selectedDate && this.selectedTime){
       this.isDisabled=false

@@ -12,7 +12,9 @@ export class BookingLogs {
 
   brandId: string='7e76cbc5-649c-49bf-ba58-9b9ce82a0ab9';
 
-  appointmentDate: Date | null = null;
+
+  selectedDate:string | null = null;
+  selectedTime:string | null = null;
 
   additionalNotes: string = '';
 
