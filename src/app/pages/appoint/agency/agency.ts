@@ -20,7 +20,6 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 export class Agency implements OnInit {
   constructor(private router: Router,private agencyAPI:AgencyAPI,private cdr: ChangeDetectorRef,private bookingLogs: BookingLogs){}
   
-
   agencyList: any[] = [];
   agencyPoints: { lat: number; lng: number; label: string }[] = [];
 
@@ -71,6 +70,8 @@ export class Agency implements OnInit {
     this.selectedAgencyIndex = index;
     this.bookingLogs.selectedAgencyIndex=this.selectedAgencyIndex;
     this.bookingLogs.selectedAgencyId=this.agencyList[index].id;
+    this.bookingLogs.agencyName = this.agencyList[index].socialReason;
+    this.bookingLogs.agencyAddress = this.agencyList[index].address;
     this.OnSelectAgency();
     console.log(this.bookingLogs.selectedAgencyId);
   }

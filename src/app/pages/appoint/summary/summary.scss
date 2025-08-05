@@ -69,15 +69,23 @@ fa-icon{
     
 }
 .blue-container div{
-    margin: 10px 30px;
+    margin: 15px 30px;
     padding: 0;
     font-size: 20px;
     display: flex;
     justify-content: start;
     align-items: center;
+    word-break: break-word;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    overflow-y: hidden;
+}
+img{
+    width: 2.5em;
 }
 span{
     color: #1D1D1D;
+    margin-left: 20px;
 }
 .container-column{
     display: flex;
@@ -93,12 +101,17 @@ span{
     cursor: pointer;
 
 }
+
+
+  
+
+
 .check{
     color: #1d1d1d;
     font-size: 1em;
 }
 h3{
-    margin: 0;
+    margin: 5px ;
     color: #1D1D1D;
     font-size: 20px;
     font-weight: bold;

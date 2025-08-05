@@ -80,7 +80,7 @@
                 <label>Vehicle broken down</label>
 
                 <label class="switch">
-                    <input type="checkbox" (ngModelChange)="onInputChange()">
+                    <input type="checkbox" [checked]="isBrokenDown" (click)="isBrokenDown=!isBrokenDown" (ngModelChange)="onInputChange()">
                     <span class="slider"></span>
                 </label>
             </div>
@@ -125,13 +125,25 @@
 
             <div class="align" id="attatchment" *ngIf="!isButtonActive('ser4')">
                 <label for="current-mileage">Attatchment</label>
-                <div class="dropzone-attachment">
+                <div class="dropzone-attachment" [ngClass]="{ 'drag-over': isDragging }" (click)="fileInput.click()" (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)" (drop)="onDrop($event)">
                     <fa-icon [icon]="faImage"></fa-icon>
+                    
+                    <div class="dropzone-text" *ngIf="!selectedFile">
+                        <span>drag a photo</span>
+                        <span> or </span>
+                        <span>select a file</span>
+                    </div>
 
-                    <span>drag a photo</span>
-                    <span>or</span>
-                    <span>select a file</span>
+                    <div *ngIf="selectedFile">
+                      <span>"{{selectedFile.name}}"</span>
+                    </div>
                 </div>
+                 <input
+                    #fileInput
+                    type="file"
+                    (change)="onFileSelected($event)"
+                    style="display: none"
+                />
             </div>
             <div class="next-previous">
                 <button class="next" [disabled]="isDisabled" (click)="navigateToAgency()" >Next &nbsp;&nbsp; <fa-icon class="flech" [icon]="faChevronRight"></fa-icon></button>

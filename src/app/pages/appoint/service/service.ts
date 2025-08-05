@@ -30,8 +30,9 @@ export class Service implements OnInit {
   selectedInterviewType:string ='';
   mileage: string = '';
   description: string = '';
+  quotation_number: string = '';
   interviewType: string = '';
-
+  isBrokenDown: boolean = false;
   constructor(private router: Router,private cdr:ChangeDetectorRef,private authService:AuthService,private serviceAPI:ServiceAPI,private bookingLogs:BookingLogs ,private vehiclesAPI: VehiclesAPI ) {}
   
   serviceStates: { [key: string]: boolean } = {
@@ -91,6 +92,12 @@ export class Service implements OnInit {
     }
     if(this.bookingLogs.Select_type_interview){
       this.interviewType=this.bookingLogs.Select_type_interview;
+    }
+    if(this.bookingLogs.isBrokenDown){
+      this.isBrokenDown = this.bookingLogs.isBrokenDown;
+    }
+    if(this.bookingLogs.quotation_number){
+      this.quotation_number = this.bookingLogs.quotation_number;
     }
     let user = this.authService.getUser();
     let id = user.client.id;
@@ -218,19 +225,30 @@ export class Service implements OnInit {
       const selectedService = this.services.find(
         (service) => service.name === this.serviceNameInApiRespense
       );
+
+
       this.bookingLogs.selectedServiceId = selectedService.id ;
-
-      
-
-      this.bookingLogs.serviceName = this.serviceName;
-      this.bookingLogs.mileage = this.mileage;
       this.bookingLogs.selectedVehicleId=this.selectedVehicleId;
       this.bookingLogs.selectedVehiclesRegistration = this.vehiclesList.find(
         (car) => car.id === this.selectedVehicleId
       ).registrationNumber;
-      this.bookingLogs.description = this.description;
-      this.bookingLogs.Select_type_interview = this.interviewType;
+      this.bookingLogs.serviceName = this.serviceName;
       this.bookingLogs.serviceIcon = this.serviceIcon;
+
+      if(this.serviceName=== 'Fast Service'){
+        this.bookingLogs.Select_type_interview = this.interviewType;
+      }
+      if(this.serviceName=== 'Multiple services'){
+        this.bookingLogs.Select_services = this.interviewType;
+      }
+      if(this.serviceName==='Mechanical Repair Service'||this.serviceName==='Electrical Repair Service'){
+        this.bookingLogs.quotation_number = this.quotation_number;
+      }
+
+      this.bookingLogs.mileage = this.mileage;
+      this.bookingLogs.description = this.description;
+      this.bookingLogs.isBrokenDown = this.isBrokenDown;
+
       this.router.navigate(['/slide/appointments/agency']);
     });
 
@@ -279,6 +297,41 @@ export class Service implements OnInit {
 
 
     return true;
+  }
+
+  selectedFile: File | null = null;
+
+  onFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      this.selectedFile = input.files[0];
+      console.log('Selected file:', this.selectedFile.name);
+      this.bookingLogs.attatchment = this.selectedFile;
+      // TODO: You can upload it or show preview here
+    }
+  }
+
+  isDragging = false;
+
+  onDragOver(event: DragEvent): void {
+    event.preventDefault(); // Required to allow dropping
+    this.isDragging = true;
+  }
+
+  onDragLeave(event: DragEvent): void {
+    event.preventDefault();
+    this.isDragging = false;
+  }
+
+  onDrop(event: DragEvent): void {
+    event.preventDefault();
+    this.isDragging = false;
+
+    if (event.dataTransfer?.files.length) {
+      this.selectedFile = event.dataTransfer.files[0];
+      console.log('Dropped file:', this.selectedFile);
+      this.bookingLogs.attatchment = this.selectedFile;
+    }
   }
 
   //icon

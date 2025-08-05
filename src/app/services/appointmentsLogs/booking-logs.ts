@@ -7,6 +7,8 @@ export class BookingLogs {
   
   selectedAgencyId: string | null = null;
   selectedAgencyIndex: number = -1;
+  agencyName: string| null = null;
+  agencyAddress: string | null = null;
 
   brandId: string='7e76cbc5-649c-49bf-ba58-9b9ce82a0ab9';
 
@@ -23,7 +25,7 @@ export class BookingLogs {
   isBrokenDown: boolean = false;
   mileage: string | null = null;
   description: string | null = null;
-  attatchment: string | null = null;
+  attatchment:  File | null = null;
   quotation_number:string | null = null;
   Select_type_interview:string | null = null;
   Select_services: string | null = null;

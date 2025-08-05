@@ -274,12 +274,26 @@ fa-icon{
     border: dashed 2px #399DDB ;
     background-color: rgba(57, 157, 219,0.2);
     border-radius: 20px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+.dropzone-text{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
-
+.dropzone-attachment:hover {
+    background-color: rgba(57, 157, 219,0.1);
+}
+.dropzone-attachment.drag-over {
+  
+    background-color: rgba(57, 157, 219,0.1);
+}
 .next{
     display: inline-flex;
     cursor: pointer;

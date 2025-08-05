@@ -2,24 +2,46 @@
     <div class="container">
         <div class="container-column">
             <div class="blue-container">
-                <fa-icon [icon]="faPenToSquare" class="edit-icon"></fa-icon>
+                <fa-icon [icon]="faPenToSquare" class="edit-icon" (click)="onEditClick('service')"></fa-icon>
                 
                 <h3>Identification of your vehicle</h3>
                 <div>
-                    <fa-icon class="check" [icon]="faCheckCircle"></fa-icon>&nbsp;&nbsp; <span>{{selectedVehicleRegistration}}</span>
+                    <fa-icon class="check" [icon]="faCheckCircle"></fa-icon> <span>{{selectedVehicleRegistration}}</span>
                 </div>
 
                 <h3>Service</h3>
-                <div>
-                    <img [src]="this.serviceIcon" alt="">&nbsp;&nbsp; <span style="color: #399DDB;">{{serviceName}}</span>
+                <div *ngIf="serviceName">
+                    <img [src]="this.serviceIcon" alt=""> <span style="color: #399DDB;">{{serviceName}}</span>
                 </div>
-                <div>
-                    <fa-icon class="check" [icon]="faCheckCircle"></fa-icon>&nbsp;&nbsp; <span style="color: #399DDB;">{{serviceName}}</span>
+                <div *ngIf="mileage" >
+                    <fa-icon class="check" [icon]="faCheckCircle"></fa-icon> <span > Current mileage: <b>{{mileage }} km</b></span>
+                </div>
+                <div *ngIf="description" width="200px">
+                    <fa-icon class="check" [icon]="faCheckCircle"></fa-icon> <span > Description: <b>{{description }} </b></span>
+                </div>
+                <div *ngIf="attatchment">
+                    <fa-icon class="check" [icon]="faCheckCircle"></fa-icon> <span > Attatchment: <b>{{attatchment.name}} </b></span>
+                </div>
+                <div *ngIf="Select_type_interview">
+                    <fa-icon class="check" [icon]="faCheckCircle"></fa-icon><span > Selected interview type: <b>{{Select_type_interview }} km</b></span>
+                </div>
+                <div *ngIf="Select_services">
+                    <fa-icon class="check" [icon]="faCheckCircle"></fa-icon> <span > Selected interview type: <b>{{Select_type_interview }}  </b></span>
+                </div>
+                <div *ngIf="isBrokenDown">
+                    <img src="assets/service-icons/breakdown-icon.png" alt="Vehicle broken down"><span >Vehicle broken down</span>
                 </div>
             </div>
             <div>
                 <div class="blue-container">
-                    <fa-icon [icon]="faPenToSquare" class="edit-icon"></fa-icon>
+                    <fa-icon [icon]="faPenToSquare" class="edit-icon" (click)="onEditClick('agency')"></fa-icon>
+                    <h3>Agency</h3>
+                    <div *ngIf="agencyName" style="margin: 20px 30px;">
+                        <fa-icon class="check" [icon]="faCheckCircle"></fa-icon> <span > <b>{{agencyName}} </b></span>
+                    </div>
+                    <div *ngIf="agencyAddress"  style="margin: 20px 30px;">
+                        <fa-icon class="check" [icon]="faMapMarkerAlt" style="color: #999999;font-size: 0.9em;"></fa-icon> <span style="color: #999999;font-size: 18px;"> {{agencyAddress}} </span>
+                    </div>
                 </div>
                 <div class="blue-container">
                     <fa-icon [icon]="faPenToSquare" class="edit-icon"></fa-icon>
