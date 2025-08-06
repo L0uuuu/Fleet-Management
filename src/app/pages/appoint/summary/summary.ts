@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { BookingLogs } from '../../../services/appointmentsLogs/booking-logs';
+import{ AppointmentDataAPI } from '../../../services/appoint/appointment-data-api';
+
 
 import { faClockRotateLeft } from '@fortawesome/free-solid-svg-icons';
 import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
@@ -16,12 +18,46 @@ import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
   styleUrl: './summary.scss'
 })
 export class Summary implements OnInit {
-  constructor(private router:Router,private bookingLogs:BookingLogs ){}
+  constructor(private router:Router,private bookingLogs:BookingLogs,private appointmentDataAPI:AppointmentDataAPI ){}
+
+  parseNumberFromString(input: string|null): number|null {
+    if(input){
+      return Number(input.replace(/,/g, ''));
+    }
+    return null;
+  }
+
+
   navigateToDate(){
     this.router.navigate(['/slide/appointments/date']);
   }
   confirmation(){
-    console.log('confirmed');
+    const date = this.selectedDate; // e.g. '2025-08-06'
+    const time = this.selectedTime; // e.g. '14:30'
+
+    // Combine to a Date object
+    const appointmentDate = new Date(`${date}T${time}:00`); // Add seconds
+
+    // Convert to ISO string
+    const isoAppointmentDate = appointmentDate.toISOString();
+
+
+    
+    var payload = {
+      deviceType: 'ISO', 
+      data: {
+        description: this.description,
+        km: this.parseNumberFromString(this.mileage),
+        appointmentDate: isoAppointmentDate // or bind from a date picker
+      },
+      vehicle: this.selectedVehicleId,
+      breakDown: this.isBrokenDown,
+      service: this.selectedServiceId
+    };
+    this.appointmentDataAPI.setInterventions(payload).subscribe({
+      next: (res) => console.log('Sent with attachment:', res),
+      error: (err) => console.error('Upload error:', err)
+    });
   }
 
   selectedAgencyId: string | null = null;
