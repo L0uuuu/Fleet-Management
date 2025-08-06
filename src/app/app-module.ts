@@ -31,6 +31,7 @@ import { AppointmentDate } from './pages/appoint/appointment-date/appointment-da
 import { Vehicles } from './pages/vehicles/vehicles';
 import { Map } from './pages/extra/map/map';
 import { Calendar } from './pages/extra/calendar/calendar';
+import { Confirmation } from './pages/appoint/confirmation/confirmation';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import { Calendar } from './pages/extra/calendar/calendar';
     Vehicles,
     Map,
     Calendar,
+    Confirmation,
   ],
   imports: [
     BrowserModule,

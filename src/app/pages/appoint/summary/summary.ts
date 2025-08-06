@@ -40,8 +40,8 @@ export class Summary implements OnInit {
 
     // Convert to ISO string
     const isoAppointmentDate = appointmentDate.toISOString();
-
-
+    console.log(isoAppointmentDate);
+    console.log(this.parseNumberFromString(this.mileage));
     
     var payload = {
       deviceType: 'ISO', 
@@ -52,10 +52,17 @@ export class Summary implements OnInit {
       },
       vehicle: this.selectedVehicleId,
       breakDown: this.isBrokenDown,
-      service: this.selectedServiceId
+      service: this.serviceId
     };
+
+    if (this.quotation_number) {
+      (payload.data as any).quoteNumber = this.quotation_number;
+    }
     this.appointmentDataAPI.setInterventions(payload).subscribe({
-      next: (res) => console.log('Sent with attachment:', res),
+      next: (res) => {
+        console.log('Sent with attachment:', res);
+        this.router.navigate(['/slide/appointments/confirmation']);
+      },
       error: (err) => console.error('Upload error:', err)
     });
   }
@@ -68,6 +75,7 @@ export class Summary implements OnInit {
   selectedDate:string| null = null;
   selectedTime:string | null = null;
   
+  serviceId: string | null = null;// for the non abstract service
   selectedServiceId: string | null = null;
   selectedVehicleId: string | null = null;
   selectedVehicleRegistration: string | null = null;
@@ -83,6 +91,7 @@ export class Summary implements OnInit {
 
   ngOnInit(): void {
     //service init
+    this.serviceId = this.bookingLogs.serviceId;
     this.selectedServiceId = this.bookingLogs.selectedServiceId;
     this.selectedVehicleId = this.bookingLogs.selectedVehicleId;
 

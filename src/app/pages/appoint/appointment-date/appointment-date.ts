@@ -34,6 +34,7 @@ export class AppointmentDate implements OnInit {
   navigateToSummary(): void{
     this.bookingLogs.selectedDate = this.selectedDate;
     this.bookingLogs.selectedTime = this.selectedTime;
+    this.bookingLogs.serviceId = this.serviceId;
     this.router.navigate(['/slide/appointments/summary']);
     
   }

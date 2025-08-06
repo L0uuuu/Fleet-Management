@@ -13,6 +13,8 @@ import { Service } from './pages/appoint/service/service';
 import { Agency } from './pages/appoint/agency/agency';
 import { AppointmentDate } from './pages/appoint/appointment-date/appointment-date';
 import { Summary } from './pages/appoint/summary/summary';
+import { Confirmation } from './pages/appoint/confirmation/confirmation';
+
 
 const routes: Routes = [     
   { path: '', redirectTo: '/slide', pathMatch: 'full' },
@@ -28,6 +30,7 @@ const routes: Routes = [
           { path: 'agency', component:  Agency },
           { path: 'date', component:  AppointmentDate },
           { path: 'summary', component: Summary },
+          { path: 'confirmation', component: Confirmation },
           { path: '', redirectTo: 'service', pathMatch: 'full' }
     ]
   }

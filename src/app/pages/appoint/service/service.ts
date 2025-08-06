@@ -84,6 +84,9 @@ export class Service implements OnInit {
       
       
     }
+    if(this.bookingLogs.attatchment){
+      this.selectedFile = this.bookingLogs.attatchment;
+    }
     if(this.bookingLogs.mileage){
       this.mileage = this.bookingLogs.mileage;
     }
@@ -238,11 +241,21 @@ export class Service implements OnInit {
       if(this.serviceName=== 'Fast Service'){
         this.bookingLogs.Select_type_interview = this.interviewType;
       }
+      else{
+        this.bookingLogs.Select_type_interview = null;
+      }
       if(this.serviceName=== 'Multiple services'){
         this.bookingLogs.Select_services = this.interviewType;
       }
+      
+      else{
+        this.bookingLogs.Select_services = null;
+      }
       if(this.serviceName==='Mechanical Repair Service'||this.serviceName==='Electrical Repair Service'){
         this.bookingLogs.quotation_number = this.quotation_number;
+      }
+      else{
+        this.bookingLogs.quotation_number = null;
       }
 
       this.bookingLogs.mileage = this.mileage;

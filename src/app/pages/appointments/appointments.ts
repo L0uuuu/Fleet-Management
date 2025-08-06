@@ -21,6 +21,7 @@ export class Appointments {
     else if (url.includes('agency')) this.currentStep = 2;
     else if (url.includes('date')) this.currentStep = 3;
     else if (url.includes('summary')) this.currentStep = 4;
+    else if (url.includes('confirmation')) this.currentStep = 5;
   }
 
   isCompleted(step: number): boolean {

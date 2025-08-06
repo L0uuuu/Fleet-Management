@@ -27,7 +27,7 @@ export class Agency implements OnInit {
   ngOnInit(): void {
     const selectedServiceId = this.bookingLogs.selectedServiceId;
     if (selectedServiceId) {
-      this.agencyAPI.getAgency({ abstractServices: [selectedServiceId] })
+      this.agencyAPI.getAgency({ abstractServices: [selectedServiceId],brand: this.bookingLogs.brandId })
         .subscribe(response => {
           this.agencyList = response;
           console.log('agency:', this.agencyList);
@@ -45,7 +45,8 @@ export class Agency implements OnInit {
           
           this.cdr.detectChanges();
         });
-    } else {
+    } 
+    else {
       console.warn('selectedServiceId is null. Skipping API call.');
     }
   }

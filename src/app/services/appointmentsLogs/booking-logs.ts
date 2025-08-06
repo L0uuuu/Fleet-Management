@@ -19,6 +19,7 @@ export class BookingLogs {
   additionalNotes: string = '';
 
 
+  serviceId: string | null = null;// for the non abstract service
   selectedServiceId: string | null = null;
   selectedVehiclesRegistration: string | null = null;
   selectedVehicleId: string | null = null;
