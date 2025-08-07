@@ -1,7 +1,7 @@
 <div class="vehicles">
     <div class="top">
         <h2> Vehicles </h2>
-        <button class="add-vehicles">  <fa-icon [icon]="faPlus"></fa-icon> &nbsp; Add Vehicles</button>
+        <button class="add-vehicles" (click)="openPopup('pop1')">  <fa-icon [icon]="faPlus"></fa-icon> &nbsp; Add Vehicles</button>
     </div>
     <hr class="line2">
     <div class="mid">
@@ -24,6 +24,7 @@
                 <th>Model</th>
                 <th>Version</th>
                 <th>Price</th>  
+                <th style="width: 100px;"></th>  
             </tr>
         </thead>
 
@@ -40,8 +41,48 @@
                 <td>{{ v.version?.model?.title }}</td>
                 <td>{{ v.version?.version }}</td>
                 <td>{{ v.version?.price }} {{ v.version?.unit }}</td>
+                <td class="icon-container"><fa-icon (click)="openPopup('pop2')" class="delete-icon"  [icon]="faXmarkCircle"></fa-icon> <fa-icon class="edit-icon" (click)="openPopup('pop3')"   [icon]="faPen"></fa-icon> <fa-icon class="view-icon"  [icon]="faEye"></fa-icon></td>
             </tr>
         </tbody>
     </table>
+
+
+    <!-- Popup -->
+    <!-- Popup for adding a vehicle -->
+    <div class="popup" *ngIf="showPopup_addVehicle">
+        <div class="popup-content">
+            <span class="close" (click)="closePopup()">&times;</span>
+            <div class="container">
+                
+                <div class="button-container">
+                    <button class="Save-button" (click)="closePopup()">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Popup to delete a vehicle-->
+    <div class="popup" *ngIf="showPopup_deleteVehicle">
+        <div class="popup-content">
+            <span class="close" (click)="closePopup()">&times;</span>
+            <div class="container">
+                <div class="delete-container">
+                    <h1>are sure you wante to delete this car</h1>
+                    <button class="Save-button" (click)="closePopup()">confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Popup to edit a vehicle-->
+    <div class="popup" *ngIf="showPopup_editVehicle">
+        <div class="popup-content">
+            <span class="close" (click)="closePopup()">&times;</span>
+            <div class="container">
+                <div class="delete-container">
+                    
+                    <button class="Save-button" (click)="closePopup()">confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
     
 </div>

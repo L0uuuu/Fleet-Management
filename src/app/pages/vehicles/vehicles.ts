@@ -7,6 +7,10 @@ import { ChangeDetectorRef } from '@angular/core';
 //icon importation
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
+import { faPencil } from '@fortawesome/free-solid-svg-icons';
+import { faEye } from '@fortawesome/free-solid-svg-icons';
+import { ca, csInterfaceTranslations } from 'intl-tel-input/i18n';
 
 @Component({
   selector: 'app-vehicles',
@@ -42,7 +46,39 @@ export class Vehicles implements OnInit  {
   checkIfAllSelected() {
     this.selectAll = this.vehicl.every(v => v.selected);
   }
+
+
+  //popup
+  showPopup_addVehicle: boolean = false;
+  showPopup_deleteVehicle: boolean = false;
+  showPopup_editVehicle: boolean = false;
+  openPopup(pop: string) {
+    switch(pop){
+      case'pop1':
+        this.showPopup_addVehicle = true;
+        break;
+      case'pop2':
+        this.showPopup_deleteVehicle = true;
+        break;
+      case'pop3': 
+        this.showPopup_editVehicle = true;
+        break;
+    }
+    
+  }
+
+  closePopup() {
+    this.showPopup_addVehicle = false;
+    this.showPopup_deleteVehicle = false;
+    this.showPopup_editVehicle = false;
+  }
+
+
+
   //icon
   faPlus = faPlus;
   faSearch = faSearch;
+  faXmarkCircle = faCircleXmark;
+  faPen= faPencil;
+  faEye = faEye;
 }
