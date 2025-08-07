@@ -48,7 +48,7 @@ export class Summary implements OnInit {
       data: {
         description: this.description,
         km: this.parseNumberFromString(this.mileage),
-        appointmentDate: isoAppointmentDate // or bind from a date picker
+        appointmentDate: isoAppointmentDate
       },
       vehicle: this.selectedVehicleId,
       breakDown: this.isBrokenDown,
