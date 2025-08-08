@@ -36,7 +36,7 @@ export class Vehicles implements OnInit  {
       this.cdr.detectChanges();
     });
   }
-
+  
   selectAll: boolean = false;
 
   toggleAll() {

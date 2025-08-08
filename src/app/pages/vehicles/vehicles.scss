@@ -68,7 +68,7 @@ thead th{
     border-bottom:solid 0.7px rgba($color: #000000, $alpha: 0.1);
 }
 tbody td{
-    padding: 10px 0 0 0 ;
+    padding: 6px 0;
 }
 
 .custom-checkbox.small {
@@ -120,7 +120,9 @@ tbody td{
   border-width: 0 1.5px 1.5px 0;
   transform: rotate(45deg);
 }
-
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
 .custom-checkbox.small input:checked ~ .checkmark::after {
   display: block;
 }

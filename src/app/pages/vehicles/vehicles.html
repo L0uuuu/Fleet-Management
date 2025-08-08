@@ -29,7 +29,7 @@
         </thead>
 
         <tbody>
-            <tr *ngFor="let v of vehicl">
+            <tr *ngFor="let v of vehicl;let i = index">
                 <td class="th-checkbox">
                     <label class="custom-checkbox small">
                         <input type="checkbox" [(ngModel)]="v.selected" (change)="checkIfAllSelected()">
@@ -41,7 +41,11 @@
                 <td>{{ v.version?.model?.title }}</td>
                 <td>{{ v.version?.version }}</td>
                 <td>{{ v.version?.price }} {{ v.version?.unit }}</td>
-                <td class="icon-container"><fa-icon (click)="openPopup('pop2')" class="delete-icon"  [icon]="faXmarkCircle"></fa-icon> <fa-icon class="edit-icon" (click)="openPopup('pop3')"   [icon]="faPen"></fa-icon> <fa-icon class="view-icon"  [icon]="faEye"></fa-icon></td>
+                <td class="icon-container">
+                    <fa-icon (click)="openPopup('pop2')" class="delete-icon"  [icon]="faXmarkCircle"></fa-icon> 
+                    <fa-icon class="edit-icon" (click)="openPopup('pop3')"   [icon]="faPen"></fa-icon> 
+                    <fa-icon class="view-icon"   [icon]="faEye"></fa-icon>
+                </td>
             </tr>
         </tbody>
     </table>
