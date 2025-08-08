@@ -44,7 +44,7 @@
                 <td class="icon-container">
                     <fa-icon (click)="openPopup('pop2')" class="delete-icon"  [icon]="faXmarkCircle"></fa-icon> 
                     <fa-icon class="edit-icon" (click)="openPopup('pop3')"   [icon]="faPen"></fa-icon> 
-                    <fa-icon class="view-icon"   [icon]="faEye"></fa-icon>
+                    <fa-icon class="view-icon"  (click)="navigateToTechnicalFile(i)" [icon]="faEye"></fa-icon>
                 </td>
             </tr>
         </tbody>

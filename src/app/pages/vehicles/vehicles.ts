@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { VehiclesAPI } from '../../services/vehicles-api';
 import { AuthService } from '../../services/auth-service';
+import { VehiclesLog } from '../../services/vehiclesLogs/vehicles-log'; 
 
 import { ChangeDetectorRef } from '@angular/core';
 //icon importation
@@ -11,6 +12,7 @@ import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import { faPencil } from '@fortawesome/free-solid-svg-icons';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { ca, csInterfaceTranslations } from 'intl-tel-input/i18n';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-vehicles',
@@ -20,7 +22,7 @@ import { ca, csInterfaceTranslations } from 'intl-tel-input/i18n';
 })
 export class Vehicles implements OnInit  {
   vehicl: any[] = [];
-  constructor(private http: HttpClient,private authService: AuthService,private vehiclesAPI: VehiclesAPI,private cdr: ChangeDetectorRef) {}
+  constructor(private vehiclesLog:VehiclesLog,private router:Router,private http: HttpClient,private authService: AuthService,private vehiclesAPI: VehiclesAPI,private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
     let user = this.authService.getUser();
@@ -35,8 +37,9 @@ export class Vehicles implements OnInit  {
       this.vehicl = response.result;
       this.cdr.detectChanges();
     });
+    
   }
-  
+
   selectAll: boolean = false;
 
   toggleAll() {
@@ -73,6 +76,11 @@ export class Vehicles implements OnInit  {
     this.showPopup_editVehicle = false;
   }
 
+  navigateToTechnicalFile(index: number) {
+    const vehicle = this.vehicl[index];
+    this.vehiclesLog.vehicleID = vehicle.id;
+    this.router.navigate(['/slide/technicalFile']);
+  }
 
 
   //icon
