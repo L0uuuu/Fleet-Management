@@ -1,5 +1,17 @@
 <div class="technical-file">
     
     <button class="back-button" (click)="navigateToVehicles()"><fa-icon class="Arrow-icon" [icon]="faArrow"></fa-icon> Vehicles</button>
-
+    <div class="top-container">
+        <div class="image"></div>
+        <div class="vehicle-details">
+           <h1>{{ formattedRegistration }}</h1>
+           <div class="vehicle-info">
+                <span>{{vehicleDetails?.version.model.title}}</span>
+                <span class="circle"></span>
+                <span>{{vehicleDetails?.version.version}}</span>
+                <span class="circle"></span>
+                <span>{{vehicleDetails?.chassisNumber}}</span>
+           </div>
+        </div>
+    </div>
 </div>
