@@ -32,4 +32,9 @@ export class VehiclesAPI {
 
     return this.http.get(url, { params: httpParams });
   }
+  
+  getVehicleById(id: string): Observable<any> {
+    const url = `${this.baseUrl}/vehicles/${id}`;
+    return this.http.get(url);
+  }
 }
