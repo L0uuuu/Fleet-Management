@@ -29,6 +29,7 @@ h1{
     padding: 5px 20px ;
     display: flex;
     gap: 10px;
+    margin-bottom: 30px;
 }
 .vehicle-info{
     display: flex;
@@ -49,4 +50,34 @@ span{
     display: inline-block;
     margin: auto 0;
 
+}
+.options{
+
+    border-bottom:1px solid rgba($color: #000000, $alpha: 0.25) ;
+    display: flex;
+    gap: 20px;
+    padding-left: 20px;
+    font-weight: 600;
+}
+
+
+.options span{
+    color: rgba($color: #615C5C, $alpha: 0.8) ;
+    padding: 10px 0;
+    font-size: 20px;
+    transition: color 0.3s ease;
+    cursor: pointer;
+    &.active {
+      color: #237CB3;
+      border-bottom:3px solid #237CB3;
+ 
+    }
+}
+hr{
+    height: 25px;
+    width: 2px;
+    margin: 0;
+    background-color: rgba($color: #000000, $alpha: 0.3);
+    border: none;
+    cursor: default;
 }

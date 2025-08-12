@@ -17,6 +17,8 @@ export class TechnicalFile implements OnInit {
     this.router.navigate(['/slide/vehicles']);
 
   }
+  selected: number = 0; // Default to 'Overview'
+  
   vehicleId: string|null = null;
   vehicleDetails: any;
   ngOnInit(): void {
