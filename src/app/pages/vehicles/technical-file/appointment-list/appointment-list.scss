@@ -1,0 +1,26 @@
+.appointment-list{
+    width: 100%;
+
+}
+th{
+    color: #22232A;
+    text-align: left;
+    
+}
+table{
+    border-collapse: collapse;
+    color: #22232A;
+    width: 100%;
+}
+
+thead th{
+    padding:4px 0 ;
+    border-top:solid 0.7px rgba($color: #000000, $alpha: 0.2);
+    border-bottom:solid 0.7px rgba($color: #000000, $alpha: 0.1);
+}
+tbody td{
+    padding: 6px 0;
+}
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}

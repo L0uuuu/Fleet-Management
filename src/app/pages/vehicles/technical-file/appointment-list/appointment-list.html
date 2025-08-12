@@ -1,0 +1,24 @@
+<div class="appointment-list">
+    <table>
+        <thead>
+            <tr>
+            <th>Service</th>
+            <th>Vehicle</th>
+            <th>KM</th>
+            <th>Status</th>
+            <th>Requested Date</th>
+            <th>Agency</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let appt of appointments">
+            <td>{{ appt.service?.abstractService?.name }}</td>
+            <td>{{ appt.vehicle?.registrationNumber }}</td>
+            <td>{{ appt.km | number }}</td>
+            <td>{{ appt.status }}</td>
+            <td>{{ appt.requestedDate | date: 'short' }}</td>
+            <td>{{ appt.service?.agency?.socialReason }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

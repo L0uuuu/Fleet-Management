@@ -22,7 +22,11 @@ export class TechnicalFile implements OnInit {
     switch (selectedNumber) {
       case 0:
         this.router.navigate(['/slide/technicalFile/overview']);
-        break;}
+        break;
+      case 2:
+        this.router.navigate(['/slide/technicalFile/appointmentList']);
+        break;
+    }
   }
   vehicleId: string|null = null;
   vehicleDetails: any;

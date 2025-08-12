@@ -34,6 +34,7 @@ import { Calendar } from './pages/extra/calendar/calendar';
 import { Confirmation } from './pages/appoint/confirmation/confirmation';
 import { TechnicalFile } from './pages/vehicles/technical-file/technical-file';
 import { Overview } from './pages/vehicles/technical-file/overview/overview';
+import { AppointmentList } from './pages/vehicles/technical-file/appointment-list/appointment-list';
 
 
 @NgModule({
@@ -54,6 +55,7 @@ import { Overview } from './pages/vehicles/technical-file/overview/overview';
     Confirmation,
     TechnicalFile,
     Overview,
+    AppointmentList,
   ],
   imports: [
     BrowserModule,
