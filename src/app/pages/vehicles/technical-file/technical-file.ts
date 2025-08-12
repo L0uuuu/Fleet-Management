@@ -18,7 +18,12 @@ export class TechnicalFile implements OnInit {
 
   }
   selected: number = 0; // Default to 'Overview'
-  
+  navigateTo(selectedNumber: number) {
+    switch (selectedNumber) {
+      case 0:
+        this.router.navigate(['/slide/technicalFile/overview']);
+        break;}
+  }
   vehicleId: string|null = null;
   vehicleDetails: any;
   ngOnInit(): void {

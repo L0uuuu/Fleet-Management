@@ -16,9 +16,12 @@
         </div>
     </div>
     <div class="options">
-        <span (click)="selected = 0" [class.active]="selected === 0">Overview</span>
+        <span (click)="selected = 0;navigateTo(selected)" [class.active]="selected === 0">Overview</span>
         <span><hr></span>
-        <span (click)="selected = 1" [class.active]="selected === 1">Specs</span>
-        <span (click)="selected = 2" [class.active]="selected === 2">Appointments</span>
+        <span (click)="selected = 1;navigateTo(selected)" [class.active]="selected === 1">Specs</span>
+        <span (click)="selected = 2;navigateTo(selected)" [class.active]="selected === 2">Appointments</span>
+    </div>
+    <div class="bottom-container">
+        <router-outlet></router-outlet>
     </div>
 </div>

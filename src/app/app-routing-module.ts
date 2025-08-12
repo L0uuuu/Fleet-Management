@@ -15,7 +15,7 @@ import { AppointmentDate } from './pages/appoint/appointment-date/appointment-da
 import { Summary } from './pages/appoint/summary/summary';
 import { Confirmation } from './pages/appoint/confirmation/confirmation';
 import { TechnicalFile } from './pages/vehicles/technical-file/technical-file';
-
+import { Overview } from './pages/vehicles/technical-file/overview/overview';
 const routes: Routes = [     
   { path: '', redirectTo: '/slide', pathMatch: 'full' },
   { path: 'login', component: Login },
@@ -24,7 +24,12 @@ const routes: Routes = [
       { path: 'account-setting', component: AccountSetting },
       { path: 'dashboard', component: Dashboard },
       { path: 'vehicles', component: Vehicles},
-      { path: 'technicalFile', component: TechnicalFile },
+      { path: 'technicalFile', component: TechnicalFile, 
+        children: [
+          {path: 'overview', component: Overview},
+          { path: '', redirectTo: 'overview', pathMatch: 'full' }
+        ]
+      },
       { path: 'appointments', component: Appointments,
         children: [
           { path: 'service', component: Service},
