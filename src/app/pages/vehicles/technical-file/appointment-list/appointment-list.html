@@ -1,24 +1,31 @@
 <div class="appointment-list">
-    <table>
-        <thead>
-            <tr>
-            <th>Service</th>
-            <th>Vehicle</th>
-            <th>KM</th>
-            <th>Status</th>
-            <th>Requested Date</th>
-            <th>Agency</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let appt of appointments">
-            <td>{{ appt.service?.abstractService?.name }}</td>
-            <td>{{ appt.vehicle?.registrationNumber }}</td>
-            <td>{{ appt.km | number }}</td>
-            <td>{{ appt.status }}</td>
-            <td>{{ appt.requestedDate | date: 'short' }}</td>
-            <td>{{ appt.service?.agency?.socialReason }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Service</th>
+                    <th>KM</th>
+                    <th>Status</th>
+                    <th>Requested Date</th>
+                    <th>Requested Time</th>
+                    <th>Duration</th>
+                    <th>Agency</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let appt of appointments">
+                    <td>{{ appt.service?.abstractService?.name }}</td>
+                    <td>{{ appt.km | number }}</td>
+                    <td><span class="circle" [ngClass]="{'requested': getStatusColor( appt.status )=='grey',
+                                                        'accepted': getStatusColor( appt.status )=='green',
+                                                        'rejected': getStatusColor( appt.status )=='red'}"></span>
+                        {{ appt.status }}</td>
+                    <td>{{ (appt.requestedDate || appt.appointment?.date) | date: 'longDate' }}</td>
+                    <td>{{ (appt.requestedDate || appt.appointment?.date) | date: 'mediumTime' }}</td>
+                    <td>{{ appt.appointment?.duration ? appt.appointment.duration + ' min' : 'N/A' }}</td>
+                    <td>{{ appt.service?.agency?.socialReason }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

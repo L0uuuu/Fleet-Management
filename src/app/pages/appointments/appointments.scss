@@ -8,7 +8,7 @@
 .bottom {
     display: flex;
     flex-direction: column;
-    flex-grow: 1;          /* or any fixed height (e.g., 600px) */
+
     overflow-y: auto;        /* enable vertical scroll only */
     box-sizing: border-box;  /* make sure padding doesn't increase height */
     padding-bottom:10px ;

@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { ChangeDetectorRef } from '@angular/core';
 import { VehiclesAPI } from '../../../services/vehicles-api';
 import { VehiclesLog } from '../../../services/vehiclesLogs/vehicles-log';
+
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { faArrowLeftLong } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-technical-file',
@@ -53,4 +55,5 @@ export class TechnicalFile implements OnInit {
 
   //icon
   faArrow=faArrowLeftLong;
+  faStar = faStar;
 }

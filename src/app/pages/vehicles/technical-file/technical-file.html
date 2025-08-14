@@ -12,6 +12,13 @@
                 <span class="circle"></span>
                 <span>{{vehicleDetails?.chassisNumber}}</span>
            </div>
+           <div class="vehicle-info" style="gap: 50px; font-size: 20px;">
+                <p *ngIf="vehicleDetails?.oilChangeEach"> <strong>Oil Change Each:</strong> {{vehicleDetails?.oilChangeEach}} km</p>
+                <p> <span class="circle" [style.background-color]="vehicleDetails?.color"
+                    style="width:15px; height:15px;"></span>{{vehicleDetails?.color}}</p>
+
+                <p><fa-icon [ngClass]="{'star-icon-off': vehicleDetails?.favoriteAgencyId==null,'star-icon-on': vehicleDetails?.favoriteAgencyId }" [icon]="faStar"></fa-icon> {{vehicleDetails?.favoriteAgency ? vehicleDetails?.favoriteAgency.socialReason : 'no favorite agency'}}</p>
+           </div>
            
         </div>
     </div>
