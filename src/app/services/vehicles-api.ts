@@ -77,6 +77,33 @@ export class VehiclesAPI {
 
     return this.http.get(url, { params: httpParams });
   }
+  getVehicleInterventionsById2(
+  id: string,
+  params: {
+    page?: number;
+    pageSize?: number;
+    order?: 'ASC' | 'DESC';
+    status?: string;
+    service?: string;
+  }
+  ): Observable<any> {
+  const url = `${this.baseUrl}/vehicles/${id}/interventions`;
+
+  let httpParams = new HttpParams()
+    .set('page', (params.page ?? 1).toString())
+    .set('pageSize', (params.pageSize ?? 20).toString())
+    .set('order', params.order ?? 'DESC');
+
+  if (params.status) {
+    httpParams = httpParams.set('status', params.status);
+  }
+
+  if (params.service) {
+    httpParams = httpParams.set('service', params.service);
+  }
+
+  return this.http.get(url, { params: httpParams });
+  }
   updateVehicleById(
   id: string,
   body: {
