@@ -40,7 +40,7 @@ export class VehiclesAPI {
 
   getVehicleInterventionsById(
     id: string,
-   params: {
+    params: {
       page?: number;
       pageSize?: number;
       order?: 'ASC' | 'DESC';
@@ -56,5 +56,25 @@ export class VehiclesAPI {
       if (params.appointmentStatus) httpParams = httpParams.set('appointmentStatus', params.appointmentStatus);
 
       return this.http.get(url, { params: httpParams });
+  }
+  getVehicleComplaintsById(
+    id: string,
+    params: {
+      active?: boolean;
+      brand: string;
+      client: string;
     }
+  ): Observable<any> {
+    const url = `${this.baseUrl}/mobile/vehicles/${id}/complaints`;
+
+    let httpParams = new HttpParams()
+      .set('brand', params.brand)
+      .set('client', params.client);
+
+    if (params.active !== undefined) {
+      httpParams = httpParams.set('active', params.active.toString());
+    }
+
+    return this.http.get(url, { params: httpParams });
+  }
 }
