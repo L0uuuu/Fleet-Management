@@ -77,4 +77,15 @@ export class VehiclesAPI {
 
     return this.http.get(url, { params: httpParams });
   }
+  updateVehicleById(
+  id: string,
+  body: {
+    name: string;
+    color: string;
+    favoriteAgencyId: string;
+  }
+  ): Observable<any> {
+    const url = `${this.baseUrl}/vehicles/${id}`;
+    return this.http.put(url, body);
+  }
 }
