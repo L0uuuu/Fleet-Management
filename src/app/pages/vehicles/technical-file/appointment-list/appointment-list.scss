@@ -1,6 +1,5 @@
 .appointment-list{
-    display: flex;
-    flex-direction: column;
+
     height: 100%;
     width: 100%;
 }
@@ -8,13 +7,11 @@
 
     display: flex;
     flex-direction: column;
-    max-height: 62vmin;
-    
-    overflow-y: auto;
-    box-sizing: border-box;
+    height: 100%;
     
  
 }
+
 th{
     color: #22232A;
     text-align: left;

@@ -1,7 +1,13 @@
 .technical-file{
     width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 .back-button{
+    display: flex;
+    align-items: center;
+    justify-content: start;
     border: none;
     background-color: white;
     color: #615c5cc5;
@@ -11,6 +17,7 @@
 }
 .Arrow-icon{
     font-size: 18px;
+    margin-right:5px ;
 }
 .image{
     width: 120px;
@@ -81,6 +88,9 @@ hr{
 }
 .bottom-container{
     width: 100%;
+    overflow-y: auto;
+    box-sizing: border-box;
+
 
 }
 .star-icon-on{
