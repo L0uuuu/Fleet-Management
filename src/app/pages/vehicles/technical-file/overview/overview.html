@@ -1,1 +1,68 @@
-<p>overview works!</p>
+<div class="overview">
+    <div class="container">
+        <h3>Details</h3>
+
+        <span class="detail">
+            <span class="title">Model</span>
+            <span class="info"> {{ vehicleDetails?.version?.model?.title ?  vehicleDetails?.version?.model?.title: 'N/A' }} </span>
+        </span>
+
+        <span class="detail">
+            <span class="title">Engine</span>
+            <span class="info"> {{ vehicleDetails?.version?.version ?  vehicleDetails?.version?.version : 'N/A' }} </span>
+        </span>
+
+        <span class="detail">
+            <span class="title">Chassis Number</span>
+            <span class="info">{{vehicleDetails?.chassisNumber ? vehicleDetails?.chassisNumber : 'N/A' }}</span>
+        </span>
+
+        
+        <span class="detail">
+            <span class="title">Registration Number</span>
+            <span class="info">{{vehicleDetails?.registrationNumber ? vehicleDetails?.registrationNumber : 'N/A' }}</span>
+        </span>
+
+        <span class="detail">
+            <span class="title">Registration Number Type</span>
+            <span class="info">{{vehicleDetails?.registrationNumberType ? vehicleDetails?.registrationNumberType : 'N/A' }} </span>
+        </span>
+
+        <span class="detail">
+            <span class="title">Oil Change Each</span>
+            <span class="info">{{vehicleDetails?.oilChangeEach ? vehicleDetails?.oilChangeEach + ' km': 'N/A'}} </span>
+        </span>
+
+        <span class="detail">
+            <span class="title">Name</span>
+            <span class="info">{{vehicleDetails?.name ? vehicleDetails?.name : 'N/A'}} </span>
+        </span>
+
+        <span class="detail">
+            <span class="title">Color</span>
+            <span class="info"> <span class="circle" [style.background-color]="vehicleDetails?.color" ></span>{{vehicleDetails?.color ? vehicleDetails?.color : 'N/A'}} </span>
+        </span>
+
+        <span class="detail">
+            <span class="title">Created At</span>
+            <span class="info"> {{ vehicleDetails?.createdAt ? (vehicleDetails.createdAt | date:'medium') : 'N/A' }} </span>
+        </span>
+
+        <span class="detail">
+            <span class="title">Updated At</span>
+            <span class="info"> {{ vehicleDetails?.updatedAt ? (vehicleDetails.updatedAt | date:'medium') : 'N/A' }} </span>
+        </span>
+
+        <span class="detail">
+            <span class="title">Sold</span>
+            <span class="info"> {{ vehicleDetails?.is_sold ? 'Yes' : 'No' }} </span>
+        </span>
+
+        <span class="detail">
+            <span class="title">Registration Change</span>
+            <span class="info"> {{ vehicleDetails?.registration_change ? 'Yes' : 'No' }} </span>
+        </span>
+
+        
+    </div>
+</div>

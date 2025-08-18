@@ -28,7 +28,6 @@ export class AppointmentList {
         next: (appointments) => {
           this.appointments.push(...appointments.result);
           this.cdr.detectChanges();
-          console.log(`Appointments for status ${status} fetched successfully:`, appointments.result);
         },
         error: (error) => {
           console.error(`Error fetching appointments for status ${status}:`, error);
