@@ -1,1 +1,36 @@
-
+<div class="complaint-list">
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Description</th>
+          <th>Complaint Type</th>
+          <th>Status</th>
+          <th>Created Date</th>
+          <th>Created Time</th>
+          <th>Agency</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let complaint of complaints">
+          <td>{{ complaint.description }}</td>
+          <td>{{ complaint.complaintType?.typeName }}</td>
+          <td>
+            <span
+              class="circle"
+              [ngClass]="{
+                'requested': getStatusColor(complaint.complaintStatus[0]?.status?.name) === 'grey',
+                'accepted': getStatusColor(complaint.complaintStatus[0]?.status?.name) === 'green',
+                'rejected': getStatusColor(complaint.complaintStatus[0]?.status?.name) === 'red'
+              }"
+            ></span>
+            {{ complaint.complaintStatus[0]?.status?.name }}
+          </td>
+          <td>{{ complaint.createdAt | date: 'longDate' }}</td>
+          <td>{{ complaint.createdAt | date: 'mediumTime' }}</td>
+          <td>{{ complaint.agency?.socialReason }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+.table-container{
+
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    
+ 
+}
+
+th{
+    color: #22232A;
+    text-align: left;
+    
+}
+table{
+    border-collapse: collapse;
+    color: #22232A;
+    width: 100%;
+
+}
+
+thead th{
+    padding:4px 0 ;
+
+    border-bottom:solid 0.7px rgba($color: #000000, $alpha: 0.1);
+}
+
+tbody td{
+    padding: 6px 0;
+}
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+.circle{
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
+
+    &.requested{
+        background-color: #696868;
+    }
+    &.accepted{
+        background-color: #4CAF50;
+    }
+    &.rejected{
+        background-color: #f44336;
+    }
+
+
+}
