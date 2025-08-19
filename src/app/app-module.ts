@@ -35,6 +35,7 @@ import { Confirmation } from './pages/appoint/confirmation/confirmation';
 import { TechnicalFile } from './pages/vehicles/technical-file/technical-file';
 import { Overview } from './pages/vehicles/technical-file/overview/overview';
 import { AppointmentList } from './pages/vehicles/technical-file/appointment-list/appointment-list';
+import { ComplaintList } from './pages/vehicles/technical-file/complaint-list/complaint-list';
 
 
 @NgModule({
@@ -56,6 +57,7 @@ import { AppointmentList } from './pages/vehicles/technical-file/appointment-lis
     TechnicalFile,
     Overview,
     AppointmentList,
+    ComplaintList,
   ],
   imports: [
     BrowserModule,
