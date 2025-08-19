@@ -17,6 +17,7 @@ import { Confirmation } from './pages/appoint/confirmation/confirmation';
 import { TechnicalFile } from './pages/vehicles/technical-file/technical-file';
 import { Overview } from './pages/vehicles/technical-file/overview/overview';
 import { AppointmentList } from './pages/vehicles/technical-file/appointment-list/appointment-list';
+import { ComplaintList } from './pages/vehicles/technical-file/complaint-list/complaint-list';
 const routes: Routes = [     
   { path: '', redirectTo: '/slide', pathMatch: 'full' },
   { path: 'login', component: Login },
@@ -29,6 +30,7 @@ const routes: Routes = [
         children: [
           {path: 'overview', component: Overview},
           {path: 'appointmentList', component: AppointmentList},
+          {path: 'complaintList', component: ComplaintList},
           { path: '', redirectTo: 'overview', pathMatch: 'full' }
         ]
       },

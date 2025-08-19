@@ -79,6 +79,7 @@ export class Vehicles implements OnInit  {
   navigateToTechnicalFile(index: number) {
     const vehicle = this.vehicl[index];
     this.vehiclesLog.vehicleID = vehicle.id;
+    this.vehiclesLog.clientID = vehicle.clientId; 
     this.router.navigate(['/slide/technicalFile']);
   }
 

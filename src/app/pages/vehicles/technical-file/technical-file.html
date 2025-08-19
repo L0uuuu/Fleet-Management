@@ -28,6 +28,7 @@
         <span><hr></span>
         <span (click)="selected = 1;navigateTo(selected)" [class.active]="selected === 1">Specs</span>
         <span (click)="selected = 2;navigateTo(selected)" [class.active]="selected === 2">Appointments</span>
+        <span (click)="selected = 3;navigateTo(selected)" [class.active]="selected === 3">Complaints</span>
     </div>
     <div class="bottom-container">
         <router-outlet></router-outlet>

@@ -28,6 +28,9 @@ export class TechnicalFile implements OnInit {
       case 2:
         this.router.navigate(['/slide/technicalFile/appointmentList']);
         break;
+      case 3:
+        this.router.navigate(['/slide/technicalFile/complaintList']);
+        break;
     }
   }
   vehicleId: string|null = null;

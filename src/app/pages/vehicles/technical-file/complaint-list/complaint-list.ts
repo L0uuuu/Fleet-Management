@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { VehiclesAPI } from '../../../../services/vehicles-api';
 import { VehiclesLog } from '../../../../services/vehiclesLogs/vehicles-log';
 
@@ -11,13 +11,21 @@ import { VehiclesLog } from '../../../../services/vehiclesLogs/vehicles-log';
 export class ComplaintList implements OnInit {
   constructor(private vehiclesAPI:VehiclesAPI,private vehiclesLog:VehiclesLog) {}
 
-  vehiclesID: string | null = '';
-
+  vehiclesID: string | null = null;
+  brand: string = '';
+  clientID: string | null = null;
   complaints: any[] = [];
   ngOnInit(): void {
     this.vehiclesID = this.vehiclesLog.vehicleID;
-    if (this.vehiclesID) {
-      this.vehiclesAPI.getVehicleComplaintsById(this.vehiclesID)
+    this.brand = this.vehiclesLog.brandId;
+    this.clientID = this.vehiclesLog.clientID;
+    if (this.vehiclesID && this.brand && this.clientID) {
+      this.vehiclesAPI.getVehicleComplaintsById(this.vehiclesID
+        , {
+          brand: this.brand,
+          client: this.clientID
+        }
+      )
         .subscribe(response => {
           this.complaints = response;
           console.log('complaints:', this.complaints);
