@@ -13,13 +13,8 @@
     <table>
         <thead>
             <tr>
-                <th class="th-checkbox">
-                    <label class="custom-checkbox small">
-                        <input type="checkbox" [(ngModel)]="selectAll" (change)="toggleAll()" >
-                        <span class="checkmark"></span>
-                    </label>
-                </th>
-                <th>Registration Number</th>
+                
+                <th style="padding-left:10px ;">Registration Number</th>
                 <th>Chassis Number</th>
                 <th>Model</th>
                 <th>Version</th>
@@ -30,13 +25,7 @@
 
         <tbody>
             <tr *ngFor="let v of vehicl;let i = index">
-                <td class="th-checkbox">
-                    <label class="custom-checkbox small">
-                        <input type="checkbox" [(ngModel)]="v.selected" (change)="checkIfAllSelected()">
-                        <span class="checkmark"></span>
-                    </label>
-                </td>
-                <td>{{ v.registrationNumber }}</td>
+                <td style="padding-left:10px ;">{{ v.registrationNumber }}</td>
                 <td>{{ v.chassisNumber }}</td>
                 <td>{{ v.version?.model?.title }}</td>
                 <td>{{ v.version?.version }}</td>

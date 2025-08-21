@@ -46,9 +46,7 @@ export class Vehicles implements OnInit  {
     this.vehicl.forEach(v => v.selected = this.selectAll);
   }
 
-  checkIfAllSelected() {
-    this.selectAll = this.vehicl.every(v => v.selected);
-  }
+
 
 
   //popup

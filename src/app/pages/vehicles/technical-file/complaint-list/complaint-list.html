@@ -3,7 +3,7 @@
     <table>
       <thead>
         <tr>
-          <th>Description</th>
+          <th style="padding-left:10px ;">Description</th>
           <th>Complaint Type</th>
           <th>Status</th>
           <th>Created Date</th>
@@ -13,7 +13,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let complaint of complaints">
-          <td>{{ complaint.description }}</td>
+          <td style="padding-left:10px ;">{{ complaint.description }}</td>
           <td>{{ complaint.complaintType?.typeName }}</td>
           <td>
             <span

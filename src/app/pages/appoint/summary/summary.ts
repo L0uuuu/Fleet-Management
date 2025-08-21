@@ -40,8 +40,7 @@ export class Summary implements OnInit {
 
     // Convert to ISO string
     const isoAppointmentDate = appointmentDate.toISOString();
-    console.log(isoAppointmentDate);
-    console.log(this.parseNumberFromString(this.mileage));
+
     
     var payload = {
       deviceType: 'ISO', 
@@ -58,6 +57,13 @@ export class Summary implements OnInit {
     if (this.quotation_number) {
       (payload.data as any).quoteNumber = this.quotation_number;
     }
+    if(this.Select_type_interview){
+      payload.data.km = this.parseNumberFromString(this.Select_type_interview);
+
+      payload.data.description ="N/A" ;
+      
+    }
+    console.log(payload);
     this.appointmentDataAPI.setInterventions(payload).subscribe({
       next: (res) => {
         console.log('Sent with attachment:', res);

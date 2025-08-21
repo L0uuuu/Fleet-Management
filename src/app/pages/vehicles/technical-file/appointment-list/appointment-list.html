@@ -4,7 +4,8 @@
         <table>
             <thead>
                 <tr>
-                    <th>Service</th>
+                    <th style="padding-left:10px ;">Service</th>
+                    <th>Description</th>
                     <th>KM</th>
                     <th>Status</th>
                     <th>Requested Date</th>
@@ -15,7 +16,8 @@
             </thead>
             <tbody>
                 <tr *ngFor="let appt of appointments">
-                    <td>{{ appt.service?.abstractService?.name }}</td>
+                    <td style="padding-left:10px ;">{{ appt.service?.abstractService?.name }}</td>
+                    <td style="max-width: 100px;overflow: hidden; text-overflow: ellipsis; white-space: nowrap;padding-right: 5px;">{{ appt.description }}</td>
                     <td>{{ appt.km | number }}</td>
                     <td><span class="circle" [ngClass]="{'requested': getStatusColor( appt.status )=='grey',
                                                         'accepted': getStatusColor( appt.status )=='green',

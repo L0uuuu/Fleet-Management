@@ -95,7 +95,7 @@
             <div class="align" id="current-mileage" *ngIf="!isButtonActive('ser4')">
                 <label for="current-mileage">Current mileage*</label>
                 <div class="input-wrapper ">
-                    <input type="text" class="special-input" id="current-mileage"  (ngModelChange)="onInputChange()" placeholder="5000" (input)="formatMileage($event)" 
+                    <input type="text" class="special-input" id="current-mileage"  (ngModelChange)="onInputChange()" placeholder="5000" (input)="formatMileage($event,'mileage')" 
                     (keypress)="restrictToNumbers($event)"
                     [(ngModel)]="mileage"
                     pattern="[0-9,]*">
@@ -108,8 +108,20 @@
                 <select name="selector" class="zone3" [(ngModel)]="interviewType" (ngModelChange)="onInputChange()" style="width: 20em;" id="interview-selector" >
                     <option value="" selected hidden>Select the type of interview*</option>
                     <option *ngFor="let value of listInterviews" [value]="value">{{ value }}</option>
-                    <option value="" >Autre</option>
+                    <option value="other" >other</option>
                 </select>
+                <div class="fade-container" *ngIf="interviewType === 'other'">
+                    <label for="other">Write mileage here</label>
+                    <div class="input-wrapper">
+                    <input type="text" class="special-input" id="other"
+                            (ngModelChange)="onInputChange()"
+                            placeholder="other" (input)="formatMileage($event,'interviewTypeOther')" 
+                            (keypress)="restrictToNumbers($event)"
+                            [(ngModel)]="interviewTypeOther"
+                            pattern="[0-9,]*">
+                    <span class="unit">km</span>
+                    </div>
+                </div>
             </div>
                         
 

@@ -28,6 +28,7 @@ export class Service implements OnInit {
 
   selectedVehicleId: string = '';
   selectedInterviewType:string ='';
+  interviewTypeOther: string = '';
   mileage: string = '';
   description: string = '';
   quotation_number: string = '';
@@ -94,7 +95,14 @@ export class Service implements OnInit {
       this.description = this.bookingLogs.description;
     }
     if(this.bookingLogs.Select_type_interview){
-      this.interviewType=this.bookingLogs.Select_type_interview;
+      if(this.bookingLogs.Select_type_interview > '200000'){
+        this.interviewType="other" ;
+        this.interviewTypeOther = this.bookingLogs.Select_type_interview;
+      }
+      else{
+        this.interviewType=this.bookingLogs.Select_type_interview;
+      }
+
     }
     if(this.bookingLogs.isBrokenDown){
       this.isBrokenDown = this.bookingLogs.isBrokenDown;
@@ -207,12 +215,12 @@ export class Service implements OnInit {
     }
   }
 
-  formatMileage(event: Event) {
+  formatMileage(event: Event, model: keyof this) {
     let value = (event.target as HTMLInputElement).value.replace(/[^0-9]/g, '');
     if (value) {
       value = parseInt(value).toLocaleString('en-US');
       (event.target as HTMLInputElement).value = value;
-      this.mileage = value;
+      (this as any)[model] = value; // dynamically assign to the property
     }
   }
 
@@ -237,9 +245,19 @@ export class Service implements OnInit {
       ).registrationNumber;
       this.bookingLogs.serviceName = this.serviceName;
       this.bookingLogs.serviceIcon = this.serviceIcon;
-
+      this.bookingLogs.mileage = this.mileage;
+      this.bookingLogs.description = this.description;
+      this.bookingLogs.isBrokenDown = this.isBrokenDown;
       if(this.serviceName=== 'Fast Service'){
-        this.bookingLogs.Select_type_interview = this.interviewType;
+        if(this.interviewType == 'other'){
+          this.bookingLogs.Select_type_interview = this.interviewTypeOther;
+        }
+        else{
+          this.bookingLogs.Select_type_interview = this.interviewType;
+
+        }
+        this.bookingLogs.mileage = null;
+        this.bookingLogs.description = null;
       }
       else{
         this.bookingLogs.Select_type_interview = null;
@@ -247,7 +265,6 @@ export class Service implements OnInit {
       if(this.serviceName=== 'Multiple services'){
         this.bookingLogs.Select_services = this.interviewType;
       }
-      
       else{
         this.bookingLogs.Select_services = null;
       }
@@ -258,9 +275,7 @@ export class Service implements OnInit {
         this.bookingLogs.quotation_number = null;
       }
 
-      this.bookingLogs.mileage = this.mileage;
-      this.bookingLogs.description = this.description;
-      this.bookingLogs.isBrokenDown = this.isBrokenDown;
+      
 
       this.router.navigate(['/slide/appointments/agency']);
     });
