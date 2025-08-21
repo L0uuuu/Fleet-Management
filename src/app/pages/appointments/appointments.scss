@@ -31,6 +31,11 @@
     margin: 10px;
 
 }
+
+
+
+
+
 .default-number {
     width: 100px;
     height: 100px;
@@ -41,48 +46,74 @@
     color: white;
     background-color: rgba(119,115,115,0.2);
     border-radius: 50%;
-
-    &.completed {
-        background-color: #76D4A2;
-        color: white;
-
-    }
-    &.active {
-        background-color: white;
-        border: solid 1px #399DDB;
-        color: #399DDB;
-    }
+    transition: all 0.3s ease;   /* smooth animation */
+    cursor: pointer;             /* small UX touch */
 }
 
+/* Completed step */
+.default-number.completed {
+    background-color: #76D4A2;
+    color: white;
+    transform: scale(1.05);      /* subtle grow */
+    box-shadow: 0 0 12px rgba(118, 212, 162, 0.5);
+}
 
+/* Active step */
+.default-number.active {
+    background-color: white;
+    border: solid 2px #399DDB;
+    color: #399DDB;
+    transform: scale(1.07);      /* pop effect */
+    box-shadow: 0 0 14px rgba(57, 157, 219, 0.6);
+}
+
+/* Labels under numbers */
 .under-default-number {
-   
-    padding-top: 10px ;
+    padding-top: 10px;
     font-size: 20px;
     margin: auto;
     color: rgba(119,115,115,0.4);
-    &.completed {
-      color: #76D4A2;
-    }
-    &.active {
-        color: #399DDB;
-        font-weight: bolder;
-        font-size: 20px;
-        margin: auto;
-    }
+    transition: all 0.3s ease;
 }
-.counter-line{
+
+.under-default-number.completed {
+    color: #76D4A2;
+    transform: translateY(-2px); /* slight lift */
+}
+
+.under-default-number.active {
+    color: #399DDB;
+    font-weight: bolder;
+    font-size: 22px;
+    transform: translateY(-4px); /* stronger lift */
+}
+
+/* Connecting lines */
+.counter-line {
     width: 4em;
-    border: dashed 0.7px rgba(119,115,115,0.4);
+    border: dashed 1px rgba(119,115,115,0.4);
     border-radius: 2px;
-    
-    &.completed {
-      border: solid 0.7px #76D4A2;
+    transition: all 0.3s ease;
+}
 
-    }
-    &.active {
-        border: solid 0.7px #399DDB;
-    }
+.counter-line.completed {
+    border: solid 2px #76D4A2;
+    animation: growLine 0.5s ease forwards; /* animate drawing */
+}
 
+.counter-line.active {
+    border: solid 2px #399DDB;
+    animation: pulseLine 1s  ease forwards; /* glowing line */
+}
+
+/* === Animations === */
+@keyframes growLine {
+    from { width: 2em; opacity: 0.3; }
+    to   { width: 4em; opacity: 1; }
+}
+
+@keyframes pulseLine {
+    from { box-shadow: 0 0 4px rgba(57, 157, 219, 0.5);width: 4em;  }
+    to   { box-shadow: 0 0 10px rgba(57, 157, 219, 0.8);width: 2em; }
 }
 
