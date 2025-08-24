@@ -193,3 +193,52 @@ fa-icon:hover {
 .view-icon:hover {
     color: #33363Fd1;
 }
+.input-popup {
+    width: 20em;
+
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-size: 20px;
+}
+.input-popup:focus {
+  border: 1px solid #46B1F4;
+  outline: none;
+}
+.inputs{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-bottom: 8px;
+}
+label {
+    font-size: 20px;
+    color: #615C5C;
+    margin-left: 8px;
+}
+select {
+    width: 20em;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-size: 20px;
+    background-color: white;
+    color: #aca8a8be;
+    margin-bottom: 8px;
+}
+option {
+    font-size: 20px;
+    color: #615C5C;
+}
+.search-input{
+    border: none;
+    outline: none;
+    color: #3e3d3d;
+    
+}
+.search-input::placeholder{
+    color: #A6A6A6;
+    
+}

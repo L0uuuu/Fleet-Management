@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { VehiclesAPI } from '../../services/vehicles-api';
 import { AuthService } from '../../services/auth-service';
 import { VehiclesLog } from '../../services/vehiclesLogs/vehicles-log'; 
+import { AgencyAPI } from '../../services/appoint/agency-api';
 
 import { ChangeDetectorRef } from '@angular/core';
 //icon importation
@@ -22,11 +23,13 @@ import { Router } from '@angular/router';
 })
 export class Vehicles implements OnInit  {
   vehicl: any[] = [];
-  constructor(private vehiclesLog:VehiclesLog,private router:Router,private http: HttpClient,private authService: AuthService,private vehiclesAPI: VehiclesAPI,private cdr: ChangeDetectorRef) {}
-
+  agencies: any[] = [];
+  constructor(private agencyAPI:AgencyAPI,private vehiclesLog:VehiclesLog,private router:Router,private http: HttpClient,private authService: AuthService,private vehiclesAPI: VehiclesAPI,private cdr: ChangeDetectorRef) {}
+  selectedColor: string = '#0000ff';
   ngOnInit() {
     let user = this.authService.getUser();
     let id = user.client.id;
+    let brand = this.vehiclesLog.brandId;
     
     this.vehiclesAPI.getVehiclesOfClient(id, {
       page: 1,
@@ -35,6 +38,11 @@ export class Vehicles implements OnInit  {
     }).subscribe(response => {
       
       this.vehicl = response.result;
+      this.cdr.detectChanges();
+    });
+    this.agencyAPI.getAgency({brand:brand,active:true}).subscribe(response => {
+      this.agencies = response;
+      console.log(this.agencies);
       this.cdr.detectChanges();
     });
     
