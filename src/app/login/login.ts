@@ -34,6 +34,9 @@ export class Login {
         // Optionally save user info
         localStorage.setItem('user', JSON.stringify(response.clientAccount));
         
+        // Save the access token to localStorage (or sessionStorage)
+        localStorage.setItem('password', this.password);
+        
         
         
       },

@@ -31,8 +31,8 @@
                 <td>{{ v.version?.version }}</td>
                 <td>{{ v.version?.price }} {{ v.version?.unit }}</td>
                 <td class="icon-container">
-                    <fa-icon (click)="openPopup('pop2')" class="delete-icon"  [icon]="faXmarkCircle"></fa-icon> 
-                    <fa-icon class="edit-icon" (click)="openPopup('pop3')"   [icon]="faPen"></fa-icon> 
+                   
+                    <fa-icon class="edit-icon" (click)="openPopup('pop3',i)"   [icon]="faPen"></fa-icon> 
                     <fa-icon class="view-icon"  (click)="navigateToTechnicalFile(i)" [icon]="faEye"></fa-icon>
                 </td>
             </tr>
@@ -73,7 +73,7 @@
                 <div class="delete-container">
                     <div class="inputs">
                         <label for="name">Name:</label>
-                        <input type="text" id="name" class="input-popup">
+                        <input type="text" id="name" class="input-popup" [(ngModel)]="name">
                     </div>
                     <div class="inputs">
                         <label for="colorPicker">Choose a color:</label>
@@ -89,14 +89,14 @@
                     </div>
                     <div class="inputs">
                         <label for="colorPicker">Choose favorite Agency:</label>
-                        <select name="" id="">
+                        <select name="" id=""  [(ngModel)]="selectedAgencyId">
                             <option value="" selected hidden>Choose a model</option>
                             <option *ngFor="let agency of agencies" [value]="agency.id">{{agency.socialReason}} </option>
                         </select>
 
                     </div>
                     
-                    <button class="Save-button" (click)="closePopup()">confirm</button>
+                    <button class="Save-button" (click)=" updateVehicle(selectedIndex)">confirm</button>
                 </div>
             </div>
         </div>

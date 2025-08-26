@@ -25,7 +25,7 @@ export class Vehicles implements OnInit  {
   vehicl: any[] = [];
   agencies: any[] = [];
   constructor(private agencyAPI:AgencyAPI,private vehiclesLog:VehiclesLog,private router:Router,private http: HttpClient,private authService: AuthService,private vehiclesAPI: VehiclesAPI,private cdr: ChangeDetectorRef) {}
-  selectedColor: string = '#0000ff';
+  
   ngOnInit() {
     let user = this.authService.getUser();
     let id = user.client.id;
@@ -48,6 +48,30 @@ export class Vehicles implements OnInit  {
     
   }
 
+  selectedIndex: number|null = null;
+  name: string|null = null;
+  selectedColor: string = '#0000ff';
+  selectedAgencyId: string |null = null;
+  updateVehicle(index: number | null) {
+    console.log('Name:', this.name);
+    console.log('Selected Color:', this.selectedColor);
+    console.log('Selected Agency ID:', this.selectedAgencyId);
+    if (index !== null) {
+      this.vehiclesAPI.updateVehicleById(this.vehicl[index].id, {
+        name: this.name,color: this.selectedColor.toUpperCase(),favoriteAgencyId: this.selectedAgencyId
+      }).subscribe(response => {
+        alert('Vehicle updated successfully!');
+
+      },
+      error => {
+        alert('Error updating vehicle: ' + error.message);
+      })
+      this.closePopup();
+    }
+    
+
+  }
+
   selectAll: boolean = false;
 
   toggleAll() {
@@ -61,18 +85,22 @@ export class Vehicles implements OnInit  {
   showPopup_addVehicle: boolean = false;
   showPopup_deleteVehicle: boolean = false;
   showPopup_editVehicle: boolean = false;
-  openPopup(pop: string) {
+  openPopup(pop: string,index?: number) {
     switch(pop){
       case'pop1':
         this.showPopup_addVehicle = true;
         break;
       case'pop2':
         this.showPopup_deleteVehicle = true;
+        
         break;
       case'pop3': 
         this.showPopup_editVehicle = true;
+        this.selectedColor = this.vehicl[index ?? 0].color;
         break;
     }
+    this.selectedIndex = index ?? null;
+
     
   }
 

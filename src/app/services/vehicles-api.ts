@@ -108,9 +108,9 @@ export class VehiclesAPI {
   updateVehicleById(
   id: string,
   body: {
-    name: string;
+    name: string|null;
     color: string;
-    favoriteAgencyId: string;
+    favoriteAgencyId: string|null;
   }
   ): Observable<any> {
     const url = `${this.baseUrl}/vehicles/${id}`;

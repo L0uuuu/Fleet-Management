@@ -1,6 +1,6 @@
-import { Component,AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { Component,AfterViewInit, ViewChild, ElementRef, OnInit } from '@angular/core';
 import intlTelInput from 'intl-tel-input';
-
+import { AuthService } from '../../services/auth-service';
 //icon importation
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 @Component({
@@ -9,28 +9,64 @@ import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
   templateUrl: './account-setting.html',
   styleUrl: './account-setting.scss'
 })
-export class AccountSetting {
+export class AccountSetting implements OnInit {
+
+  constructor( private authService:AuthService) {}
   private firstName: string = 'John';
   private lastName: string = 'Doe';
   private email: string = 'louaiboubaker@gmail.com';
-  private phone: string = '+216 22 222 222';
+  private phone: string = '+216 00 000 000';
   private businessName: string = 'My Business';
   private location: string = 'XXXX';
   private country: string = 'Tunisia';
   private city: string = 'XXXXX';
 
+  
+  ngOnInit(): void {
+    const user = this.authService.getUser();
+    if (user) {
+      this.firstName = user.firstName || this.firstName;
+      this.lastName = user.lastName || this.lastName;
+      this.email = user.login  || this.email;
+      this.phone = user.phone || this.phone;
+      this.businessName = user.businessName || this.businessName;
+      this.location = user.location || this.location;
+      this.country = user.country || this.country;
+      this.city = user.city || this.city;
+    }
+  }
   // password
   currentPassword: string = '';
   newPassword: string = ''; 
   confirmPassword: string = '';
-
   changePassword(): void {
+    if (!this.currentPassword || !this.newPassword || !this.confirmPassword) {
+      alert('Please fill in all fields.');
+      return;
+    }
+    console.log('Password:', this.authService.getPassword());
+    if (this.currentPassword !== this.authService.getPassword()) {
+      alert('Current password is incorrect.');
+      return;
+    }
+    
     if (this.newPassword !== this.confirmPassword) {
       alert('New password and confirm password do not match.');
       return;
     }
-    // Logic to change the password goes here
-    console.log('Password changed successfully');
+
+    this.authService.changePassword(this.email, this.newPassword).subscribe({
+      next: (res) => {
+        console.log('Password changed successfully:', res);
+        localStorage.setItem('password', this.newPassword);
+        alert('Password updated successfully!');
+        this.closePopup();
+      },
+      error: (err) => {
+        console.error('Error changing password:', err);
+        alert('Failed to update password.');
+      }
+    });
   }
 
   //getters
