@@ -1,6 +1,9 @@
 import { Component,AfterViewInit, ViewChild, ElementRef, OnInit } from '@angular/core';
 import intlTelInput from 'intl-tel-input';
 import { AuthService } from '../../services/auth-service';
+import { ChangeDetectorRef } from '@angular/core';
+
+import { MatSnackBar } from '@angular/material/snack-bar';
 //icon importation
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 @Component({
@@ -11,7 +14,7 @@ import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 })
 export class AccountSetting implements OnInit {
 
-  constructor( private authService:AuthService) {}
+  constructor( private authService:AuthService,private cdr: ChangeDetectorRef,private snackBar: MatSnackBar) {}
   private firstName: string = 'John';
   private lastName: string = 'Doe';
   private email: string = 'louaiboubaker@gmail.com';
@@ -41,30 +44,60 @@ export class AccountSetting implements OnInit {
   confirmPassword: string = '';
   changePassword(): void {
     if (!this.currentPassword || !this.newPassword || !this.confirmPassword) {
-      alert('Please fill in all fields.');
+
+      this.snackBar.open('👉 Please fill in all fields.', 'Close', {
+          duration: 3000,  // auto close after 3s
+          horizontalPosition: 'right',
+          verticalPosition: 'top',
+          panelClass: ['success-snackbar']
+        });
       return;
     }
     console.log('Password:', this.authService.getPassword());
     if (this.currentPassword !== this.authService.getPassword()) {
-      alert('Current password is incorrect.');
+      this.snackBar.open('👉 Current password is incorrect.', 'Close', {
+          duration: 3000,  // auto close after 3s
+          horizontalPosition: 'right',
+          verticalPosition: 'top',
+          panelClass: ['success-snackbar']
+        });
       return;
     }
     
     if (this.newPassword !== this.confirmPassword) {
-      alert('New password and confirm password do not match.');
+      this.snackBar.open('👉 New password and confirm password do not match.', 'Close', {
+          duration: 3000,  // auto close after 3s
+          horizontalPosition: 'right',
+          verticalPosition: 'top',
+          panelClass: ['success-snackbar']
+      });
       return;
     }
 
     this.authService.changePassword(this.email, this.newPassword).subscribe({
       next: (res) => {
-        console.log('Password changed successfully:', res);
         localStorage.setItem('password', this.newPassword);
-        alert('Password updated successfully!');
         this.closePopup();
+        this.cdr.detectChanges();
+        
+        this.snackBar.open('✅ Password updated successfully!', 'Close', {
+          duration: 3000,  // auto close after 3s
+          horizontalPosition: 'right',
+          verticalPosition: 'top',
+          panelClass: ['success-snackbar']
+        });
+
+        
       },
       error: (err) => {
         console.error('Error changing password:', err);
-        alert('Failed to update password.');
+
+        this.snackBar.open('❌ Failed to update password.', 'Close', {
+          duration: 3000,  // auto close after 3s
+          horizontalPosition: 'right',
+          verticalPosition: 'top',
+          panelClass: ['success-snackbar']
+        });
       }
     });
   }
@@ -175,6 +208,9 @@ export class AccountSetting implements OnInit {
     this.showPopup_info = false;
     this.showPopup_psw = false;
     this.showPopup_logo = false;
+    this.currentPassword = '';
+    this.newPassword = ''; 
+    this.confirmPassword = '';
   }
 
 

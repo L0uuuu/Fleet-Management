@@ -5,6 +5,7 @@ import { AuthService } from '../../services/auth-service';
 import { VehiclesLog } from '../../services/vehiclesLogs/vehicles-log'; 
 import { AgencyAPI } from '../../services/appoint/agency-api';
 
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ChangeDetectorRef } from '@angular/core';
 //icon importation
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
@@ -24,7 +25,7 @@ import { Router } from '@angular/router';
 export class Vehicles implements OnInit  {
   vehicl: any[] = [];
   agencies: any[] = [];
-  constructor(private agencyAPI:AgencyAPI,private vehiclesLog:VehiclesLog,private router:Router,private http: HttpClient,private authService: AuthService,private vehiclesAPI: VehiclesAPI,private cdr: ChangeDetectorRef) {}
+  constructor(private snackBar:MatSnackBar,private agencyAPI:AgencyAPI,private vehiclesLog:VehiclesLog,private router:Router,private http: HttpClient,private authService: AuthService,private vehiclesAPI: VehiclesAPI,private cdr: ChangeDetectorRef) {}
   
   ngOnInit() {
     let user = this.authService.getUser();
@@ -42,7 +43,6 @@ export class Vehicles implements OnInit  {
     });
     this.agencyAPI.getAgency({brand:brand,active:true}).subscribe(response => {
       this.agencies = response;
-      console.log(this.agencies);
       this.cdr.detectChanges();
     });
     
@@ -60,11 +60,23 @@ export class Vehicles implements OnInit  {
       this.vehiclesAPI.updateVehicleById(this.vehicl[index].id, {
         name: this.name,color: this.selectedColor.toUpperCase(),favoriteAgencyId: this.selectedAgencyId
       }).subscribe(response => {
-        alert('Vehicle updated successfully!');
+        this.snackBar.open('✅ vehcile updated successfully!', 'Close', {
+          duration: 3000,  // auto close after 3s
+          horizontalPosition: 'right',
+          verticalPosition: 'top',
+          panelClass: ['success-snackbar']
+        });
+
 
       },
       error => {
-        alert('Error updating vehicle: ' + error.message);
+        console.log('Error updating vehicle: ' + error.message);
+        this.snackBar.open('❌ Error updating vehicle!', 'Close', {
+          duration: 3000,  // auto close after 3s
+          horizontalPosition: 'right',
+          verticalPosition: 'top',
+          panelClass: ['success-snackbar']
+        });
       })
       this.closePopup();
     }

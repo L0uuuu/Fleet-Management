@@ -24,6 +24,19 @@ export class Agency implements OnInit {
   agencyPoints: { lat: number; lng: number; label: string }[] = [];
 
 
+  showPopup_info:boolean = false;
+  agencyInfoSelected:any=null;
+  openPopup(index:number){
+    this.agencyInfoSelected=this.agencyList[index];
+    if(this.agencyInfoSelected){
+      this.showPopup_info=true;
+    }
+
+  }
+  closePopup(){
+    this.showPopup_info=false
+  }
+
   ngOnInit(): void {
     const selectedServiceId = this.bookingLogs.selectedServiceId;
     if (selectedServiceId) {

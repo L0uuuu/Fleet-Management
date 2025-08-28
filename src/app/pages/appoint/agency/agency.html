@@ -2,6 +2,7 @@
     <div class="container">
         <div class="tow-containers">
             <div class="blue-container">
+                
                 <div *ngFor="let a of agencyList; let i = index">
                     <h1>{{a.socialReason}}</h1>
                     <div class="phone-Number">
@@ -15,18 +16,55 @@
                     <div class="button-area">
                         <button class="select-agency" [class.selected]="selectedAgencyIndex === i" (click)="selectAgency(i)">{{ selectedAgencyIndex === i ? 'Selected agency' : 'Select this agency' }}</button>
 
-                        <button class="info"> <fa-icon [icon]="faPlus" class="plus-icon"></fa-icon>&nbsp;&nbsp;Info</button>
+                        <button class="info" (click)="openPopup(i)"> <fa-icon [icon]="faPlus" class="plus-icon"></fa-icon>&nbsp;&nbsp;Info</button>
                     </div>
                     <hr>
-                
+                    <span class="agencyNumber">agencies found: {{agencyList.length}}</span>
                 </div>
                 
             </div>
-            <app-map [points]="agencyPoints"></app-map>
+            <app-map [points]="agencyPoints">
+                
+            </app-map>
         </div>
         <div class="next-previous">
             <button class="previous" (click)="navigateToService()"  > <fa-icon class="flech2" [icon]="faChevronRight"></fa-icon> &nbsp;&nbsp; Previous  </button>
             <button class="next" [disabled]="isDisabled" (click)="navigateToDate()" >Next &nbsp;&nbsp; <fa-icon class="flech" [icon]="faChevronRight"></fa-icon></button>
+        </div>
+    </div>
+
+    <!-- Popup -->
+    <div class="popup" *ngIf="showPopup_info">
+        <div class="popup-content">
+            <span class="close" (click)="closePopup()">&times;</span>
+            <div class="container">
+                <h3>Details</h3>
+
+                <span class="detail">
+                    <span class="title">Social Reason:</span>
+                    <span class="info2"> {{ agencyInfoSelected?.socialReason ? agencyInfoSelected?.socialReason :  'N/A' }} </span>
+                </span>
+                <span class="detail">
+                    <span class="title">Phone Number:</span>
+                    <span class="info2"> {{ agencyInfoSelected?.phoneNumber ? agencyInfoSelected?.phoneNumber :  'N/A' }} </span>
+                </span>
+                <span class="detail">
+                    <span class="title">Fax:</span>
+                    <span class="info2"> {{ agencyInfoSelected?.fax ? agencyInfoSelected?.fax :  'N/A' }} </span>
+                </span>
+                <span class="detail">
+                    <span class="title">Description:</span>
+                    <span class="info2"> {{ agencyInfoSelected?.description ? agencyInfoSelected?.description :  'N/A' }} </span>
+                </span>
+                <span class="detail">
+                    <span class="title">Email:</span>
+                    <span class="info2"> {{ agencyInfoSelected?.email ? agencyInfoSelected?.email :  'N/A' }} </span>
+                </span>
+                
+                <div class="ok">
+                    <button class="next"(click)="closePopup()" >ok </button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
